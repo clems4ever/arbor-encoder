@@ -11,6 +11,11 @@ import (
 	"github.com/pkoukk/tiktoken-go"
 )
 
+type TokenizationResult struct {
+	Tokens []int
+	Depths []int
+}
+
 type Tokenizer struct {
 	vocab            map[string]int
 	contentTokenizer *tiktoken.Tiktoken
@@ -39,7 +44,7 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 	}, nil
 }
 
-func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
+func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 	var tokens []int
 	var depths []int
 	depth := 0
@@ -50,7 +55,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
 			break
 		}
 		if err != nil {
-			return nil, nil, err
+			return nil, err
 		}
 
 		switch se := token.(type) {
@@ -61,7 +66,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
 				depths = append(depths, depth)
 				depth++
 			} else {
-				return nil, nil, fmt.Errorf("tag %s not found in vocab", tagName)
+				return nil, fmt.Errorf("tag %s not found in vocab", tagName)
 			}
 		case xml.EndElement:
 			tagName := "</" + se.Name.Local + ">"
@@ -70,7 +75,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
 				tokens = append(tokens, id)
 				depths = append(depths, depth)
 			} else {
-				return nil, nil, fmt.Errorf("tag %s not found in vocab", tagName)
+				return nil, fmt.Errorf("tag %s not found in vocab", tagName)
 			}
 		case xml.CharData:
 			content := string(se)
@@ -84,5 +89,8 @@ func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
 			}
 		}
 	}
-	return tokens, depths, nil
+	return &TokenizationResult{
+		Tokens: tokens,
+		Depths: depths,
+	}, nil
 }

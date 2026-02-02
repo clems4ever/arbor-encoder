@@ -51,10 +51,10 @@ func TestNewTokenizer_FileNotFound(t *testing.T) {
 
 func TestTokenizer_Tokenize_Success(t *testing.T) {
 	vocab := map[string]int{
-		"<Root>":   10,
-		"</Root>":  11,
-		"<Child>":  12,
-		"</Child>": 13,
+		"<Root>":   200010,
+		"</Root>":  200011,
+		"<Child>":  200012,
+		"</Child>": 200013,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -65,10 +65,13 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 		<Child>Value</Child>
 	</Root>`
 
-	tokens, depths, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
+	res, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
 	if err != nil {
 		t.Fatalf("Tokenize failed: %v", err)
 	}
+
+	tokens := res.Tokens
+	depths := res.Depths
 
 	// We expect tokens for <Root>, <Child>, "Value", </Child>, </Root>
 	// The token for "Value" depends on tiktoken encoding, so we won't hardcode it.
@@ -77,18 +80,18 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 		t.Fatalf("Expected at least 5 tokens, got %d", len(tokens))
 	}
 
-	if tokens[0] != 10 {
-		t.Errorf("Expected first token to be 10 (<Root>), got %d", tokens[0])
+	if tokens[0] != 200010 {
+		t.Errorf("Expected first token to be 200010 (<Root>), got %d", tokens[0])
 	}
-	if tokens[1] != 12 {
-		t.Errorf("Expected second token to be 12 (<Child>), got %d", tokens[1])
+	if tokens[1] != 200012 {
+		t.Errorf("Expected second token to be 200012 (<Child>), got %d", tokens[1])
 	}
 	// content tokens in the middle
-	if tokens[len(tokens)-2] != 13 {
-		t.Errorf("Expected second to last token to be 13 (</Child>), got %d", tokens[len(tokens)-2])
+	if tokens[len(tokens)-2] != 200013 {
+		t.Errorf("Expected second to last token to be 200013 (</Child>), got %d", tokens[len(tokens)-2])
 	}
-	if tokens[len(tokens)-1] != 11 {
-		t.Errorf("Expected last token to be 11 (</Root>), got %d", tokens[len(tokens)-1])
+	if tokens[len(tokens)-1] != 200011 {
+		t.Errorf("Expected last token to be 200011 (</Root>), got %d", tokens[len(tokens)-1])
 	}
 
 	// Depths:
@@ -119,8 +122,8 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 
 func TestTokenizer_Tokenize_MissingTag(t *testing.T) {
 	vocab := map[string]int{
-		"<Root>":  10,
-		"</Root>": 11,
+		"<Root>":  200010,
+		"</Root>": 200011,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -129,7 +132,7 @@ func TestTokenizer_Tokenize_MissingTag(t *testing.T) {
 
 	xmlContent := `<Root><Unknown>Val</Unknown></Root>`
 
-	_, _, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
+	_, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
 	if err == nil {
 		t.Error("Expected error for unknown tag, got nil")
 	}
@@ -142,8 +145,8 @@ func TestTokenizer_Tokenize_MissingTag(t *testing.T) {
 
 func TestTokenizer_Tokenize_MalformedXML(t *testing.T) {
 	vocab := map[string]int{
-		"<Root>":  10,
-		"</Root>": 11,
+		"<Root>":  200010,
+		"</Root>": 200011,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -152,7 +155,7 @@ func TestTokenizer_Tokenize_MalformedXML(t *testing.T) {
 
 	xmlContent := `<Root><Unclosed></Root>`
 
-	_, _, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
+	_, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
 	if err == nil {
 		t.Error("Expected error for malformed XML, got nil")
 	}
@@ -160,16 +163,16 @@ func TestTokenizer_Tokenize_MalformedXML(t *testing.T) {
 
 func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	vocab := map[string]int{
-		"<Root>":           10,
-		"</Root>":          11,
-		"<Level1>":         12,
-		"</Level1>":        13,
-		"<Level2>":         14,
-		"</Level2>":        15,
-		"<Level3>":         16,
-		"</Level3>":        17,
-		"<Level1Sibling>":  18,
-		"</Level1Sibling>": 19,
+		"<Root>":           200010,
+		"</Root>":          200011,
+		"<Level1>":         200012,
+		"</Level1>":        200013,
+		"<Level2>":         200014,
+		"</Level2>":        200015,
+		"<Level3>":         200016,
+		"</Level3>":        200017,
+		"<Level1Sibling>":  200018,
+		"</Level1Sibling>": 200019,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -185,10 +188,13 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 		<Level1Sibling>Shallow</Level1Sibling>
 	</Root>`
 
-	tokens, depths, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
+	res, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
 	if err != nil {
 		t.Fatalf("Tokenize failed: %v", err)
 	}
+
+	tokens := res.Tokens
+	depths := res.Depths
 
 	// Helper to find index of a structural token
 	findIndex := func(target int) int {
@@ -206,16 +212,16 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 		expectedDepth int
 		name          string
 	}{
-		{10, 0, "<Root>"},
-		{12, 1, "<Level1>"},
-		{14, 2, "<Level2>"},
-		{16, 3, "<Level3>"},
-		{17, 3, "</Level3>"},
-		{15, 2, "</Level2>"},
-		{13, 1, "</Level1>"},
-		{18, 1, "<Level1Sibling>"},
-		{19, 1, "</Level1Sibling>"},
-		{11, 0, "</Root>"},
+		{200010, 0, "<Root>"},
+		{200012, 1, "<Level1>"},
+		{200014, 2, "<Level2>"},
+		{200016, 3, "<Level3>"},
+		{200017, 3, "</Level3>"},
+		{200015, 2, "</Level2>"},
+		{200013, 1, "</Level1>"},
+		{200018, 1, "<Level1Sibling>"},
+		{200019, 1, "</Level1Sibling>"},
+		{200011, 0, "</Root>"},
 	}
 
 	for _, check := range checks {
@@ -232,8 +238,8 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	// Verify content depths
 	// "Deep" should be at depth 4 (inside <Level3> which is at depth 3)
 	// We find the range between <Level3> and </Level3>
-	startIdx := findIndex(16) // <Level3>
-	endIdx := findIndex(17)   // </Level3>
+	startIdx := findIndex(200016) // <Level3>
+	endIdx := findIndex(200017)   // </Level3>
 
 	if startIdx != -1 && endIdx != -1 {
 		if endIdx <= startIdx+1 {
@@ -247,8 +253,8 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	}
 
 	// "Shallow" should be at depth 2 (inside <Level1Sibling> which is at depth 1)
-	startIdx = findIndex(18) // <Level1Sibling>
-	endIdx = findIndex(19)   // </Level1Sibling>
+	startIdx = findIndex(200018) // <Level1Sibling>
+	endIdx = findIndex(200019)   // </Level1Sibling>
 
 	if startIdx != -1 && endIdx != -1 {
 		if endIdx <= startIdx+1 {

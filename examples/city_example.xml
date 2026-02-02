@@ -2,7 +2,7 @@
     <Name>Paris</Name>
     <ZipCode>75000</ZipCode>
     <NumberOfInhabitants>2161000</NumberOfInhabitants>
-    <Schools>
+    <Schools ordered="false">
         <School>
             <Name>Sorbonne University</Name>
             <Address>1 Rue Victor Cousin</Address>
