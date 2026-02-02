@@ -1,0 +1,16 @@
+{
+    "<City>": 1000,
+    "</City>": 1001,
+    "<Name>": 1002,
+    "</Name>": 1003,
+    "<ZipCode>": 1004,
+    "</ZipCode>": 1005,
+    "<NumberOfInhabitants>": 1006,
+    "</NumberOfInhabitants>": 1007,
+    "<Schools>": 1008,
+    "</Schools>": 1009,
+    "<School>": 1010,
+    "</School>": 1011,
+    "<Address>": 1012,
+    "</Address>": 1013
+}
