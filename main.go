@@ -24,8 +24,12 @@ func main() {
 		fmt.Printf("Error tokenizing: %v\n", err)
 	}
 	fmt.Printf("Tokens: %v\n", res.Tokens)
-	fmt.Printf("Depths: %v\n", res.Depths)
 	fmt.Printf("Paths: %v\n", res.Paths)
+
+	// Example of converting paths to a padded static tensor
+	paddedPaths, maxDepth := res.GetPaddedPaths(0, -1)
+	fmt.Printf("Max Depth: %d\n", maxDepth)
+	fmt.Printf("Padded Paths (first 5 flattened): %v\n", paddedPaths[:5*maxDepth])
 
 	decoded := tokenizer.Decode(res.Tokens)
 	fmt.Printf("Decoded: %s\n", decoded)

@@ -71,7 +71,6 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 	}
 
 	tokens := res.Tokens
-	depths := res.Depths
 
 	// We expect tokens for <Root>, <Child>, "Value", </Child>, </Root>
 	// The token for "Value" depends on tiktoken encoding, so we won't hardcode it.
@@ -100,23 +99,17 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 	// "Value": 2 ...
 	// </Child>: 1
 	// </Root>: 0
-	if depths[0] != 0 {
-		t.Errorf("Expected first depth to be 0, got %d", depths[0])
+	// Check paths roughly
+	paths := res.Paths
+	if len(paths[0]) != 2 {
+		t.Errorf("Expected path length 2 for root, got %d", len(paths[0]))
 	}
-	if depths[1] != 1 {
-		t.Errorf("Expected second depth to be 1, got %d", depths[1])
+	if len(paths[1]) != 3 {
+		t.Errorf("Expected path length 3 for child, got %d", len(paths[1]))
 	}
-	// Check content depths
-	for i := 2; i < len(depths)-2; i++ {
-		if depths[i] != 2 {
-			t.Errorf("Expected content depth to be 2, got %d at index %d", depths[i], i)
-		}
-	}
-	if depths[len(depths)-2] != 1 {
-		t.Errorf("Expected second to last depth to be 1, got %d", depths[len(depths)-2])
-	}
-	if depths[len(depths)-1] != 0 {
-		t.Errorf("Expected last depth to be 0, got %d", depths[len(depths)-1])
+	// Check last one
+	if len(paths[len(paths)-1]) != 2 {
+		t.Errorf("Expected path length 2 for root end, got %d", len(paths[len(paths)-1]))
 	}
 }
 
@@ -194,7 +187,7 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	}
 
 	tokens := res.Tokens
-	depths := res.Depths
+	paths := res.Paths
 
 	// Helper to find index of a structural token
 	findIndex := func(target int) int {
@@ -206,22 +199,22 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 		return -1
 	}
 
-	// Verify structural depths
+	// Verify structural path lengths (Length = Depth + 1)
 	checks := []struct {
-		tokenID       int
-		expectedDepth int
-		name          string
+		tokenID     int
+		expectedLen int
+		name        string
 	}{
-		{200010, 0, "<Root>"},
-		{200012, 1, "<Level1>"},
-		{200014, 2, "<Level2>"},
-		{200016, 3, "<Level3>"},
-		{200017, 3, "</Level3>"},
-		{200015, 2, "</Level2>"},
-		{200013, 1, "</Level1>"},
-		{200018, 1, "<Level1Sibling>"},
-		{200019, 1, "</Level1Sibling>"},
-		{200011, 0, "</Root>"},
+		{200010, 2, "<Root>"},
+		{200012, 3, "<Level1>"},
+		{200014, 4, "<Level2>"},
+		{200016, 5, "<Level3>"},
+		{200017, 5, "</Level3>"},
+		{200015, 4, "</Level2>"},
+		{200013, 3, "</Level1>"},
+		{200018, 3, "<Level1Sibling>"},
+		{200019, 3, "</Level1Sibling>"},
+		{200011, 2, "</Root>"},
 	}
 
 	for _, check := range checks {
@@ -230,13 +223,13 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Errorf("Token %s (%d) not found", check.name, check.tokenID)
 			continue
 		}
-		if depths[idx] != check.expectedDepth {
-			t.Errorf("Depth for %s mismatch: expected %d, got %d", check.name, check.expectedDepth, depths[idx])
+		if len(paths[idx]) != check.expectedLen {
+			t.Errorf("Path length for %s mismatch: expected %d, got %d", check.name, check.expectedLen, len(paths[idx]))
 		}
 	}
 
 	// Verify content depths
-	// "Deep" should be at depth 4 (inside <Level3> which is at depth 3)
+	// "Deep" should be at depth 4 (inside <Level3> which is at depth 3) -> Path length 5
 	// We find the range between <Level3> and </Level3>
 	startIdx := findIndex(200016) // <Level3>
 	endIdx := findIndex(200017)   // </Level3>
@@ -246,13 +239,13 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Error("Expected content tokens between <Level3> and </Level3>")
 		}
 		for i := startIdx + 1; i < endIdx; i++ {
-			if depths[i] != 4 {
-				t.Errorf("Expected content depth for 'Deep' to be 4, got %d at index %d", depths[i], i)
+			if len(paths[i]) != 6 {
+				t.Errorf("Expected content path length for 'Deep' to be 6, got %d at index %d", len(paths[i]), i)
 			}
 		}
 	}
 
-	// "Shallow" should be at depth 2 (inside <Level1Sibling> which is at depth 1)
+	// "Shallow" should be at depth 2 (inside <Level1Sibling> which is at depth 1) -> Path length 3
 	startIdx = findIndex(200018) // <Level1Sibling>
 	endIdx = findIndex(200019)   // </Level1Sibling>
 
@@ -261,8 +254,8 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Error("Expected content tokens between <Level1Sibling> and </Level1Sibling>")
 		}
 		for i := startIdx + 1; i < endIdx; i++ {
-			if depths[i] != 2 {
-				t.Errorf("Expected content depth for 'Shallow' to be 2, got %d at index %d", depths[i], i)
+			if len(paths[i]) != 4 {
+				t.Errorf("Expected content path length for 'Shallow' to be 4, got %d at index %d", len(paths[i]), i)
 			}
 		}
 	}
