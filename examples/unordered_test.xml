@@ -4,7 +4,7 @@
         <School>B</School>
         <School>C</School>
     </Schools>
-    <Mayors>
+    <Mayors ordered="true">
         <Mayor>1</Mayor>
         <Mayor>2</Mayor>
         <Mayor>3</Mayor>
