@@ -21,6 +21,17 @@ func createTempVocab(t *testing.T, vocab map[string]int) string {
 	return tmpFile.Name()
 }
 
+// Helper to count non-padded values
+func countValid(p []int) int {
+	c := 0
+	for _, v := range p {
+		if v != -1 {
+			c++
+		}
+	}
+	return c
+}
+
 func TestNewTokenizer_Success(t *testing.T) {
 	vocab := map[string]int{
 		"<Test>":  1,
@@ -100,16 +111,19 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 	// </Child>: 1
 	// </Root>: 0
 	// Check paths roughly
-	paths := res.Paths
-	if len(paths[0]) != 2 {
-		t.Errorf("Expected path length 2 for root, got %d", len(paths[0]))
+	paths := res.PaddedPaths
+	// Due to path fix, Root path is now [0], not [0, 0]
+	// Root depth 0 -> Path len 1
+	if countValid(paths[0]) != 1 {
+		t.Errorf("Expected path length 1 for root, got %d", countValid(paths[0]))
 	}
-	if len(paths[1]) != 3 {
-		t.Errorf("Expected path length 3 for child, got %d", len(paths[1]))
+	// Child depth 1 -> Path len 2
+	if countValid(paths[1]) != 2 {
+		t.Errorf("Expected path length 2 for child, got %d", countValid(paths[1]))
 	}
 	// Check last one
-	if len(paths[len(paths)-1]) != 2 {
-		t.Errorf("Expected path length 2 for root end, got %d", len(paths[len(paths)-1]))
+	if countValid(paths[len(paths)-1]) != 1 {
+		t.Errorf("Expected path length 1 for root end, got %d", countValid(paths[len(paths)-1]))
 	}
 }
 
@@ -187,7 +201,7 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	}
 
 	tokens := res.Tokens
-	paths := res.Paths
+	paths := res.PaddedPaths
 
 	// Helper to find index of a structural token
 	findIndex := func(target int) int {
@@ -202,19 +216,19 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 	// Verify structural path lengths (Length = Depth + 1)
 	checks := []struct {
 		tokenID     int
-		expectedLen int
+		expectedLen int // Now expectedLen = depth + 1 (Root starts at [0], len 1)
 		name        string
 	}{
-		{200010, 2, "<Root>"},
-		{200012, 3, "<Level1>"},
-		{200014, 4, "<Level2>"},
-		{200016, 5, "<Level3>"},
-		{200017, 5, "</Level3>"},
-		{200015, 4, "</Level2>"},
-		{200013, 3, "</Level1>"},
-		{200018, 3, "<Level1Sibling>"},
-		{200019, 3, "</Level1Sibling>"},
-		{200011, 2, "</Root>"},
+		{200010, 1, "<Root>"},
+		{200012, 2, "<Level1>"},
+		{200014, 3, "<Level2>"},
+		{200016, 4, "<Level3>"},
+		{200017, 4, "</Level3>"},
+		{200015, 3, "</Level2>"},
+		{200013, 2, "</Level1>"},
+		{200018, 2, "<Level1Sibling>"},
+		{200019, 2, "</Level1Sibling>"},
+		{200011, 1, "</Root>"},
 	}
 
 	for _, check := range checks {
@@ -223,8 +237,8 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Errorf("Token %s (%d) not found", check.name, check.tokenID)
 			continue
 		}
-		if len(paths[idx]) != check.expectedLen {
-			t.Errorf("Path length for %s mismatch: expected %d, got %d", check.name, check.expectedLen, len(paths[idx]))
+		if countValid(paths[idx]) != check.expectedLen {
+			t.Errorf("Path length for %s mismatch: expected %d, got %d", check.name, check.expectedLen, countValid(paths[idx]))
 		}
 	}
 
@@ -239,13 +253,13 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Error("Expected content tokens between <Level3> and </Level3>")
 		}
 		for i := startIdx + 1; i < endIdx; i++ {
-			if len(paths[i]) != 6 {
-				t.Errorf("Expected content path length for 'Deep' to be 6, got %d at index %d", len(paths[i]), i)
+			if countValid(paths[i]) != 5 {
+				t.Errorf("Expected content path length for 'Deep' to be 5, got %d at index %d", countValid(paths[i]), i)
 			}
 		}
 	}
 
-	// "Shallow" should be at depth 2 (inside <Level1Sibling> which is at depth 1) -> Path length 3
+	// "Shallow" should be at depth 2 (inside <Level1Sibling> which is at depth 1) -> Path length 3 (root + level1sibling + childIdx)
 	startIdx = findIndex(200018) // <Level1Sibling>
 	endIdx = findIndex(200019)   // </Level1Sibling>
 
@@ -254,8 +268,8 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 			t.Error("Expected content tokens between <Level1Sibling> and </Level1Sibling>")
 		}
 		for i := startIdx + 1; i < endIdx; i++ {
-			if len(paths[i]) != 4 {
-				t.Errorf("Expected content path length for 'Shallow' to be 4, got %d at index %d", len(paths[i]), i)
+			if countValid(paths[i]) != 3 {
+				t.Errorf("Expected content path length for 'Shallow' to be 3, got %d at index %d", countValid(paths[i]), i)
 			}
 		}
 	}

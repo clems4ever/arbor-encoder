@@ -12,8 +12,8 @@ import (
 )
 
 type TokenizationResult struct {
-	Tokens []int
-	Paths  [][]int
+	Tokens      []int
+	PaddedPaths [][]int
 }
 
 type Tokenizer struct {
@@ -68,7 +68,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 	// Initialize stack with root level.
 	// We assume the root level is ordered (sequences of root elements).
 	// Root has no parent, so pathIndex is arbitrarily 0.
-	stack := []*stackItem{{childrenCounter: 0, ordered: true, pathIndex: 0}}
+	stack := []*stackItem{}
 
 	// depth tracks the nesting level (0-based)
 	depth := 0
@@ -108,32 +108,27 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 					}
 				}
 
-				// The current stack top is the parent.
-				parent := stack[len(stack)-1]
+				var myIndex int
+				var parentPath []int
 
-				// The index for this new node is the current value of the parent's counter.
-				myIndex := parent.childrenCounter
+				if len(stack) > 0 {
+					// The current stack top is the parent.
+					parent := stack[len(stack)-1]
 
-				// Record the path for the Start Token.
-				// The Start Token belongs to the node being created.
-				// Its path should include the parent's path + [myIndex].
-				// Wait, if we follow the recursive structure:
-				// Root (path [0]) -> Child (path [0, 0])
-				// But we are ABOUT to push the Child to stack.
-				// The Start Token essentially *starts* the Child context.
-				// So it should carry the path of the Child.
+					// The index for this new node is the current value of the parent's counter.
+					myIndex = parent.childrenCounter
+					parentPath = getCurrentPath()
 
-				// Construct path for this new node:
-				// Parent path is getCurrentPath().
-				// New path is parentPath + [myIndex].
-				// But wait, our `getCurrentPath` iterates the stack.
-				// We haven't pushed the new node yet.
+					// Increment parent counter for the NEXT sibling, only if parent is ordered.
+					if parent.ordered {
+						parent.childrenCounter++
+					}
+				} else {
+					// Root case.
+					myIndex = 0
+					parentPath = []int{}
+				}
 
-				// Let's create the stack item first?
-				// If we push first, getCurrentPath() will return [..., myIndex].
-				// This seems cleaner.
-
-				parentPath := getCurrentPath()
 				nodePath := make([]int, len(parentPath)+1)
 				copy(nodePath, parentPath)
 				nodePath[len(parentPath)] = myIndex
@@ -144,11 +139,6 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 				// Push new stack item for children of this element
 				stack = append(stack, &stackItem{childrenCounter: 0, ordered: isOrdered, pathIndex: myIndex})
 				depth++
-
-				// Increment parent counter for the NEXT sibling, only if parent is ordered.
-				if parent.ordered {
-					parent.childrenCounter++
-				}
 
 			} else {
 				return nil, fmt.Errorf("tag %s not found in vocab", tagName)
@@ -209,41 +199,40 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 			}
 		}
 	}
+	paddedPaths := getPaddedPaths(paths, 0, -1)
 	return &TokenizationResult{
-		Tokens: tokens,
-		Paths:  paths,
+		Tokens:      tokens,
+		PaddedPaths: paddedPaths,
 	}, nil
 }
 
-// GetPaddedPaths returns the paths as a flattened 1D array (row-major) with a stride equal to maxDepth.
-// It pads shorter paths with padValue (usually -1 or 0, but be careful if 0 is a valid index).
-// Since 0 is valid, we might want -1.
-func (tr *TokenizationResult) GetPaddedPaths(maxDepth int, padValue int) ([]int, int) {
+// getPaddedPaths returns the paths as a 2D matrix.
+// It pads shorter paths with padValue (usually -1).
+func getPaddedPaths(paths [][]int, maxDepth int, padValue int) [][]int {
 	// If maxDepth is 0, find the actual max depth in the data
 	if maxDepth == 0 {
-		for _, p := range tr.Paths {
+		for _, p := range paths {
 			if len(p) > maxDepth {
 				maxDepth = len(p)
 			}
 		}
 	}
 
-	tensor := make([]int, len(tr.Tokens)*maxDepth)
+	tensor := make([][]int, len(paths))
 
-	// Initialize with padValue
-	for i := range tensor {
-		tensor[i] = padValue
-	}
-
-	for i, p := range tr.Paths {
-		for j, val := range p {
-			if j < maxDepth {
-				tensor[i*maxDepth+j] = val
+	for i, p := range paths {
+		row := make([]int, maxDepth)
+		for j := 0; j < maxDepth; j++ {
+			if j < len(p) {
+				row[j] = p[j]
+			} else {
+				row[j] = padValue
 			}
 		}
+		tensor[i] = row
 	}
 
-	return tensor, maxDepth
+	return tensor
 }
 
 func (t *Tokenizer) Decode(tokens []int) string {

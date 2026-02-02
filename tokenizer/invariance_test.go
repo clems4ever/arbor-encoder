@@ -49,7 +49,7 @@ func getPairs(t *testing.T, tokenizer *Tokenizer, xmlStr string) []TokenPathPair
 	var pairs []TokenPathPair
 	for i, token := range res.Tokens {
 		// We use Sprint for path to make it comparable
-		pathStr := fmt.Sprint(res.Paths[i])
+		pathStr := fmt.Sprint(res.PaddedPaths[i])
 		pairs = append(pairs, TokenPathPair{Token: token, Path: pathStr})
 	}
 	return pairs
@@ -297,8 +297,8 @@ func TestEmbeddingComputationInvariance(t *testing.T) {
 				t.Fatal(err)
 			}
 
-			emb1 := computeFinalEmbeddings(res1.Tokens, res1.Paths)
-			emb2 := computeFinalEmbeddings(res2.Tokens, res2.Paths)
+			emb1 := computeFinalEmbeddings(res1.Tokens, res1.PaddedPaths)
+			emb2 := computeFinalEmbeddings(res2.Tokens, res2.PaddedPaths)
 
 			// We compare the *sets* of embedding vectors produced.
 			sig1 := embeddingsToCanonicalString(emb1, true)
