@@ -7,10 +7,13 @@ import (
 	"io"
 	"os"
 	"strings"
+
+	"github.com/pkoukk/tiktoken-go"
 )
 
 type Tokenizer struct {
-	vocab map[string]int
+	vocab            map[string]int
+	contentTokenizer *tiktoken.Tiktoken
 }
 
 func NewTokenizer(vocabPath string) (*Tokenizer, error) {
@@ -25,8 +28,14 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 		return nil, fmt.Errorf("failed to decode vocab file: %w", err)
 	}
 
+	tke, err := tiktoken.GetEncoding("cl100k_base")
+	if err != nil {
+		return nil, fmt.Errorf("failed to get tiktoken encoding: %w", err)
+	}
+
 	return &Tokenizer{
-		vocab: vocab,
+		vocab:            vocab,
+		contentTokenizer: tke,
 	}, nil
 }
 
@@ -67,8 +76,11 @@ func (t *Tokenizer) Tokenize(r io.Reader) ([]int, []int, error) {
 			content := string(se)
 			trimmed := strings.TrimSpace(content)
 			if trimmed != "" {
-				// Placeholder for content tokenization
-				fmt.Printf("Content: %s\n", trimmed)
+				contentTokens := t.contentTokenizer.Encode(trimmed, nil, nil)
+				tokens = append(tokens, contentTokens...)
+				for range contentTokens {
+					depths = append(depths, depth)
+				}
 			}
 		}
 	}
