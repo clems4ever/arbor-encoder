@@ -90,10 +90,10 @@ func TestOrderInvariance(t *testing.T) {
 		t.Errorf("Unordered list should have invariant path set.\nSig1: %s\nSig2: %s", sig1, sig2)
 	}
 
-	// Case 2: Ordered list (default)
+	// Case 2: Ordered list (explicitly ordered="true")
 	// Should produce DIFFERENT set of (Token, Path) pairs when swapped.
-	xmlOrdered1 := `<Root><List><Item>A</Item><Item>B</Item></List></Root>`
-	xmlOrdered2 := `<Root><List><Item>B</Item><Item>A</Item></List></Root>`
+	xmlOrdered1 := `<Root><List ordered="true"><Item>A</Item><Item>B</Item></List></Root>`
+	xmlOrdered2 := `<Root><List ordered="true"><Item>B</Item><Item>A</Item></List></Root>`
 
 	pairsO1 := getPairs(t, tokenizer, xmlOrdered1)
 	pairsO2 := getPairs(t, tokenizer, xmlOrdered2)
@@ -165,9 +165,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Diff
 	// Swapping inner -> Diff
 	t.Run("TwoLevelsOrdered", func(t *testing.T) {
-		base := `<Root><List><Container><Item>A</Item><Item>B</Item></Container><Container><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List><Container><Item>C</Item><Item>D</Item></Container><Container><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List><Container><Item>B</Item><Item>A</Item></Container><Container><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List ordered="true"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List ordered="true"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List ordered="true"><Container ordered="true"><Item>B</Item><Item>A</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase == getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -183,9 +183,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Diff
 	// Swapping inner -> Same
 	t.Run("OrderedOfUnordered", func(t *testing.T) {
-		base := `<Root><List><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List><Container ordered="false"><Item>B</Item><Item>A</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List ordered="true"><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List ordered="true"><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List ordered="true"><Container ordered="false"><Item>B</Item><Item>A</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase == getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -201,9 +201,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Same
 	// Swapping inner -> Diff
 	t.Run("UnorderedOfOrdered", func(t *testing.T) {
-		base := `<Root><List ordered="false"><Container><Item>A</Item><Item>B</Item></Container><Container><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List ordered="false"><Container><Item>C</Item><Item>D</Item></Container><Container><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List ordered="false"><Container><Item>B</Item><Item>A</Item></Container><Container><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List ordered="false"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List ordered="false"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List ordered="false"><Container ordered="true"><Item>B</Item><Item>A</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase != getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -324,22 +324,22 @@ func TestEmbeddingComputationInvariance(t *testing.T) {
 
 	// 2. Ordered List - Swapping items should yield DIFFERENT set of embeddings
 	runComparison(t, "Ordered",
-		`<Root><List><Item>A</Item><Item>B</Item></List></Root>`,
-		`<Root><List><Item>B</Item><Item>A</Item></List></Root>`,
+		`<Root><List ordered="true"><Item>A</Item><Item>B</Item></List></Root>`,
+		`<Root><List ordered="true"><Item>B</Item><Item>A</Item></List></Root>`,
 		false,
 	)
 
 	// 3. Mixed: Ordered of Unordered - Swapping outer (ordered) changes set
 	runComparison(t, "OrderedOfUnordered_SwapOuter",
-		`<Root><List><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`,
-		`<Root><List><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`,
+		`<Root><List ordered="true"><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`,
+		`<Root><List ordered="true"><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`,
 		false,
 	)
 
 	// 4. Mixed: Unordered of Ordered - Swapping outer (unordered) keeps set invariant
 	runComparison(t, "UnorderedOfOrdered_SwapOuter",
-		`<Root><List ordered="false"><Container><Item>A</Item><Item>B</Item></Container><Container><Item>C</Item><Item>D</Item></Container></List></Root>`,
-		`<Root><List ordered="false"><Container><Item>C</Item><Item>D</Item></Container><Container><Item>A</Item><Item>B</Item></Container></List></Root>`,
+		`<Root><List ordered="false"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`,
+		`<Root><List ordered="false"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`,
 		true,
 	)
 }

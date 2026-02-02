@@ -98,11 +98,11 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 			tagName := "<" + se.Name.Local + ">"
 			if id, ok := t.vocab[tagName]; ok {
 				// Determine if this new element is ordered based on attribute
-				isOrdered := true // Default to true
+				isOrdered := false // Default to false (unordered as requested)
 				for _, attr := range se.Attr {
 					if attr.Name.Local == "ordered" {
-						if attr.Value == "false" {
-							isOrdered = false
+						if attr.Value == "true" {
+							isOrdered = true
 						}
 						break
 					}
