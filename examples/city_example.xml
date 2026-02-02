@@ -12,4 +12,16 @@
             <Address>45 Rue d'Ulm</Address>
         </School>
     </Schools>
+    <Mayors ordered="true">
+        <Mayor>
+            <Name>Bertrand Delanoë</Name>
+            <StartYear>2001</StartYear>
+            <EndYear>2014</EndYear>
+        </Mayor>
+        <Mayor>
+            <Name>Anne Hidalgo</Name>
+            <StartYear>2014</StartYear>
+            <EndYear>Present</EndYear>
+        </Mayor>
+    </Mayors>
 </City>

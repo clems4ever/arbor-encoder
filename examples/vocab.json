@@ -12,5 +12,13 @@
     "<School>": 200010,
     "</School>": 200011,
     "<Address>": 200012,
-    "</Address>": 200013
+    "</Address>": 200013,
+    "<Mayors>": 200014,
+    "</Mayors>": 200015,
+    "<Mayor>": 200016,
+    "</Mayor>": 200017,
+    "<StartYear>": 200018,
+    "</StartYear>": 200019,
+    "<EndYear>": 200020,
+    "</EndYear>": 200021
 }
