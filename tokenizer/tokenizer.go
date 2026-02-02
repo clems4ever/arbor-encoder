@@ -18,6 +18,7 @@ type TokenizationResult struct {
 
 type Tokenizer struct {
 	vocab            map[string]int
+	vocabInv         map[int]string
 	contentTokenizer *tiktoken.Tiktoken
 }
 
@@ -33,6 +34,11 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 		return nil, fmt.Errorf("failed to decode vocab file: %w", err)
 	}
 
+	vocabInv := make(map[int]string)
+	for k, v := range vocab {
+		vocabInv[v] = k
+	}
+
 	tke, err := tiktoken.GetEncoding("cl100k_base")
 	if err != nil {
 		return nil, fmt.Errorf("failed to get tiktoken encoding: %w", err)
@@ -40,6 +46,7 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 
 	return &Tokenizer{
 		vocab:            vocab,
+		vocabInv:         vocabInv,
 		contentTokenizer: tke,
 	}, nil
 }
@@ -93,4 +100,17 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 		Tokens: tokens,
 		Depths: depths,
 	}, nil
+}
+
+func (t *Tokenizer) Decode(tokens []int) string {
+	var parts []string
+	for _, token := range tokens {
+		if tag, ok := t.vocabInv[token]; ok {
+			parts = append(parts, tag)
+		} else {
+			val := t.contentTokenizer.Decode([]int{token})
+			parts = append(parts, val)
+		}
+	}
+	return strings.Join(parts, " ")
 }

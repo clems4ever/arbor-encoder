@@ -25,4 +25,7 @@ func main() {
 	}
 	fmt.Printf("Tokens: %v\n", res.Tokens)
 	fmt.Printf("Depths: %v\n", res.Depths)
+
+	decoded := tokenizer.Decode(res.Tokens)
+	fmt.Printf("Decoded: %s\n", decoded)
 }
