@@ -121,9 +121,10 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 					continue
 				}
 
-				if state == 1 {
+				switch state {
+				case 1:
 					key.WriteString(subS)
-				} else if state == 2 {
+				case 2:
 					val.WriteString(subS)
 				}
 			}
@@ -158,7 +159,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 					// We pushed back by NOT incrementing i
 					break
 				}
-				// Also stop if another attribute?
+				// Stop if another attribute
 				if strings.HasPrefix(subS, "@") {
 					break
 				}

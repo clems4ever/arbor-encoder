@@ -42,9 +42,7 @@ func TestTokenizer_Attributes(t *testing.T) {
 	if tokens[0] != base+100 {
 		t.Errorf("Expected City token at 0")
 	}
-	// Path [0] (padded with -1 if necessary by other tests having deeper paths? No, this test is isolated but getPaddedPaths might pad based on max depth found IN THIS RUN)
-	// The deepest path is [0, 0, 0] (value of attr). So maxDepth is 3.
-	// City path should be [0, -1, -1]
+	// City path should be [0, -1, -1] assuming max depth of 3.
 	if len(paths[0]) != 3 || paths[0][0] != 0 {
 		t.Errorf("City path mismatch: %v", paths[0])
 	}

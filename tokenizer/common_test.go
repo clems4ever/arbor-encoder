@@ -6,7 +6,6 @@ import (
 	"testing"
 )
 
-
 func createComprehensiveVocab(t *testing.T) string {
 	base := 200000
 	vocab := map[string]int{
@@ -37,24 +36,19 @@ func TestStructureLogic(t *testing.T) {
 	tokenizer, _ := NewTokenizer(vocabPath)
 
 	// Test 1: Sibling Indexing
-	// Default is unordered (isOrdered := false in loop)
-	// So distinct children should share index?
-	
+
 	inputUnordered := `<Root><Child>A</Child><Child>B</Child></Root>`
-	// Root default unordered?
-	
+
 	resU, _ := tokenizer.Tokenize(strings.NewReader(inputUnordered))
-	// We need to identify tokens for Child A and Child B start.
-	// Assuming <Child> is token base + 3 = 200003.
 
 	var childIndices []int
 	for i, tok := range resU.Tokens {
 		// 200003 is <Child>
 		if tok == 200003 {
 			// Path structure for StartElement involves updating stack.
-			// paths[i] is [0, 1] for Child A?
-			// Root is 0. Children start at 1.
+			// paths[i] is [0, 1] for Child A (Root is 0. Children start at 1).
 			p := resU.PaddedPaths[i]
+
 			// We expect path length >= 2. [RootIndex(0), ChildIndex]
 			if len(p) >= 2 {
 				childIndices = append(childIndices, p[1])

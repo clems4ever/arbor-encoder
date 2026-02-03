@@ -62,7 +62,7 @@ func TestTokenizer_UnregisteredAttributes(t *testing.T) {
 		t.Fatalf("Did not find Start of Unknown Attribute structure (tokens %d, %d)", base+200, base+202)
 	}
 
-	// So AttrPair (base+200) should be at path [0, 0].
+	// AttrPair (base+200) should be at path [0, 0].
 	if len(paths[startUnknownIdx]) < 2 {
 		t.Errorf("Path too short for AttrPair")
 	}
@@ -87,7 +87,6 @@ func TestTokenizer_UnregisteredAttributes(t *testing.T) {
 	// The ValueStart (base+204) is at [0, 0, 1]
 
 	valStartPath := paths[valStartIdx]
-	// Expected: [0, 0, 1] (padded: maybe [0, 0, 1, -1])
 
 	// Only check prefix
 	if len(valStartPath) < 3 || valStartPath[0] != 0 || valStartPath[1] != 0 || valStartPath[2] != 1 {

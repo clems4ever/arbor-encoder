@@ -36,10 +36,6 @@ func elementsMatch(t *testing.T, expected, actual *Element) {
 
 	if len(expected.Children) != len(actual.Children) {
 		t.Errorf("Children count mismatch for %s: expected %d, got %d", expected.Name, len(expected.Children), len(actual.Children))
-
-		// Debug print
-		t.Logf("Expected children: %v", expected.Children)
-		t.Logf("Actual children: %v", actual.Children)
 		return
 	}
 
@@ -175,8 +171,6 @@ func TestDecoder_RoundTrip_Extensive(t *testing.T) {
 		},
 
 		// 4. Mixed Content (Text and Elements)
-		// Note: The tokenizer/decoder strategy might group text differently than default xml parser
-		// But let's see if the logic holds.
 		{
 			name:  "Mixed Content 1",
 			input: `<Root>Start<Child>Middle</Child>End</Root>`,
@@ -222,8 +216,6 @@ func TestDecoder_RoundTrip_Extensive(t *testing.T) {
 			if err != nil {
 				t.Fatalf("Decoding failed: %v", err)
 			}
-			// Debug:
-			// t.Logf("Actual: %s", actualStruct.String())
 
 			// 4. Verification
 			elementsMatch(t, expectedStruct, actualStruct)

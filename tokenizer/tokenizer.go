@@ -294,16 +294,7 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 			// This is necessary to distinguish AttrValue from subsequent CharData during decoding.
 			if hasValEnd {
 				*tokens = append(*tokens, valEndId)
-				// Path for delimiter: same as attribute key level? or value level?
-				// Logic: It terminates the value. It sits at the Key level structurally (sibling to value tokens? or parent?)
-				// Unregistered uses: <__Value> (at key+1) ... content ... </__Value> (at key+1).
-				// So let's put it at key+1 (valPath depth) but index?
-				// Let's just use attrKeyPath (depth N+1).
-				// Actually, reusing the path of the abstract container or the key seems safer.
-				// In Unregistered: </__Value> is at `valNodePath` which is `keyNodePath` sibling? No.
-				// structure: Pair -> ValueNode -> </Value>.
-				// Here: Key -> ValueTokens -> EndToken.
-				// Let's use attrKeyPath.
+				// Path for delimiter: same as label.
 				*paths = append(*paths, attrKeyPath)
 			}
 		}
