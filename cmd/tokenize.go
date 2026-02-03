@@ -10,7 +10,6 @@ import (
 
 var vocabPath string
 
-// tokenizeCmd represents the tokenize command
 var tokenizeCmd = &cobra.Command{
 	Use:   "tokenize [xml_file]",
 	Short: "Tokenize an XML file",

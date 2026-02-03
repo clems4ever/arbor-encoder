@@ -9,7 +9,6 @@ import (
 	"testing"
 )
 
-// Helper to create a vocab file
 func createInvarianceTestVocab(t *testing.T) string {
 	vocab := map[string]int{
 		"<Root>":       1,
@@ -34,7 +33,6 @@ func createInvarianceTestVocab(t *testing.T) string {
 	return f.Name()
 }
 
-// TokenPathPair represents a token and its structural path
 type TokenPathPair struct {
 	Token int
 	Path  string // Use string representation for easy comparison/map keys

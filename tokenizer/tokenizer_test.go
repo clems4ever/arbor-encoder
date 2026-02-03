@@ -21,7 +21,6 @@ func createTempVocab(t *testing.T, vocab map[string]int) string {
 	return tmpFile.Name()
 }
 
-// Helper to count non-padded values
 func countValid(p []int) int {
 	c := 0
 	for _, v := range p {
@@ -96,7 +95,6 @@ func TestTokenizer_Tokenize_Success(t *testing.T) {
 	if tokens[1] != 200012 {
 		t.Errorf("Expected second token to be 200012 (<Child>), got %d", tokens[1])
 	}
-	// content tokens in the middle
 	if tokens[len(tokens)-2] != 200013 {
 		t.Errorf("Expected second to last token to be 200013 (</Child>), got %d", tokens[len(tokens)-2])
 	}

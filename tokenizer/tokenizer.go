@@ -97,8 +97,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 		case xml.StartElement:
 			tagName := "<" + se.Name.Local + ">"
 			if id, ok := t.vocab[tagName]; ok {
-				// Determine if this new element is ordered based on attribute
-				isOrdered := false // Default to false (unordered as requested)
+				isOrdered := false
 				for _, attr := range se.Attr {
 					if attr.Name.Local == "ordered" {
 						if attr.Value == "true" {
@@ -112,10 +111,8 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 				var parentPath []int
 
 				if len(stack) > 0 {
-					// The current stack top is the parent.
 					parent := stack[len(stack)-1]
 
-					// The index for this new node is the current value of the parent's counter.
 					myIndex = parent.childrenCounter
 					parentPath = getCurrentPath()
 
@@ -124,7 +121,6 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 						parent.childrenCounter++
 					}
 				} else {
-					// Root case.
 					myIndex = 0
 					parentPath = []int{}
 				}
@@ -136,7 +132,6 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 				tokens = append(tokens, id)
 				paths = append(paths, nodePath)
 
-				// Push new stack item for children of this element
 				stack = append(stack, &stackItem{childrenCounter: 0, ordered: isOrdered, pathIndex: myIndex})
 				depth++
 
@@ -147,7 +142,6 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 			tagName := "</" + se.Name.Local + ">"
 			if id, ok := t.vocab[tagName]; ok {
 				depth--
-				// Pop the stack to close the current element context.
 				popped := stack[len(stack)-1]
 				stack = stack[:len(stack)-1]
 
@@ -172,8 +166,6 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 			trimmed := strings.TrimSpace(content)
 			if trimmed != "" {
 				contentTokens := t.contentTokenizer.Encode(trimmed, nil, nil)
-
-				// Content is children of the current stack top.
 				parent := stack[len(stack)-1]
 
 				for _, token := range contentTokens {
@@ -184,16 +176,12 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 					// Parent path is getCurrentPath().
 
 					p := getCurrentPath()
-					// Append the content's index (child of parent)
 					childPath := make([]int, len(p)+1)
 					copy(childPath, p)
 					childPath[len(p)] = parent.childrenCounter
 					paths = append(paths, childPath)
 
-					// Content tokens are always ordered sequentially within the element?
-					// Usually yes. Even if the element contains unordered *tags*,
-					// the text content chunks are usually sequential.
-					// We will increment the counter for each token.
+					// Content tokens are always ordered sequentially.
 					parent.childrenCounter++
 				}
 			}
