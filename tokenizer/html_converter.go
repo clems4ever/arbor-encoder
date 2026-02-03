@@ -18,11 +18,24 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 		return "", err
 	}
 	var b bytes.Buffer
-	var traverse func(*html.Node)
-	traverse = func(n *html.Node) {
+	var traverse func(*html.Node, int, bool)
+	traverse = func(n *html.Node, depth int, insideComplex bool) {
 		switch n.Type {
 		case html.ElementNode:
-			b.WriteString("<" + n.Data)
+			hasElementChildren := false
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				if c.Type == html.ElementNode {
+					hasElementChildren = true
+					break
+				}
+			}
+
+			indent := ""
+			if depth >= 0 {
+				indent = "\n" + strings.Repeat("  ", depth)
+			}
+
+			b.WriteString(indent + "<" + n.Data)
 			for _, a := range n.Attr {
 				// Simple escape for values
 				val := strings.ReplaceAll(a.Val, "\"", "&quot;")
@@ -31,6 +44,24 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 				}
 			}
 			b.WriteString(">")
+
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				if hasElementChildren {
+					if c.Type == html.TextNode && strings.TrimSpace(c.Data) == "" {
+						continue
+					}
+					traverse(c, depth+1, true)
+				} else {
+					traverse(c, depth, false)
+				}
+			}
+
+			if hasElementChildren {
+				b.WriteString(indent + "</" + n.Data + ">")
+			} else {
+				b.WriteString("</" + n.Data + ">")
+			}
+			return
 		case html.TextNode:
 			data := strings.TrimSpace(n.Data)
 			if data != "" {
@@ -38,18 +69,21 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 				data = strings.ReplaceAll(data, "&", "&amp;")
 				data = strings.ReplaceAll(data, "<", "&lt;")
 				data = strings.ReplaceAll(data, ">", "&gt;")
-				b.WriteString(data)
+
+				if insideComplex {
+					indent := "\n" + strings.Repeat("  ", depth)
+					b.WriteString(indent + data)
+				} else {
+					b.WriteString(data)
+				}
 			}
+			return
 		}
 
 		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			traverse(c)
-		}
-
-		if n.Type == html.ElementNode {
-			b.WriteString("</" + n.Data + ">")
+			traverse(c, depth, insideComplex)
 		}
 	}
-	traverse(doc)
-	return b.String(), nil
+	traverse(doc, 0, true)
+	return strings.TrimSpace(b.String()), nil
 }

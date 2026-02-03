@@ -22,7 +22,7 @@ func TestConvertHTMLToXML(t *testing.T) {
 				t.Fatalf("Failed to read input file %s: %v", inputFile, err)
 			}
 
-			// If golden file doesn't exist, we might skip or fail. 
+			// If golden file doesn't exist, we might skip or fail.
 			// For now let's read it.
 			expectedBytes, err := os.ReadFile(goldenFile)
 			if err != nil {
@@ -37,7 +37,7 @@ func TestConvertHTMLToXML(t *testing.T) {
 			}
 
 			if actual != expected {
-				t.Errorf("Result does not match golden file for %s.\nExpected len: %d\nActual len: %d\n", 
+				t.Errorf("Result does not match golden file for %s.\nExpected len: %d\nActual len: %d\n",
 					inputFile, len(expected), len(actual))
 			}
 		})
