@@ -9,12 +9,14 @@ import (
 func TestTokenizer_Attributes(t *testing.T) {
 	base := 200000
 	vocab := map[string]int{
-		"<City>":    base + 100,
-		"</City>":   base + 101,
-		"<School>":  base + 102,
-		"</School>": base + 103,
-		"@name":     base + 104,
-		"@zip":      base + 105,
+		"<City>":     base + 100,
+		"</City>":    base + 101,
+		"<School>":   base + 102,
+		"</School>":  base + 103,
+		"@name":      base + 104,
+		"@zip":       base + 105,
+		"</__Value>": base + 106,
+		"<__Empty/>": base + 107,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -94,11 +96,13 @@ func TestTokenizer_Attributes(t *testing.T) {
 func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
 	base := 200000
 	vocab := map[string]int{
-		"<City>":  base + 100,
-		"</City>": base + 101,
-		"<Item>":  base + 102,
-		"</Item>": base + 103,
-		"@attr":   base + 104,
+		"<City>":     base + 100,
+		"</City>":    base + 101,
+		"<Item>":     base + 102,
+		"</Item>":    base + 103,
+		"@attr":      base + 104,
+		"</__Value>": base + 105,
+		"<__Empty/>": base + 106,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)

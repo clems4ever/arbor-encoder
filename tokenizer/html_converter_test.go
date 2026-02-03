@@ -18,6 +18,7 @@ func collectVocabFromXML(t *testing.T, xmlData string) map[string]int {
 		TokenKeyEnd:      Cl100kBaseMaxID + 4,
 		TokenValue:       Cl100kBaseMaxID + 5,
 		TokenValueEnd:    Cl100kBaseMaxID + 6,
+		TokenEmpty:       Cl100kBaseMaxID + 7,
 	}
 
 	nextID := Cl100kBaseMaxID + 100

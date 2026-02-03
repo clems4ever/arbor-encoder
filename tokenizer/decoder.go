@@ -59,7 +59,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		// Start Element (Must be in Vocab)
 		if isVocab && strings.HasPrefix(s, "<") && !strings.HasPrefix(s, "</") &&
 			s != TokenAttrPair && s != TokenKey && s != TokenValue &&
-			s != TokenKeyEnd && s != TokenValueEnd && s != TokenAttrPairEnd {
+			s != TokenKeyEnd && s != TokenValueEnd && s != TokenAttrPairEnd && s != TokenEmpty {
 
 			// Clean tag name
 			tagName := strings.TrimSuffix(strings.TrimPrefix(s, "<"), ">")
@@ -140,6 +140,18 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 			attrName := s[1:]
 			var valSb strings.Builder
 
+			// Check first token for explicit Empty value
+			if i < len(tokens) {
+				peekId := tokens[i]
+				peekS, peekIsVocab := getTokenInfo(peekId)
+				if peekIsVocab && peekS == TokenEmpty {
+					// Explicit empty value
+					i++ // consume <__Empty>
+					current.Attributes = append(current.Attributes, xml.Attr{Name: xml.Name{Local: attrName}, Value: ""})
+					continue
+				}
+			}
+
 			// Greedily consume value until TokenValueEnd or a tag
 			for i < len(tokens) {
 				// Lookahead
@@ -178,7 +190,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		}
 
 		// Skip special tokens if they appear out of place
-		if isVocab && (s == TokenValueEnd || s == TokenAttrPairEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue) {
+		if isVocab && (s == TokenValueEnd || s == TokenAttrPairEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue || s == TokenEmpty) {
 			continue
 		}
 

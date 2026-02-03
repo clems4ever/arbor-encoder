@@ -26,6 +26,7 @@ func createComprehensiveVocab(t *testing.T) string {
 		"</__Key>":      base + 203,
 		"<__Value>":     base + 204,
 		"</__Value>":    base + 205,
+		"<__Empty/>":    base + 206,
 	}
 	return createTempVocab(t, vocab)
 }

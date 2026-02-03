@@ -19,6 +19,7 @@ const (
 	TokenKeyEnd           = "</__Key>"
 	TokenValue            = "<__Value>"
 	TokenValueEnd         = "</__Value>"
+	TokenEmpty            = "<__Empty/>"
 	// Cl100kBaseMaxID is the rough upper bound of cl100k_base vocab.
 	// The exact size is around 100277. We use 100500 to be safe.
 	Cl100kBaseMaxID = 100500
@@ -273,6 +274,7 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 	// Let's lazy fetch or check existence if we need them.
 
 	valEndId, hasValEnd := t.vocab[TokenValueEnd]
+	emptyId, hasEmpty := t.vocab[TokenEmpty]
 
 	if attrId, ok := t.vocab[attrName]; ok {
 		// Attribute Key Path: current node path + [0]
@@ -284,15 +286,24 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 		*paths = append(*paths, attrKeyPath)
 
 		// Attribute Value
-		if attr.Value != "" {
-			valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
-			for i, vt := range valTokens {
-				*tokens = append(*tokens, vt)
-				// Value Path: attrKeyPath + [i]
-				valPath := make([]int, len(attrKeyPath)+1)
-				copy(valPath, attrKeyPath)
-				valPath[len(attrKeyPath)] = i
-				*paths = append(*paths, valPath)
+		if attr.Value == "" && hasEmpty {
+			*tokens = append(*tokens, emptyId)
+			// Path for empty token: same as label + [0]
+			emptyPath := make([]int, len(attrKeyPath)+1)
+			copy(emptyPath, attrKeyPath)
+			emptyPath[len(attrKeyPath)] = 0
+			*paths = append(*paths, emptyPath)
+		} else {
+			if attr.Value != "" {
+				valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
+				for i, vt := range valTokens {
+					*tokens = append(*tokens, vt)
+					// Value Path: attrKeyPath + [i]
+					valPath := make([]int, len(attrKeyPath)+1)
+					copy(valPath, attrKeyPath)
+					valPath[len(attrKeyPath)] = i
+					*paths = append(*paths, valPath)
+				}
 			}
 
 			// DELIMITER for Registered Attributes
@@ -302,6 +313,8 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 				*tokens = append(*tokens, valEndId)
 				// Path for delimiter: same as label.
 				*paths = append(*paths, attrKeyPath)
+			} else {
+				return fmt.Errorf("TokenValueEnd (%s) missing from vocab. Required for registered attribute delimiter", TokenValueEnd)
 			}
 		}
 	} else {
