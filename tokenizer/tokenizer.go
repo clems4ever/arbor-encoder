@@ -11,6 +11,8 @@ import (
 	"github.com/pkoukk/tiktoken-go"
 )
 
+const ArborOrderedAttribute = "arbor-ordered"
+
 type TokenizationResult struct {
 	Tokens      []int
 	PaddedPaths [][]int
@@ -99,7 +101,7 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 			if id, ok := t.vocab[tagName]; ok {
 				isOrdered := false
 				for _, attr := range se.Attr {
-					if attr.Name.Local == "arbor-ordered" {
+					if attr.Name.Local == ArborOrderedAttribute {
 						if attr.Value == "true" {
 							isOrdered = true
 						}
