@@ -19,6 +19,9 @@ const (
 	TokenKeyEnd           = "</__Key>"
 	TokenValue            = "<__Value>"
 	TokenValueEnd         = "</__Value>"
+	// Cl100kBaseMaxID is the rough upper bound of cl100k_base vocab.
+	// The exact size is around 100277. We use 100500 to be safe.
+	Cl100kBaseMaxID = 100500
 )
 
 type TokenizationResult struct {
@@ -46,6 +49,9 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 
 	vocabInv := make(map[int]string)
 	for k, v := range vocab {
+		if v < Cl100kBaseMaxID {
+			return nil, fmt.Errorf("token ID %d for tag %s overlaps with existing Tiktoken IDs (max %d). Please use IDs greater than %d to avoid conflicts", v, k, Cl100kBaseMaxID, Cl100kBaseMaxID)
+		}
 		vocabInv[v] = k
 	}
 

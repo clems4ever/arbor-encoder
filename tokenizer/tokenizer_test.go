@@ -274,9 +274,10 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 }
 
 func TestTokenizer_Decode(t *testing.T) {
+	base := 200000
 	vocab := map[string]int{
-		"<Root>":  100,
-		"</Root>": 101,
+		"<Root>":  base + 100,
+		"</Root>": base + 101,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -288,7 +289,7 @@ func TestTokenizer_Decode(t *testing.T) {
 
 	// Mocking token sequence: <Root> + "hello" + </Root>
 	// "hello" in cl100k_base is [15339]
-	tokens := []int{100, 15339, 101}
+	tokens := []int{base + 100, 15339, base + 101}
 
 	// Decode adds spaces between tokens
 	expected := "<Root> hello </Root>"
@@ -300,10 +301,11 @@ func TestTokenizer_Decode(t *testing.T) {
 }
 
 func TestTokenizer_Tokenize_MissingEndTagInVocab(t *testing.T) {
+	base := 200000
 	vocab := map[string]int{
-		"<Root>":  1,
-		"</Root>": 2,
-		"<A>":     3,
+		"<Root>":  base + 1,
+		"</Root>": base + 2,
+		"<A>":     base + 3,
 		// "</A>" is missing
 	}
 	vocabPath := createTempVocab(t, vocab)
@@ -339,5 +341,24 @@ func TestNewTokenizer_InvalidJSON(t *testing.T) {
 	_, err = NewTokenizer(tmpFile.Name())
 	if err == nil {
 		t.Error("Expected error for invalid JSON, got nil")
+	}
+}
+
+func TestNewTokenizer_IDOverlap(t *testing.T) {
+	// 50 is definitely overlapping with cl100k_base
+	vocab := map[string]int{
+		"<Test>": 50,
+	}
+	vocabPath := createTempVocab(t, vocab)
+	defer os.Remove(vocabPath)
+
+	_, err := NewTokenizer(vocabPath)
+	if err == nil {
+		t.Fatal("Expected error due to ID overlap, got nil")
+	}
+
+	expectedErrorPart := "overlaps with existing Tiktoken IDs"
+	if !strings.Contains(err.Error(), expectedErrorPart) {
+		t.Errorf("Expected error to contain %q, got %q", expectedErrorPart, err.Error())
 	}
 }

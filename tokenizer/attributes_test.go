@@ -92,12 +92,13 @@ func TestTokenizer_Attributes(t *testing.T) {
 }
 
 func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
+	base := 200000
 	vocab := map[string]int{
-		"<City>":  100,
-		"</City>": 101,
-		"<Item>":  102,
-		"</Item>": 103,
-		"@attr":   104,
+		"<City>":  base + 100,
+		"</City>": base + 101,
+		"<Item>":  base + 102,
+		"</Item>": base + 103,
+		"@attr":   base + 104,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -120,7 +121,7 @@ func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
 	// Find Items
 	var itemIndices []int
 	for i, tok := range tokens {
-		if tok == 102 {
+		if tok == base+102 {
 			itemIndices = append(itemIndices, i)
 		}
 	}
@@ -141,21 +142,24 @@ func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
 	// Find Attr
 	attrIdx := -1
 	for i, tok := range tokens {
-		if tok == 104 {
+		if tok == base+104 {
 			attrIdx = i
 			break
 		}
 	}
 	// Expected: [0, 0]
-	if paths[attrIdx][1] != 0 {
+	if attrIdx == -1 {
+		t.Errorf("Attribute token not found")
+	} else if paths[attrIdx][1] != 0 {
 		t.Errorf("Attribute should be at index 0, got %v", paths[attrIdx])
 	}
 }
 
 func TestTokenizer_Attributes_UnknownAttribute(t *testing.T) {
+	base := 200000
 	vocab := map[string]int{
-		"<City>":  100,
-		"</City>": 101,
+		"<City>":  base + 100,
+		"</City>": base + 101,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)

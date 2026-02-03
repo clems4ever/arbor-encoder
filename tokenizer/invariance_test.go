@@ -10,17 +10,18 @@ import (
 )
 
 func createInvarianceTestVocab(t *testing.T) string {
+	base := 200000
 	vocab := map[string]int{
-		"<Root>":       1,
-		"</Root>":      2,
-		"<List>":       3,
-		"</List>":      4,
-		"<Item>":       5,
-		"</Item>":      6,
-		"<Container>":  7,
-		"</Container>": 8,
-		"<Deep>":       9,
-		"</Deep>":      10,
+		"<Root>":       base + 1,
+		"</Root>":      base + 2,
+		"<List>":       base + 3,
+		"</List>":      base + 4,
+		"<Item>":       base + 5,
+		"</Item>":      base + 6,
+		"<Container>":  base + 7,
+		"</Container>": base + 8,
+		"<Deep>":       base + 9,
+		"</Deep>":      base + 10,
 	}
 	f, err := os.CreateTemp("", "vocab-*.json")
 	if err != nil {
