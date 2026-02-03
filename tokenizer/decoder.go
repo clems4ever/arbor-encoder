@@ -39,11 +39,12 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		return nil, nil
 	}
 
-	tokenStr := func(id int) string {
+	// Helper to get string and vocab status
+	getTokenInfo := func(id int) (string, bool) {
 		if tag, ok := t.vocabInv[id]; ok {
-			return tag
+			return tag, true
 		}
-		return t.contentTokenizer.Decode([]int{id})
+		return t.contentTokenizer.Decode([]int{id}), false
 	}
 
 	var root *Element
@@ -52,11 +53,11 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 	i := 0
 	for i < len(tokens) {
 		id := tokens[i]
-		s := tokenStr(id)
+		s, isVocab := getTokenInfo(id)
 		i++
 
-		// Start Element
-		if strings.HasPrefix(s, "<") && !strings.HasPrefix(s, "</") &&
+		// Start Element (Must be in Vocab)
+		if isVocab && strings.HasPrefix(s, "<") && !strings.HasPrefix(s, "</") &&
 			s != TokenAttrPair && s != TokenKey && s != TokenValue &&
 			s != TokenKeyEnd && s != TokenValueEnd && s != TokenAttrPairEnd {
 
@@ -74,8 +75,8 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 			continue
 		}
 
-		// End Element
-		if strings.HasPrefix(s, "</") && s != TokenAttrPairEnd && s != TokenKeyEnd && s != TokenValueEnd {
+		// End Element (Must be in Vocab)
+		if isVocab && strings.HasPrefix(s, "</") && s != TokenAttrPairEnd && s != TokenKeyEnd && s != TokenValueEnd {
 			if len(stack) == 0 {
 				return nil, fmt.Errorf("unexpected end tag: %s", s)
 			}
@@ -90,35 +91,37 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 
 		current := stack[len(stack)-1]
 
-		// Unregistered Attribute Sequence
-		if s == TokenAttrPair {
+		// Unregistered Attribute Sequence (checking token string constant)
+		if isVocab && s == TokenAttrPair {
 			var key, val strings.Builder
 			state := 0 // 0: init, 1: key, 2: value
 
 			// Consume loop
 			for i < len(tokens) {
 				subId := tokens[i]
-				subS := tokenStr(subId)
+				subS, subIsVocab := getTokenInfo(subId)
 				i++
 
-				if subS == TokenAttrPairEnd {
-					break
-				}
-				if subS == TokenKey {
-					state = 1
-					continue
-				}
-				if subS == TokenKeyEnd {
-					state = 0
-					continue
-				}
-				if subS == TokenValue {
-					state = 2
-					continue
-				}
-				if subS == TokenValueEnd {
-					state = 0
-					continue
+				if subIsVocab {
+					if subS == TokenAttrPairEnd {
+						break
+					}
+					if subS == TokenKey {
+						state = 1
+						continue
+					}
+					if subS == TokenKeyEnd {
+						state = 0
+						continue
+					}
+					if subS == TokenValue {
+						state = 2
+						continue
+					}
+					if subS == TokenValueEnd {
+						state = 0
+						continue
+					}
 				}
 
 				switch state {
@@ -132,8 +135,8 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 			continue
 		}
 
-		// Registered Attribute
-		if strings.HasPrefix(s, "@") {
+		// Registered Attribute (Must be in Vocab and start with @)
+		if isVocab && strings.HasPrefix(s, "@") {
 			attrName := s[1:]
 			var valSb strings.Builder
 
@@ -144,23 +147,25 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 					break
 				}
 				subId := tokens[i]
-				subS := tokenStr(subId)
+				subS, subIsVocab := getTokenInfo(subId)
 
-				// Stop if delimiter
-				if subS == TokenValueEnd {
+				// Stop if delimiter (Must be Vocab)
+				if subIsVocab && subS == TokenValueEnd {
 					i++ // consume delimiter
 					break
 				}
 
 				// Stop if start of new tag or end tag (fallback for missing delimiter)
-				if (strings.HasPrefix(subS, "<") || strings.HasPrefix(subS, "</")) &&
+				// Must be Vocab to be a structural stop
+				if subIsVocab &&
+					(strings.HasPrefix(subS, "<") || strings.HasPrefix(subS, "</")) &&
 					subS != TokenAttrPair && subS != TokenKey && subS != TokenValue &&
 					subS != TokenKeyEnd && subS != TokenValueEnd && subS != TokenAttrPairEnd {
 					// We pushed back by NOT incrementing i
 					break
 				}
-				// Stop if another attribute
-				if strings.HasPrefix(subS, "@") {
+				// Stop if another attribute (Must be Vocab)
+				if subIsVocab && strings.HasPrefix(subS, "@") {
 					break
 				}
 
@@ -173,7 +178,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		}
 
 		// Skip special tokens if they appear out of place
-		if s == TokenValueEnd || s == TokenAttrPairEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue {
+		if isVocab && (s == TokenValueEnd || s == TokenAttrPairEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue) {
 			continue
 		}
 

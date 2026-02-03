@@ -438,7 +438,7 @@
                   </a>
                 </li>
                 <li class="WhoUsesCaseStudyList-caseStudy">
-                  <a href="https://bitly.com/blog/why-we-write-everything-in-go/?utm_source=go-dev&utm_medium=referral&utm_campaign=go-dev&utm_content=case-study" aria-label="View CaseStudy of Bitly, (opens in new window)" target="_blank" rel="noopener" class="WhoUsesCaseStudyList-caseStudyLink">
+                  <a href="https://bitly.com/blog/why-we-write-everything-in-go/?utm_source=go-dev&amp;utm_medium=referral&amp;utm_campaign=go-dev&amp;utm_content=case-study" aria-label="View CaseStudy of Bitly, (opens in new window)" target="_blank" rel="noopener" class="WhoUsesCaseStudyList-caseStudyLink">
                     <img loading="lazy" height="48" width="30%" src="/images/logos/bitly.svg" class="WhoUsesCaseStudyList-logo" alt=""></img>
                   </a>
                 </li>

@@ -38,7 +38,10 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 			b.WriteString(indent + "<" + n.Data)
 			for _, a := range n.Attr {
 				// Simple escape for values
-				val := strings.ReplaceAll(a.Val, "\"", "&quot;")
+				val := strings.ReplaceAll(a.Val, "&", "&amp;")
+				val = strings.ReplaceAll(val, "\"", "&quot;")
+				val = strings.ReplaceAll(val, "<", "&lt;")
+				val = strings.ReplaceAll(val, ">", "&gt;")
 				if a.Key != "xmlns" { // avoid namespace issues if any
 					b.WriteString(fmt.Sprintf(" %s=\"%s\"", a.Key, val))
 				}
