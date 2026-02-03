@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/clems4ever/structured-encoder/tokenizer"
@@ -11,30 +12,32 @@ import (
 
 func main() {
 	// Paths are relative to the repository root
-	inputFile := "tokenizer/testdata/example.html"
-	outputFile := "tokenizer/testdata/example_golden.xml"
-
-	// Verify we are in the right directory or finding the file
-	if _, err := os.Stat(inputFile); os.IsNotExist(err) {
-		log.Fatalf("Input file not found: %s. Please run this command from the repository root.", inputFile)
-	}
-
-	fmt.Printf("Reading %s...\n", inputFile)
-	inputBytes, err := os.ReadFile(inputFile)
+	inputs, err := filepath.Glob("tokenizer/testdata/*.html")
 	if err != nil {
-		log.Fatalf("Failed to read input file: %v", err)
+		log.Fatalf("Failed to glob files: %v", err)
 	}
 
-	fmt.Println("Converting HTML to XML...")
-	converted, err := tokenizer.ConvertHTMLToXML(strings.NewReader(string(inputBytes)))
-	if err != nil {
-		log.Fatalf("Conversion failed: %v", err)
+	for _, inputFile := range inputs {
+		outputFile := strings.TrimSuffix(inputFile, ".html") + "_golden.xml"
+
+		fmt.Printf("Processing %s -> %s\n", inputFile, outputFile)
+		inputBytes, err := os.ReadFile(inputFile)
+		if err != nil {
+			log.Printf("Failed to read input file %s: %v", inputFile, err)
+			continue
+		}
+
+		converted, err := tokenizer.ConvertHTMLToXML(strings.NewReader(string(inputBytes)))
+		if err != nil {
+			log.Printf("Conversion failed for %s: %v", inputFile, err)
+			continue
+		}
+
+		if err := os.WriteFile(outputFile, []byte(converted), 0644); err != nil {
+			log.Printf("Failed to write output file %s: %v", outputFile, err)
+			continue
+		}
 	}
 
-	fmt.Printf("Writing to %s...\n", outputFile)
-	if err := os.WriteFile(outputFile, []byte(converted), 0644); err != nil {
-		log.Fatalf("Failed to write output file: %v", err)
-	}
-
-	fmt.Println("Done. Golden file updated.")
+	fmt.Println("Done. Golden files updated.")
 }
