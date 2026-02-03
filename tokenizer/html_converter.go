@@ -11,7 +11,6 @@ import (
 
 // ConvertHTMLToXML converts legacy HTML to generic XML structure (XHTML-like)
 // so that strict XML tokenizers/parsers can handle it.
-// It skips <script> and <style> tags and normalizes attributes.
 func ConvertHTMLToXML(r io.Reader) (string, error) {
 	doc, err := html.Parse(r)
 	if err != nil {
