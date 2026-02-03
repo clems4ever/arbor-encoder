@@ -11,7 +11,15 @@ import (
 	"github.com/pkoukk/tiktoken-go"
 )
 
-const ArborOrderedAttribute = "arbor-ordered"
+const (
+	ArborOrderedAttribute = "arbor-ordered"
+	TokenAttrPair         = "<__AttrPair>"
+	TokenAttrPairEnd      = "</__AttrPair>"
+	TokenKey              = "<__Key>"
+	TokenKeyEnd           = "</__Key>"
+	TokenValue            = "<__Value>"
+	TokenValueEnd         = "</__Value>"
+)
 
 type TokenizationResult struct {
 	Tokens      []int
@@ -140,32 +148,8 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 					if attr.Name.Local == ArborOrderedAttribute {
 						continue
 					}
-
-					attrName := "@" + attr.Name.Local
-					if attrId, ok := t.vocab[attrName]; ok {
-						// Attribute Key Path: current node path + [0]
-						attrKeyPath := make([]int, len(nodePath)+1)
-						copy(attrKeyPath, nodePath)
-						attrKeyPath[len(nodePath)] = 0
-
-						tokens = append(tokens, attrId)
-						paths = append(paths, attrKeyPath)
-
-						// Attribute Value
-						if attr.Value != "" {
-							valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
-							for i, vt := range valTokens {
-								tokens = append(tokens, vt)
-								// Value Path: attrKeyPath + [i]
-								// We treat the value text as an ordered sequence of tokens under the attribute key
-								valPath := make([]int, len(attrKeyPath)+1)
-								copy(valPath, attrKeyPath)
-								valPath[len(attrKeyPath)] = i
-								paths = append(paths, valPath)
-							}
-						}
-					} else { // Should we fallback to content tokenizer for attributes? Probably better to enforce vocab.
-						return nil, fmt.Errorf("attribute %s not found in vocab", attrName)
+					if err := t.processAttribute(&tokens, &paths, attr, nodePath); err != nil {
+						return nil, err
 					}
 				}
 
@@ -273,4 +257,102 @@ func (t *Tokenizer) Decode(tokens []int) string {
 		}
 	}
 	return strings.Join(parts, " ")
+}
+
+func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Attr, nodePath []int) error {
+	attrName := "@" + attr.Name.Local
+	if attrId, ok := t.vocab[attrName]; ok {
+		// Attribute Key Path: current node path + [0]
+		attrKeyPath := make([]int, len(nodePath)+1)
+		copy(attrKeyPath, nodePath)
+		attrKeyPath[len(nodePath)] = 0
+
+		*tokens = append(*tokens, attrId)
+		*paths = append(*paths, attrKeyPath)
+
+		// Attribute Value
+		if attr.Value != "" {
+			valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
+			for i, vt := range valTokens {
+				*tokens = append(*tokens, vt)
+				// Value Path: attrKeyPath + [i]
+				// We treat the value text as an ordered sequence of tokens under the attribute key
+				valPath := make([]int, len(attrKeyPath)+1)
+				copy(valPath, attrKeyPath)
+				valPath[len(attrKeyPath)] = i
+				*paths = append(*paths, valPath)
+			}
+		}
+	} else {
+		// Unregistered Attribute Handling
+		// Check for required special tokens in vocab
+		attrPairId, ok1 := t.vocab[TokenAttrPair]
+		attrPairEndId, ok2 := t.vocab[TokenAttrPairEnd]
+		keyId, ok3 := t.vocab[TokenKey]
+		keyEndId, ok4 := t.vocab[TokenKeyEnd]
+		valId, ok5 := t.vocab[TokenValue]
+		valEndId, ok6 := t.vocab[TokenValueEnd]
+
+		if !ok1 || !ok2 || !ok3 || !ok4 || !ok5 || !ok6 {
+			return fmt.Errorf("attribute %s not found in vocab, and special tokens (%s, %s, %s, %s, %s, %s) are missing for fallback",
+				attrName, TokenAttrPair, TokenAttrPairEnd, TokenKey, TokenKeyEnd, TokenValue, TokenValueEnd)
+		}
+
+		// 1. Emit <__AttrPair> at path + [0]
+		attrPairPath := make([]int, len(nodePath)+1)
+		copy(attrPairPath, nodePath)
+		attrPairPath[len(nodePath)] = 0
+
+		*tokens = append(*tokens, attrPairId)
+		*paths = append(*paths, attrPairPath)
+
+		// 2. Emit <__Key> at path + [0] + [0]
+		keyNodePath := make([]int, len(attrPairPath)+1)
+		copy(keyNodePath, attrPairPath)
+		keyNodePath[len(attrPairPath)] = 0
+
+		*tokens = append(*tokens, keyId)
+		*paths = append(*paths, keyNodePath)
+
+		// 3. Emit Key Content at path + [0] + [0] + [i]
+		keyTokens := t.contentTokenizer.Encode(attr.Name.Local, nil, nil)
+		for i, kt := range keyTokens {
+			*tokens = append(*tokens, kt)
+			contentPath := make([]int, len(keyNodePath)+1)
+			copy(contentPath, keyNodePath)
+			contentPath[len(keyNodePath)] = i
+			*paths = append(*paths, contentPath)
+		}
+
+		// 4. Emit </__Key> at path + [0] + [0]
+		*tokens = append(*tokens, keyEndId)
+		*paths = append(*paths, keyNodePath)
+
+		// 5. Emit <__Value> at path + [0] + [1]
+		valNodePath := make([]int, len(attrPairPath)+1)
+		copy(valNodePath, attrPairPath)
+		valNodePath[len(attrPairPath)] = 1
+
+		*tokens = append(*tokens, valId)
+		*paths = append(*paths, valNodePath)
+
+		// 6. Emit Value Content at path + [0] + [1] + [i]
+		valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
+		for i, vt := range valTokens {
+			*tokens = append(*tokens, vt)
+			contentPath := make([]int, len(valNodePath)+1)
+			copy(contentPath, valNodePath)
+			contentPath[len(valNodePath)] = i
+			*paths = append(*paths, contentPath)
+		}
+
+		// 7. Emit </__Value> at path + [0] + [1]
+		*tokens = append(*tokens, valEndId)
+		*paths = append(*paths, valNodePath)
+
+		// 8. Emit </__AttrPair> at path + [0]
+		*tokens = append(*tokens, attrPairEndId)
+		*paths = append(*paths, attrPairPath)
+	}
+	return nil
 }
