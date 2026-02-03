@@ -73,10 +73,10 @@ func TestOrderInvariance(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	// Case 1: Unordered list (ordered="false")
+	// Case 1: Unordered list (arbor-ordered="false")
 	// Should produce SAME set of (Token, Path) pairs regardless of order.
-	xml1 := `<Root><List ordered="false"><Item>A</Item><Item>B</Item></List></Root>`
-	xml2 := `<Root><List ordered="false"><Item>B</Item><Item>A</Item></List></Root>`
+	xml1 := `<Root><List arbor-ordered="false"><Item>A</Item><Item>B</Item></List></Root>`
+	xml2 := `<Root><List arbor-ordered="false"><Item>B</Item><Item>A</Item></List></Root>`
 
 	pairs1 := getPairs(t, tokenizer, xml1)
 	pairs2 := getPairs(t, tokenizer, xml2)
@@ -88,10 +88,10 @@ func TestOrderInvariance(t *testing.T) {
 		t.Errorf("Unordered list should have invariant path set.\nSig1: %s\nSig2: %s", sig1, sig2)
 	}
 
-	// Case 2: Ordered list (explicitly ordered="true")
+	// Case 2: Ordered list (explicitly arbor-ordered="true")
 	// Should produce DIFFERENT set of (Token, Path) pairs when swapped.
-	xmlOrdered1 := `<Root><List ordered="true"><Item>A</Item><Item>B</Item></List></Root>`
-	xmlOrdered2 := `<Root><List ordered="true"><Item>B</Item><Item>A</Item></List></Root>`
+	xmlOrdered1 := `<Root><List arbor-ordered="true"><Item>A</Item><Item>B</Item></List></Root>`
+	xmlOrdered2 := `<Root><List arbor-ordered="true"><Item>B</Item><Item>A</Item></List></Root>`
 
 	pairsO1 := getPairs(t, tokenizer, xmlOrdered1)
 	pairsO2 := getPairs(t, tokenizer, xmlOrdered2)
@@ -113,7 +113,7 @@ func TestDeepOrderInvariance(t *testing.T) {
 	xml1 := `
 <Root>
     <Container>
-        <Deep ordered="false">
+        <Deep arbor-ordered="false">
              <Item>A</Item>
              <Item>B</Item>
         </Deep>
@@ -123,7 +123,7 @@ func TestDeepOrderInvariance(t *testing.T) {
 	xml2 := `
 <Root>
     <Container>
-        <Deep ordered="false">
+        <Deep arbor-ordered="false">
              <Item>B</Item>
              <Item>A</Item>
         </Deep>
@@ -145,9 +145,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer containers -> Same
 	// Swapping inner items -> Same
 	t.Run("TwoLevelsUnordered", func(t *testing.T) {
-		base := `<Root><List ordered="false"><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List ordered="false"><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List ordered="false"><Container ordered="false"><Item>B</Item><Item>A</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List arbor-ordered="false"><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List arbor-ordered="false"><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List arbor-ordered="false"><Container arbor-ordered="false"><Item>B</Item><Item>A</Item></Container><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase != getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -163,9 +163,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Diff
 	// Swapping inner -> Diff
 	t.Run("TwoLevelsOrdered", func(t *testing.T) {
-		base := `<Root><List ordered="true"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List ordered="true"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List ordered="true"><Container ordered="true"><Item>B</Item><Item>A</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List arbor-ordered="true"><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List arbor-ordered="true"><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List arbor-ordered="true"><Container arbor-ordered="true"><Item>B</Item><Item>A</Item></Container><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase == getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -181,9 +181,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Diff
 	// Swapping inner -> Same
 	t.Run("OrderedOfUnordered", func(t *testing.T) {
-		base := `<Root><List ordered="true"><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List ordered="true"><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List ordered="true"><Container ordered="false"><Item>B</Item><Item>A</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List arbor-ordered="true"><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List arbor-ordered="true"><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List arbor-ordered="true"><Container arbor-ordered="false"><Item>B</Item><Item>A</Item></Container><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase == getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -199,9 +199,9 @@ func TestNestedInvarianceLevels(t *testing.T) {
 	// Swapping outer -> Same
 	// Swapping inner -> Diff
 	t.Run("UnorderedOfOrdered", func(t *testing.T) {
-		base := `<Root><List ordered="false"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
-		swapOuter := `<Root><List ordered="false"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
-		swapInner := `<Root><List ordered="false"><Container ordered="true"><Item>B</Item><Item>A</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		base := `<Root><List arbor-ordered="false"><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
+		swapOuter := `<Root><List arbor-ordered="false"><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`
+		swapInner := `<Root><List arbor-ordered="false"><Container arbor-ordered="true"><Item>B</Item><Item>A</Item></Container><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`
 
 		sigBase := getSetSignature(getPairs(t, tokenizer, base))
 		if sigBase != getSetSignature(getPairs(t, tokenizer, swapOuter)) {
@@ -315,29 +315,29 @@ func TestEmbeddingComputationInvariance(t *testing.T) {
 
 	// 1. Unordered List - Swapping items should yield SAME set of embeddings
 	runComparison(t, "Unordered",
-		`<Root><List ordered="false"><Item>A</Item><Item>B</Item></List></Root>`,
-		`<Root><List ordered="false"><Item>B</Item><Item>A</Item></List></Root>`,
+		`<Root><List arbor-ordered="false"><Item>A</Item><Item>B</Item></List></Root>`,
+		`<Root><List arbor-ordered="false"><Item>B</Item><Item>A</Item></List></Root>`,
 		true,
 	)
 
 	// 2. Ordered List - Swapping items should yield DIFFERENT set of embeddings
 	runComparison(t, "Ordered",
-		`<Root><List ordered="true"><Item>A</Item><Item>B</Item></List></Root>`,
-		`<Root><List ordered="true"><Item>B</Item><Item>A</Item></List></Root>`,
+		`<Root><List arbor-ordered="true"><Item>A</Item><Item>B</Item></List></Root>`,
+		`<Root><List arbor-ordered="true"><Item>B</Item><Item>A</Item></List></Root>`,
 		false,
 	)
 
 	// 3. Mixed: Ordered of Unordered - Swapping outer (ordered) changes set
 	runComparison(t, "OrderedOfUnordered_SwapOuter",
-		`<Root><List ordered="true"><Container ordered="false"><Item>A</Item><Item>B</Item></Container><Container ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`,
-		`<Root><List ordered="true"><Container ordered="false"><Item>C</Item><Item>D</Item></Container><Container ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`,
+		`<Root><List arbor-ordered="true"><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container></List></Root>`,
+		`<Root><List arbor-ordered="true"><Container arbor-ordered="false"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="false"><Item>A</Item><Item>B</Item></Container></List></Root>`,
 		false,
 	)
 
 	// 4. Mixed: Unordered of Ordered - Swapping outer (unordered) keeps set invariant
 	runComparison(t, "UnorderedOfOrdered_SwapOuter",
-		`<Root><List ordered="false"><Container ordered="true"><Item>A</Item><Item>B</Item></Container><Container ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`,
-		`<Root><List ordered="false"><Container ordered="true"><Item>C</Item><Item>D</Item></Container><Container ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`,
+		`<Root><List arbor-ordered="false"><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container></List></Root>`,
+		`<Root><List arbor-ordered="false"><Container arbor-ordered="true"><Item>C</Item><Item>D</Item></Container><Container arbor-ordered="true"><Item>A</Item><Item>B</Item></Container></List></Root>`,
 		true,
 	)
 }

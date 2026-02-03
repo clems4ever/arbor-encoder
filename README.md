@@ -9,7 +9,7 @@ This project implements a specialized XML tokenizer in Go designed for machine l
 
 -   **Hybrid Tokenization**: Uses a custom XML parser for tags and `tiktoken` (cl100k_base) for text content.
 -   **Structure-Awareness**: Generates a coordinate path (tree position) for every token, returned as a padded tensor.
--   **Order Invariance**: Supports the `ordered="false"` attribute on XML tags. Siblings within an unordered container share the same structural path index, allowing the model to treat them as permutation-invariant.
+-   **Order Invariance**: Supports the `arbor-ordered="false"` attribute on XML tags. Siblings within an unordered container share the same structural path index, allowing the model to treat them as permutation-invariant.
 -   **Static Tensor Output**: Outputs `PaddedPaths` as a rectangular 2D matrix (batch-ready) suitable for concatenation with token embeddings.
 
 ## Installation
@@ -77,10 +77,10 @@ Every token is assigned a path vector representing its location in the XML tree.
 - **Child of Root**: `[0, 0]`, `[0, 1]`, etc.
 
 ### Order Invariance
-If an XML tag has `ordered="false"`, its children will not increment the sibling counter. This means all children will effectively have the same "position" index, signaling to the model that their relative order does not matter.
+If an XML tag has `arbor-ordered="false"`, its children will not increment the sibling counter. This means all children will effectively have the same "position" index, signaling to the model that their relative order does not matter.
 
 ```xml
-<List ordered="false">
+<List arbor-ordered="false">
   <Item>A</Item> <!-- Path: [0, 0, 0] -->
   <Item>B</Item> <!-- Path: [0, 0, 0] -->
 </List>

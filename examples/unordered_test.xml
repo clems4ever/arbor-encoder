@@ -1,10 +1,10 @@
 <City>
-    <Schools ordered="false">
+    <Schools arbor-ordered="false">
         <School>A</School>
         <School>B</School>
         <School>C</School>
     </Schools>
-    <Mayors ordered="true">
+    <Mayors arbor-ordered="true">
         <Mayor>1</Mayor>
         <Mayor>2</Mayor>
         <Mayor>3</Mayor>

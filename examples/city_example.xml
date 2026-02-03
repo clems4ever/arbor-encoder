@@ -2,7 +2,7 @@
     <Name>Paris</Name>
     <ZipCode>75000</ZipCode>
     <NumberOfInhabitants>2161000</NumberOfInhabitants>
-    <Schools ordered="false">
+    <Schools arbor-ordered="false">
         <School>
             <Name>Sorbonne University</Name>
             <Address>1 Rue Victor Cousin</Address>
@@ -12,7 +12,7 @@
             <Address>45 Rue d'Ulm</Address>
         </School>
     </Schools>
-    <Mayors ordered="true">
+    <Mayors arbor-ordered="true">
         <Mayor>
             <Name>Bertrand Delanoë</Name>
             <StartYear>2001</StartYear>
