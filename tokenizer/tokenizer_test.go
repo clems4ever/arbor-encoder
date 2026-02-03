@@ -274,3 +274,72 @@ func TestTokenizer_Tokenize_Depth_DeepNesting(t *testing.T) {
 		}
 	}
 }
+
+func TestTokenizer_Decode(t *testing.T) {
+	vocab := map[string]int{
+		"<Root>":  100,
+		"</Root>": 101,
+	}
+	vocabPath := createTempVocab(t, vocab)
+	defer os.Remove(vocabPath)
+
+	tokenizer, err := NewTokenizer(vocabPath)
+	if err != nil {
+		t.Fatalf("Failed to create tokenizer: %v", err)
+	}
+
+	// Mocking token sequence: <Root> + "hello" + </Root>
+	// "hello" in cl100k_base is [15339]
+	tokens := []int{100, 15339, 101}
+
+	// Decode adds spaces between tokens
+	expected := "<Root> hello </Root>"
+	result := tokenizer.Decode(tokens)
+
+	if result != expected {
+		t.Errorf("Expected %q, got %q", expected, result)
+	}
+}
+
+func TestTokenizer_Tokenize_MissingEndTagInVocab(t *testing.T) {
+	vocab := map[string]int{
+		"<Root>":  1,
+		"</Root>": 2,
+		"<A>":     3,
+		// "</A>" is missing
+	}
+	vocabPath := createTempVocab(t, vocab)
+	defer os.Remove(vocabPath)
+
+	tokenizer, _ := NewTokenizer(vocabPath)
+
+	xmlContent := `<Root><A></A></Root>`
+
+	_, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
+	if err == nil {
+		t.Error("Expected error for missing end tag in vocab, got nil")
+	} else {
+		expected := "tag </A> not found in vocab"
+		if !strings.Contains(err.Error(), expected) {
+			t.Errorf("Expected error %q, got %q", expected, err.Error())
+		}
+	}
+}
+
+func TestNewTokenizer_InvalidJSON(t *testing.T) {
+	tmpFile, err := os.CreateTemp("", "invalid-vocab-*.json")
+	if err != nil {
+		t.Fatalf("Failed to create temp file: %v", err)
+	}
+	defer os.Remove(tmpFile.Name())
+	defer tmpFile.Close()
+
+	if _, err := tmpFile.WriteString("{ invalid json"); err != nil {
+		t.Fatalf("Failed to write to temp file: %v", err)
+	}
+
+	_, err = NewTokenizer(tmpFile.Name())
+	if err == nil {
+		t.Error("Expected error for invalid JSON, got nil")
+	}
+}
