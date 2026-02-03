@@ -132,7 +132,11 @@ func TestComprehensive(t *testing.T) {
 			}
 
 			// Verify decoding reconstruction
-			decoded := tokenizer.DecodeXML(res.Tokens)
+			decodedStruct, err := tokenizer.DecodeXML(res.Tokens)
+			if err != nil {
+				t.Fatalf("DecodeXML failed: %v", err)
+			}
+			decoded := decodedStruct.String()
 
 			// Normalize spaces? DecodeXML output has specific spacing.
 			// We check for substring containment of critical parts.

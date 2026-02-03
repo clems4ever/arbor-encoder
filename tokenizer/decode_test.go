@@ -32,7 +32,11 @@ func TestTokenizer_DecodeXML(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Tokenize failed: %v", err)
 	}
-	decoded1 := tokenizer.DecodeXML(res1.Tokens)
+	decodedStruct1, err := tokenizer.DecodeXML(res1.Tokens)
+	if err != nil {
+		t.Fatalf("DecodeXML failed: %v", err)
+	}
+	decoded1 := decodedStruct1.String()
 	// Note: DecodeXML might produce spacing differences depending on tokenizer behavior for "Hello" (space prefix?)
 	// But structure should be correct.
 	if !strings.Contains(decoded1, `<City name="Paris">`) {
@@ -49,7 +53,11 @@ func TestTokenizer_DecodeXML(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Tokenize failed for 2: %v", err)
 	}
-	decoded2 := tokenizer.DecodeXML(res2.Tokens)
+	decodedStruct2, err := tokenizer.DecodeXML(res2.Tokens)
+	if err != nil {
+		t.Fatalf("DecodeXML failed: %v", err)
+	}
+	decoded2 := decodedStruct2.String()
 	if !strings.Contains(decoded2, `zip="75000"`) {
 		t.Errorf("DecodeXML Case 2 failed. Got: %s", decoded2)
 	}
@@ -57,7 +65,11 @@ func TestTokenizer_DecodeXML(t *testing.T) {
 	// Case 3: Mixed
 	input3 := `<City name="Paris" zip="75000"><School>S1</School></City>`
 	res3, _ := tokenizer.Tokenize(strings.NewReader(input3))
-	decoded3 := tokenizer.DecodeXML(res3.Tokens)
+	decodedStruct3, err := tokenizer.DecodeXML(res3.Tokens)
+	if err != nil {
+		t.Fatalf("DecodeXML failed: %v", err)
+	}
+	decoded3 := decodedStruct3.String()
 
 	// We want to check that it is valid XML roughly
 	expectedParts := []string{`<City`, `name="Paris"`, `zip="75000"`, `><School`, `>S1</School>`, `</City>`}
