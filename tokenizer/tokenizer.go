@@ -134,7 +134,44 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 				tokens = append(tokens, id)
 				paths = append(paths, nodePath)
 
-				stack = append(stack, &stackItem{childrenCounter: 0, ordered: isOrdered, pathIndex: myIndex})
+				// Process Attributes
+				// We behave as if all attributes are in a "virtual container" at index 0.
+				for _, attr := range se.Attr {
+					if attr.Name.Local == ArborOrderedAttribute {
+						continue
+					}
+
+					attrName := "@" + attr.Name.Local
+					if attrId, ok := t.vocab[attrName]; ok {
+						// Attribute Key Path: current node path + [0]
+						attrKeyPath := make([]int, len(nodePath)+1)
+						copy(attrKeyPath, nodePath)
+						attrKeyPath[len(nodePath)] = 0
+
+						tokens = append(tokens, attrId)
+						paths = append(paths, attrKeyPath)
+
+						// Attribute Value
+						if attr.Value != "" {
+							valTokens := t.contentTokenizer.Encode(attr.Value, nil, nil)
+							for i, vt := range valTokens {
+								tokens = append(tokens, vt)
+								// Value Path: attrKeyPath + [i]
+								// We treat the value text as an ordered sequence of tokens under the attribute key
+								valPath := make([]int, len(attrKeyPath)+1)
+								copy(valPath, attrKeyPath)
+								valPath[len(attrKeyPath)] = i
+								paths = append(paths, valPath)
+							}
+						}
+					} else { // Should we fallback to content tokenizer for attributes? Probably better to enforce vocab.
+						return nil, fmt.Errorf("attribute %s not found in vocab", attrName)
+					}
+				}
+
+				// Push new stack item for children of this element
+				// Children start at index 1 to reserve index 0 for attributes
+				stack = append(stack, &stackItem{childrenCounter: 1, ordered: isOrdered, pathIndex: myIndex})
 				depth++
 
 			} else {

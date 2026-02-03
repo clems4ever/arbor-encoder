@@ -86,6 +86,24 @@ If an XML tag has `arbor-ordered="false"`, its children will not increment the s
 </List>
 ```
 
+### Attributes
+Attributes are encoded as an unordered collection of properties attached to an element. To distinguish them from child elements:
+- **Index Reservation**: Attributes are always assigned to index `0` of the parent element.
+- **Children Offset**: Regular child elements start at index `1`.
+
+This ensures the model can structurally distinguish metadata/attributes from content, regardless of whether the element body is ordered or unordered.
+
+```xml
+<City name="Paris">
+    <School>...</School>
+</City>
+```
+
+- `<City>`: `[0]`
+- `@name`: `[0, 0]` (Attribute at index 0)
+- `"Paris"`: `[0, 0, 0]` (Value is a child of the attribute)
+- `<School>`: `[0, 1]` (Real children start at index 1)
+
 ## Integration with ML Models
 
 The `PaddedPaths` output is designed to be fed into a model alongside the token IDs. A common strategy is:

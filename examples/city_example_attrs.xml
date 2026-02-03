@@ -1,0 +1,24 @@
+<City name="Paris" zipCode="75000" numberOfInhabitants="2161000">
+    <Schools arbor-ordered="false">
+        <School>
+            <Name>Sorbonne University</Name>
+            <Address>1 Rue Victor Cousin</Address>
+        </School>
+        <School>
+            <Name>École Normale Supérieure</Name>
+            <Address>45 Rue d'Ulm</Address>
+        </School>
+    </Schools>
+    <Mayors arbor-ordered="true">
+        <Mayor>
+            <Name>Bertrand Delanoë</Name>
+            <StartYear>2001</StartYear>
+            <EndYear>2014</EndYear>
+        </Mayor>
+        <Mayor>
+            <Name>Anne Hidalgo</Name>
+            <StartYear>2014</StartYear>
+            <EndYear>Present</EndYear>
+        </Mayor>
+    </Mayors>
+</City>
