@@ -1,5 +1,7 @@
 # Structured Encoder
 
+![Build Status](https://github.com/clems4ever/structured-encoder/actions/workflows/test.yml/badge.svg)
+
 This project implements a specialized XML tokenizer in Go designed for machine learning applications (e.g., Transformers). It converts XML documents into a sequence of tokens accompanied by structural path embeddings, allowing models to understand the hierarchical position of each token.
 
 ## Features
