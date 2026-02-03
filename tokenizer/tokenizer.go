@@ -261,6 +261,13 @@ func (t *Tokenizer) Decode(tokens []int) string {
 
 func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Attr, nodePath []int) error {
 	attrName := "@" + attr.Name.Local
+
+	// Pre-fetch special tokens mostly for Unregistered, but ValueEnd is used for Registered too now (for reversibility)
+	// We only strictly need them if we use them.
+	// Let's lazy fetch or check existence if we need them.
+
+	valEndId, hasValEnd := t.vocab[TokenValueEnd]
+
 	if attrId, ok := t.vocab[attrName]; ok {
 		// Attribute Key Path: current node path + [0]
 		attrKeyPath := make([]int, len(nodePath)+1)
@@ -276,11 +283,28 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 			for i, vt := range valTokens {
 				*tokens = append(*tokens, vt)
 				// Value Path: attrKeyPath + [i]
-				// We treat the value text as an ordered sequence of tokens under the attribute key
 				valPath := make([]int, len(attrKeyPath)+1)
 				copy(valPath, attrKeyPath)
 				valPath[len(attrKeyPath)] = i
 				*paths = append(*paths, valPath)
+			}
+
+			// DELIMITER for Registered Attributes
+			// We append TokenValueEnd (</__Value>) to mark end of value.
+			// This is necessary to distinguish AttrValue from subsequent CharData during decoding.
+			if hasValEnd {
+				*tokens = append(*tokens, valEndId)
+				// Path for delimiter: same as attribute key level? or value level?
+				// Logic: It terminates the value. It sits at the Key level structurally (sibling to value tokens? or parent?)
+				// Unregistered uses: <__Value> (at key+1) ... content ... </__Value> (at key+1).
+				// So let's put it at key+1 (valPath depth) but index?
+				// Let's just use attrKeyPath (depth N+1).
+				// Actually, reusing the path of the abstract container or the key seems safer.
+				// In Unregistered: </__Value> is at `valNodePath` which is `keyNodePath` sibling? No.
+				// structure: Pair -> ValueNode -> </Value>.
+				// Here: Key -> ValueTokens -> EndToken.
+				// Let's use attrKeyPath.
+				*paths = append(*paths, attrKeyPath)
 			}
 		}
 	} else {
@@ -291,9 +315,9 @@ func (t *Tokenizer) processAttribute(tokens *[]int, paths *[][]int, attr xml.Att
 		keyId, ok3 := t.vocab[TokenKey]
 		keyEndId, ok4 := t.vocab[TokenKeyEnd]
 		valId, ok5 := t.vocab[TokenValue]
-		valEndId, ok6 := t.vocab[TokenValueEnd]
+		// valEndId already fetched
 
-		if !ok1 || !ok2 || !ok3 || !ok4 || !ok5 || !ok6 {
+		if !ok1 || !ok2 || !ok3 || !ok4 || !ok5 || !hasValEnd {
 			return fmt.Errorf("attribute %s not found in vocab, and special tokens (%s, %s, %s, %s, %s, %s) are missing for fallback",
 				attrName, TokenAttrPair, TokenAttrPairEnd, TokenKey, TokenKeyEnd, TokenValue, TokenValueEnd)
 		}

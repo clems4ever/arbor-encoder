@@ -33,8 +33,8 @@ func countValid(p []int) int {
 
 func TestNewTokenizer_Success(t *testing.T) {
 	vocab := map[string]int{
-		"<Test>":  1,
-		"</Test>": 2,
+		"<Test>":  200001,
+		"</Test>": 200002,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)

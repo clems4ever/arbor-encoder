@@ -7,13 +7,14 @@ import (
 )
 
 func TestTokenizer_Attributes(t *testing.T) {
+	base := 200000
 	vocab := map[string]int{
-		"<City>":    100,
-		"</City>":   101,
-		"<School>":  102,
-		"</School>": 103,
-		"@name":     104,
-		"@zip":      105,
+		"<City>":    base + 100,
+		"</City>":   base + 101,
+		"<School>":  base + 102,
+		"</School>": base + 103,
+		"@name":     base + 104,
+		"@zip":      base + 105,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
@@ -38,7 +39,7 @@ func TestTokenizer_Attributes(t *testing.T) {
 	// * = content tokens
 
 	// 1. Check City
-	if tokens[0] != 100 {
+	if tokens[0] != base+100 {
 		t.Errorf("Expected City token at 0")
 	}
 	// Path [0] (padded with -1 if necessary by other tests having deeper paths? No, this test is isolated but getPaddedPaths might pad based on max depth found IN THIS RUN)
@@ -52,9 +53,10 @@ func TestTokenizer_Attributes(t *testing.T) {
 	// Search for @name (104) and @zip (105)
 	var zipIdx, nameIdx int
 	for i, tok := range tokens {
-		if tok == 104 {
+		switch tok {
+		case base + 104:
 			nameIdx = i
-		} else if tok == 105 {
+		case base + 105:
 			zipIdx = i
 		}
 	}
@@ -75,12 +77,12 @@ func TestTokenizer_Attributes(t *testing.T) {
 	// Should be at index 1 (since 0 is reserved for attributes)
 	schoolIdx := -1
 	for i, tok := range tokens {
-		if tok == 102 {
+		if tok == base+102 {
 			schoolIdx = i
 			break
 		}
 	}
-	
+
 	if schoolIdx == -1 {
 		t.Fatal("School token not found")
 	}
@@ -93,11 +95,11 @@ func TestTokenizer_Attributes(t *testing.T) {
 
 func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
 	vocab := map[string]int{
-		"<City>":    100,
-		"</City>":   101,
-		"<Item>":    102,
-		"</Item>":   103,
-		"@attr":     104,
+		"<City>":  100,
+		"</City>": 101,
+		"<Item>":  102,
+		"</Item>": 103,
+		"@attr":   104,
 	}
 	vocabPath := createTempVocab(t, vocab)
 	defer os.Remove(vocabPath)
