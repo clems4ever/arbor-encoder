@@ -37,7 +37,7 @@ func TestTransformer_Attributes_Registered(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	expected := `<div><__Attr name="class">foo</__Attr></div>`
+	expected := `<div><__Attr><__Key>class</__Key><__Value>foo</__Value></__Attr></div>`
 	if root.String() != expected {
 		t.Errorf("expected %s, got %s", expected, root.String())
 	}
@@ -58,7 +58,7 @@ func TestTransformer_Attributes_Registered_Empty(t *testing.T) {
 	}
 
 	// Element.String() produces <Tag></Tag> for now.
-	expected := `<div><__Attr name="class"><__Empty></__Empty></__Attr></div>`
+	expected := `<div><__Attr><__Key>class</__Key><__Value><__Empty></__Empty></__Value></__Attr></div>`
 	if root.String() != expected {
 		t.Errorf("expected %s, got %s", expected, root.String())
 	}

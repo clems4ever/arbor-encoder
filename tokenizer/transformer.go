@@ -105,21 +105,33 @@ func (t *Transformer) processAttributeToElement(parent *Element, attr xml.Attr) 
 
 	if _, ok := t.vocab[attrName]; ok {
 		// Registered Attribute
+		// <__Attr>
 		child := &Element{
-			Name:       VirtualAttrTag,
-			Attributes: []xml.Attr{{Name: xml.Name{Local: VirtualAttrName}, Value: attr.Name.Local}},
+			Name: VirtualAttrTag,
 		}
+
+		// <__Key>name</__Key>
+		keyName := strings.Trim(TokenKey, "<>")
+		child.Children = append(child.Children, &Element{
+			Name:     keyName,
+			Children: []interface{}{attr.Name.Local},
+		})
+
+		// <__Value>...</__Value>
+		valName := strings.Trim(TokenValue, "<>")
+		valEl := &Element{Name: valName}
 
 		if attr.Value == "" && hasEmpty {
 			// <__Empty/>
-			// Represent as Element with Name "__Empty" and no child.
 			emptyName := strings.Trim(TokenEmpty, "<> /") // Strip < > /
-			child.Children = append(child.Children, &Element{Name: emptyName})
+			valEl.Children = append(valEl.Children, &Element{Name: emptyName})
 		} else {
 			if attr.Value != "" {
-				child.Children = append(child.Children, attr.Value)
+				valEl.Children = append(valEl.Children, attr.Value)
 			}
 		}
+
+		child.Children = append(child.Children, valEl)
 		parent.Children = append(parent.Children, child)
 
 	} else {

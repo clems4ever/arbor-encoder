@@ -26,9 +26,10 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 	var paths [][]int
 
 	type stackItem struct {
-		childrenCounter int // Counter for assigning indices to children
-		ordered         bool
-		pathIndex       int // The index of this node in its parent's scope (or 0 for root)
+		childrenCounter  int // Counter for assigning indices to children
+		ordered          bool
+		pathIndex        int // The index of this node in its parent's scope (or 0 for root)
+		isRegisteredAttr bool
 	}
 
 	// We assume a virtual root if we really wanted, but here we just start processing.
@@ -45,6 +46,56 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 			p[i] = item.pathIndex
 		}
 		return p
+	}
+
+	// extractRegisteredAttrName reads the <__Key>...</__Key><__Value> sequence
+	// and returns the attribute name. It consumes the open tag of <__Value>.
+	extractRegisteredAttrName := func(dec *xml.Decoder) (string, error) {
+		// 1. Expect <__Key>
+		tok, err := dec.Token()
+		if err != nil {
+			return "", err
+		}
+		se, ok := tok.(xml.StartElement)
+		if !ok || se.Name.Local != strings.Trim(TokenKey, "<>") {
+			return "", fmt.Errorf("expected %s after %s, got %v", TokenKey, VirtualAttrTag, tok)
+		}
+
+		// 2. Expect Name (CharData)
+		tok, err = dec.Token()
+		if err != nil {
+			return "", err
+		}
+		cd, ok := tok.(xml.CharData)
+		if !ok {
+			return "", fmt.Errorf("expected CharData in %s", TokenKey)
+		}
+		name := string(cd)
+
+		// 3. Expect </__Key>
+		tok, err = dec.Token()
+		if err != nil {
+			return "", err
+		}
+		ee, ok := tok.(xml.EndElement)
+		if !ok || ee.Name.Local != strings.Trim(TokenKey, "<>") {
+			// Handle case where CharData might be followed by EndElement directly
+			// But check if we missed EndElement above?
+			// The loop above consumed CharData. Next must be EndElement.
+			return "", fmt.Errorf("expected %s, got %v", TokenKeyEnd, tok)
+		}
+
+		// 4. Expect <__Value>
+		tok, err = dec.Token()
+		if err != nil {
+			return "", err
+		}
+		seVal, ok := tok.(xml.StartElement)
+		if !ok || seVal.Name.Local != strings.Trim(TokenValue, "<>") {
+			return "", fmt.Errorf("expected %s start, got %v", TokenValue, tok)
+		}
+
+		return name, nil
 	}
 
 	decoder := xml.NewDecoder(r)
@@ -66,18 +117,13 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 
 			// Handle different tag types
 			if se.Name.Local == VirtualAttrTag {
-				// Registered Attribute wrapper: <__Attr name="foo">
-				// Get name
-				var name string
-				for _, attr := range se.Attr {
-					if attr.Name.Local == VirtualAttrName {
-						name = attr.Value
-						break
-					}
+				// Registered Attribute wrapper: <__Attr>...
+				// Expect <__Key>name</__Key><__Value>
+				name, err := extractRegisteredAttrName(decoder)
+				if err != nil {
+					return nil, err
 				}
-				if name == "" {
-					return nil, fmt.Errorf("missing name attribute in %s", VirtualAttrTag)
-				}
+
 				tagName = "@" + name
 				isAttr = true
 				isOrdered = true // Attributes content is ordered
@@ -86,6 +132,8 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 				tagName = "<" + se.Name.Local + ">"
 
 				// Identify if it's a special tag that acts as attribute (index 0)
+				// Note: <__Key> is consumed inside extractRegisteredAttrName ONLY if inside __Attr.
+				// If we see it here, it must be inside __AttrPair (Unregistered).
 				if tagName == TokenAttrPair {
 					isAttr = true
 					isOrdered = true
@@ -160,12 +208,23 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 			if isAttr || strings.HasPrefix(tagName, "<__") {
 				childrenStart = 0
 			}
-			stack = append(stack, &stackItem{childrenCounter: childrenStart, ordered: isOrdered, pathIndex: myIndex})
+			stack = append(stack, &stackItem{
+				childrenCounter:  childrenStart,
+				ordered:          isOrdered,
+				pathIndex:        myIndex,
+				isRegisteredAttr: se.Name.Local == VirtualAttrTag,
+			})
 
 		case xml.EndElement:
 			if len(stack) == 0 {
 				return nil, fmt.Errorf("unexpected end token </%s>, stack empty", se.Name.Local)
 			}
+
+			// Ignore closing tag of __Value if inside registered attribute
+			if se.Name.Local == strings.Trim(TokenValue, "<>") && stack[len(stack)-1].isRegisteredAttr {
+				continue
+			}
+
 			popped := stack[len(stack)-1]
 			stack = stack[:len(stack)-1]
 
