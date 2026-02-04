@@ -66,7 +66,6 @@ func scanForVocab(r io.Reader) (map[string]int, error) {
 	return vocab, nil
 }
 
-
 func TestTransformer_Golden(t *testing.T) {
 	matches, err := filepath.Glob("testdata/*_golden.xml")
 	if err != nil {
