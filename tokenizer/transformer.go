@@ -1,7 +1,6 @@
 package tokenizer
 
 import (
-	"bytes"
 	"encoding/xml"
 	"fmt"
 	"io"
@@ -23,15 +22,11 @@ func NewTransformer(vocab map[string]int) *Transformer {
 	return &Transformer{vocab: vocab}
 }
 
-// Transform converts standard XML into a valid XML stream where attributes are converted to child elements.
-func (t *Transformer) Transform(r io.Reader) ([]byte, error) {
-	var out bytes.Buffer
-	// We don't use xml.Encoder because it's hard to control the exact output format (e.g. self-closing tags vs pairs)
-	// and we want to ensure we don't mess up the vocabulary matching by introducing unwanted spaces or formatting.
-	// However, simple xml.NewEncoder should be fine if we are careful.
-	// Actually, manually constructing the tags gives us full control over <__Empty/> vs <__Empty></__Empty>.
-
+// Transform converts standard XML into a valid XML object where attributes are converted to child elements.
+func (t *Transformer) Transform(r io.Reader) (*Element, error) {
 	decoder := xml.NewDecoder(r)
+	var stack []*Element
+	var root *Element
 
 	for {
 		token, err := decoder.Token()
@@ -49,31 +44,32 @@ func (t *Transformer) Transform(r io.Reader) ([]byte, error) {
 				return nil, fmt.Errorf("tag %s not found in vocab", tagName)
 			}
 
+			el := &Element{Name: se.Name.Local}
+
 			// Check for arbor-ordered attribute
-			isOrdered := false
 			for _, attr := range se.Attr {
 				if attr.Name.Local == ArborOrderedAttribute {
 					if attr.Value == "true" {
-						isOrdered = true
+						el.Attributes = append(el.Attributes, attr)
 					}
 					break
 				}
 			}
 
-			// Write Start Tag
-			out.WriteString("<")
-			out.WriteString(se.Name.Local)
-			if isOrdered {
-				out.WriteString(fmt.Sprintf(` %s="true"`, ArborOrderedAttribute))
+			if len(stack) > 0 {
+				parent := stack[len(stack)-1]
+				parent.Children = append(parent.Children, el)
+			} else {
+				root = el
 			}
-			out.WriteString(">")
+			stack = append(stack, el)
 
 			// Process Attributes
 			for _, attr := range se.Attr {
 				if attr.Name.Local == ArborOrderedAttribute {
 					continue
 				}
-				if err := t.processAttribute(&out, attr); err != nil {
+				if err := t.processAttributeToElement(el, attr); err != nil {
 					return nil, err
 				}
 			}
@@ -83,56 +79,51 @@ func (t *Transformer) Transform(r io.Reader) ([]byte, error) {
 			if _, ok := t.vocab[tagName]; !ok {
 				return nil, fmt.Errorf("tag %s not found in vocab", tagName)
 			}
-			out.WriteString("</")
-			out.WriteString(se.Name.Local)
-			out.WriteString(">")
+			if len(stack) == 0 {
+				return nil, fmt.Errorf("unexpected end element %s", se.Name.Local)
+			}
+			stack = stack[:len(stack)-1]
 
 		case xml.CharData:
 			content := string(se)
 			trimmed := strings.TrimSpace(content)
 			if trimmed != "" {
-				// Escape content? The decoder unescapes it. We should re-escape.
-				// Or assume content is safe? Better re-escape.
-				buf := new(bytes.Buffer)
-				if err := xml.EscapeText(buf, []byte(trimmed)); err != nil {
-					return nil, err
+				if len(stack) > 0 {
+					current := stack[len(stack)-1]
+					current.Children = append(current.Children, trimmed)
 				}
-				out.Write(buf.Bytes())
 			}
 		}
 	}
 
-	return out.Bytes(), nil
+	return root, nil
 }
 
-func (t *Transformer) processAttribute(out *bytes.Buffer, attr xml.Attr) error {
+func (t *Transformer) processAttributeToElement(parent *Element, attr xml.Attr) error {
 	attrName := "@" + attr.Name.Local
 	_, hasEmpty := t.vocab[TokenEmpty]
-	// TokenValueEnd is implicit for registered attributes via the closing tag of __Attr,
-	// but we must check if it exists in vocab during encoding. Transformer assumes it will be handled.
 
 	if _, ok := t.vocab[attrName]; ok {
 		// Registered Attribute
-		// <__Attr name="foo">val</__Attr>
-		out.WriteString(fmt.Sprintf(`<%s %s="%s">`, VirtualAttrTag, VirtualAttrName, attr.Name.Local))
+		child := &Element{
+			Name:       VirtualAttrTag,
+			Attributes: []xml.Attr{{Name: xml.Name{Local: VirtualAttrName}, Value: attr.Name.Local}},
+		}
 
 		if attr.Value == "" && hasEmpty {
 			// <__Empty/>
-			out.WriteString(strings.ReplaceAll(TokenEmpty, "/", " /")) // Ensure valid XML self-closing if strictly needed, but <__Empty/> is fine.
+			// Represent as Element with Name "__Empty" and no child.
+			emptyName := strings.Trim(TokenEmpty, "<> /") // Strip < > /
+			child.Children = append(child.Children, &Element{Name: emptyName})
 		} else {
 			if attr.Value != "" {
-				buf := new(bytes.Buffer)
-				if err := xml.EscapeText(buf, []byte(attr.Value)); err != nil {
-					return err
-				}
-				out.Write(buf.Bytes())
+				child.Children = append(child.Children, attr.Value)
 			}
 		}
-		out.WriteString(fmt.Sprintf(`</%s>`, VirtualAttrTag))
+		parent.Children = append(parent.Children, child)
 
 	} else {
 		// Unregistered Attribute
-		// Expects special tokens
 		var missing []string
 		for _, tok := range []string{TokenAttrPair, TokenAttrPairEnd, TokenKey, TokenKeyEnd, TokenValue, TokenValueEnd} {
 			if _, ok := t.vocab[tok]; !ok {
@@ -144,41 +135,24 @@ func (t *Transformer) processAttribute(out *bytes.Buffer, attr xml.Attr) error {
 		}
 
 		// <__AttrPair>
-		//   <__Key>name</__Key>
-		//   <__Value>val</__Value>
-		// </__AttrPair>
-		
-		// Note: We use the raw tokens strings from constants but stripped of < > because we construct XML.
-		// TokenKey = "<__Key>" -> we write "<__Key>"
-		
-		// Helper to write element
-		writeElem := func(tag string, val string) error {
-			// tag is like "<__Key>"
-			tagName := strings.Trim(tag, "<>")
-			out.WriteString("<" + tagName + ">")
-			buf := new(bytes.Buffer)
-			if err := xml.EscapeText(buf, []byte(val)); err != nil {
-				return err
-			}
-			out.Write(buf.Bytes())
-			out.WriteString("</" + tagName + ">")
-			return nil
-		}
+		pairName := strings.Trim(TokenAttrPair, "<>")
+		pair := &Element{Name: pairName}
 
-		// <__AttrPair>
-		out.WriteString(TokenAttrPair)
-		
-		// Key
-		if err := writeElem(TokenKey, attr.Name.Local); err != nil { return err }
+		// <__Key>name</__Key>
+		keyName := strings.Trim(TokenKey, "<>")
+		pair.Children = append(pair.Children, &Element{
+			Name:     keyName,
+			Children: []interface{}{attr.Name.Local},
+		})
 
-		// Value
-		out.WriteString(strings.TrimSuffix(TokenValue, ">") + ">") // <__Value>
-		buf := new(bytes.Buffer)
-		if err := xml.EscapeText(buf, []byte(attr.Value)); err != nil { return err }
-		out.Write(buf.Bytes())
-		out.WriteString(TokenValueEnd)
+		// <__Value>val</__Value>
+		valName := strings.Trim(TokenValue, "<>")
+		pair.Children = append(pair.Children, &Element{
+			Name:     valName,
+			Children: []interface{}{attr.Value},
+		})
 
-		out.WriteString(TokenAttrPairEnd)
+		parent.Children = append(parent.Children, pair)
 	}
 	return nil
 }

@@ -6,33 +6,6 @@ import (
 	"strings"
 )
 
-// Element represents an XML node structure
-type Element struct {
-	Name       string
-	Attributes []xml.Attr
-	Children   []interface{} // *Element or string (CharData)
-}
-
-// String serializes the Element back to an XML string
-func (e *Element) String() string {
-	var sb strings.Builder
-	sb.WriteString("<" + e.Name)
-	for _, attr := range e.Attributes {
-		sb.WriteString(" " + attr.Name.Local + `="` + attr.Value + `"`)
-	}
-	sb.WriteString(">")
-	for _, child := range e.Children {
-		switch c := child.(type) {
-		case *Element:
-			sb.WriteString(c.String())
-		case string:
-			sb.WriteString(c)
-		}
-	}
-	sb.WriteString("</" + e.Name + ">")
-	return sb.String()
-}
-
 // DecodeXML reconstructs the XML structure from tokens.
 func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 	if len(tokens) == 0 {

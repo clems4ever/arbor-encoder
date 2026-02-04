@@ -1,7 +1,6 @@
 package tokenizer
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -70,13 +69,16 @@ func NewTokenizer(vocabPath string) (*Tokenizer, error) {
 
 func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 	transformer := NewTransformer(t.vocab)
-	xmlBytes, err := transformer.Transform(r)
+	rootElement, err := transformer.Transform(r)
 	if err != nil {
 		return nil, err
 	}
 
 	encoder := NewEncoder(t.vocab, t.contentTokenizer)
-	return encoder.Encode(bytes.NewReader(xmlBytes))
+	// Serialize Element to string and pass to Encoder.
+    // Ideally Encoder could traverse Element directly, but sticking to XML stream interface for now.
+    // Element.String() produces valid XML.
+	return encoder.Encode(strings.NewReader(rootElement.String()))
 }
 
 // getPaddedPaths returns the paths as a 2D matrix.

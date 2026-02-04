@@ -853,9 +853,7 @@
                 <p>
                   The
                   <code>go</code>
-                  command by default downloads and authenticates
-          modules using the Go module mirror and Go checksum database run by
-          Google.
+                  command by default downloads and authenticates&#xA;          modules using the Go module mirror and Go checksum database run by&#xA;          Google.
                   <a>
                     <__Attr name="href">/dl</__Attr>
                     <__Attr name="aria-describedby">newwindow-description</__Attr>
@@ -1308,11 +1306,7 @@
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
                           “At the time, no single team member knew Go, but
                           <strong>within a month, everyone was writing in Go</strong>
-                          and we were
-building out the endpoints. It was the flexibility, how easy it was to use,
-and the really cool concept behind Go (how Go handles native concurrency,
-garbage collection, and of course safety+speed.) that helped engage us
-during the build. Also, who can beat that cute mascot!”
+                          and we were&#xA;building out the endpoints. It was the flexibility, how easy it was to use,&#xA;and the really cool concept behind Go (how Go handles native concurrency,&#xA;garbage collection, and of course safety+speed.) that helped engage us&#xA;during the build. Also, who can beat that cute mascot!”
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1338,14 +1332,11 @@ during the build. Also, who can beat that cute mascot!”
                         <__Attr name="class">TestimonialsGo-quoteSection</__Attr>
                         <p>
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
-                          "
+                          &#34;
                           <strong>A small language that compiles fast makes for a happy developer.</strong>
-                          The Go language is small, compiles really fast, and as a result it lets your
-mind focus on the actual problem and less on the tool you are using to solve
-it. Code, test, debug cycles are so quick that you forget you are not
-working with an interpreted language. Looking at our code, you see
+                          The Go language is small, compiles really fast, and as a result it lets your&#xA;mind focus on the actual problem and less on the tool you are using to solve&#xA;it. Code, test, debug cycles are so quick that you forget you are not&#xA;working with an interpreted language. Looking at our code, you see
                           <strong>less boilerplate and more business logic.</strong>
-                          "
+                          &#34;
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1373,12 +1364,9 @@ working with an interpreted language. Looking at our code, you see
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
                           “
                           <strong>Go has excellent characteristics for scalability and services&#xA;written using it typically have very small memory footprints.</strong>
-                          Because code is compiled into a single static binary, services can also be
-containerised with ease, making it much simpler to build and deploy. These
-attributes make
+                          Because code is compiled into a single static binary, services can also be&#xA;containerised with ease, making it much simpler to build and deploy. These&#xA;attributes make
                           <strong>Go an ideal choice for companies building&#xA;microservices</strong>
-                          , as you can easily deploy into a highly available and
-scalable environment such as Kubernetes.”
+                          , as you can easily deploy into a highly available and&#xA;scalable environment such as Kubernetes.”
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1404,9 +1392,9 @@ scalable environment such as Kubernetes.”
                         <__Attr name="class">TestimonialsGo-quoteSection</__Attr>
                         <p>
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
-                          "In our tightly managed environments where we run Go code,
+                          &#34;In our tightly managed environments where we run Go code,
                           <strong>we have seen a CPU reduction of approximately 10%</strong>
-                          with cleaner and maintainable code."
+                          with cleaner and maintainable code.&#34;
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1432,12 +1420,9 @@ scalable environment such as Kubernetes.”
                         <__Attr name="class">TestimonialsGo-quoteSection</__Attr>
                         <p>
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
-                          "Tooling has always been a problem with our legacy code base... but we have
- found that Go has excellent tooling, plus built-in testing, benchmarking,
- and profiling frameworks. It is easy to write efficient and resilient
- applications.
+                          &#34;Tooling has always been a problem with our legacy code base... but we have&#xA; found that Go has excellent tooling, plus built-in testing, benchmarking,&#xA; and profiling frameworks. It is easy to write efficient and resilient&#xA; applications.
                           <strong>After working on Go, most of our developers don&#39;t want&#xA; to go back to other languages.</strong>
-                          "
+                          &#34;
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1463,9 +1448,7 @@ scalable environment such as Kubernetes.”
                         <__Attr name="class">TestimonialsGo-quoteSection</__Attr>
                         <p>
                           <__Attr name="class">TestimonialsGo-quote</__Attr>
-                          "...when a programming language is designed for exactly the environment most
- of us use right now—scalable, cloud-based servers that are optimized for
-  performance—a lot can go right."
+                          &#34;...when a programming language is designed for exactly the environment most&#xA; of us use right now—scalable, cloud-based servers that are optimized for&#xA;  performance—a lot can go right.&#34;
                         </p>
                         <div>
                           <__Attr name="class">TestimonialsGo-author</__Attr>
@@ -1526,13 +1509,7 @@ scalable environment such as Kubernetes.”
                 <__Attr name="aria-label">Try Go</__Attr>
                 <__Attr name="aria-describedby">editor-description</__Attr>
                 <__Attr name="id">code</__Attr>
-                // You can edit this code!
-// Click here and start typing.
-package main
-import "fmt"
-func main() {
-  fmt.Println("Hello, 世界")
-}
+                // You can edit this code!&#xA;// Click here and start typing.&#xA;package main&#xA;import &#34;fmt&#34;&#xA;func main() {&#xA;  fmt.Println(&#34;Hello, 世界&#34;)&#xA;}
               </textarea>
             </div>
             <div>
@@ -1561,7 +1538,7 @@ func main() {
                 </option>
                 <option>
                   <__Attr name="value">life.go</__Attr>
-                  Conway's Game of Life
+                  Conway&#39;s Game of Life
                 </option>
                 <option>
                   <__Attr name="value">fib.go</__Attr>
@@ -1652,7 +1629,7 @@ func main() {
                     <__Attr name="class">WhyGo-reasonText</__Attr>
                     <h3>
                       <__Attr name="class">WhyGo-reasonTitle</__Attr>
-                      Cloud & Network Services
+                      Cloud &amp; Network Services
                     </h3>
                     <p>With a strong ecosystem of tools and APIs on major cloud providers, it is easier than ever to build services with Go.</p>
                   </div>
@@ -1956,7 +1933,7 @@ func main() {
                     <__Attr name="class">WhyGo-reasonText</__Attr>
                     <h3>
                       <__Attr name="class">WhyGo-reasonTitle</__Attr>
-                      DevOps & Site Reliability
+                      DevOps &amp; Site Reliability
                     </h3>
                     <p>With fast build times, lean syntax, an automatic formatter and doc generator, Go is built to support both DevOps and SRE.</p>
                   </div>
@@ -2525,8 +2502,7 @@ func main() {
     <section>
       <__Attr name="class">Cookie-notice js-cookieNotice</__Attr>
       <div>
-        go.dev uses cookies from Google to deliver and enhance the quality of its services and to
-  analyze traffic.
+        go.dev uses cookies from Google to deliver and enhance the quality of its services and to&#xA;  analyze traffic.
         <a>
           <__Attr name="target">_blank</__Attr>
           <__Attr name="href">https://policies.google.com/technologies/cookies</__Attr>
