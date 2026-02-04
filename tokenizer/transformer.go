@@ -103,7 +103,7 @@ func (t *Transformer) Transform(r io.Reader) (*Element, error) {
 }
 
 func (t *Transformer) processAttributeToElement(parent *Element, attr xml.Attr) error {
-	attrName := "@" + attr.Name.Local
+	attrName := "##" + attr.Name.Local
 	_, hasEmpty := t.vocab[TokenEmpty]
 
 	if _, ok := t.vocab[attrName]; ok {

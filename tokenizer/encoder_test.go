@@ -68,7 +68,7 @@ func TestEncoder_RoundTrip(t *testing.T) {
 						id++
 					}
 					for _, attr := range se.Attr {
-						attrName := "@" + attr.Name.Local
+						attrName :=  "##" + attr.Name.Local
 						if attr.Name.Local == "class" || attr.Name.Local == "href" || attr.Name.Local == "id" {
 							if _, ok := vocab[attrName]; !ok {
 								vocab[attrName] = id

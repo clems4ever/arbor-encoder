@@ -3,10 +3,10 @@
     <__Key>class</__Key>
     <__Value>container</__Value>
   </__RegisteredAttr>
-  <__UnregisteredAttr>
+  <__RegisteredAttr>
     <__Key>data-test</__Key>
     <__Value>unregistered</__Value>
-  </__UnregisteredAttr>
+  </__RegisteredAttr>
   <span>
     <__RegisteredAttr>
       <__Key>id</__Key>

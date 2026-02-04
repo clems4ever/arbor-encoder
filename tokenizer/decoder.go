@@ -108,9 +108,9 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 			continue
 		}
 
-		// Registered Attribute (Must be in Vocab and start with @)
-		if isVocab && strings.HasPrefix(s, "@") {
-			attrName := s[1:]
+		// Registered Attribute (Must be in Vocab and start with ##)
+		if isVocab && strings.HasPrefix(s, "##") {
+			attrName := s[2:]
 			var valSb strings.Builder
 
 			// Check first token for explicit Empty value
@@ -150,7 +150,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 					break
 				}
 				// Stop if another attribute (Must be Vocab)
-				if subIsVocab && strings.HasPrefix(subS, "@") {
+				if subIsVocab && strings.HasPrefix(subS, "##") {
 					break
 				}
 

@@ -124,7 +124,7 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 					return nil, err
 				}
 
-				tagName = "@" + name
+				tagName =  "##" + name
 				isAttr = true
 				isOrdered = true // Attributes content is ordered
 			} else {

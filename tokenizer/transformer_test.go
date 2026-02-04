@@ -36,7 +36,7 @@ func TestTransformer_Attributes_Registered(t *testing.T) {
 	xmlStr := `<div class="foo"></div>`
 	vocab := map[string]int{
 		"<div>": 1, "</div>": 2,
-		"@class":      3,
+		"##class":     3,
 		TokenValueEnd: 99,
 	}
 
@@ -56,7 +56,7 @@ func TestTransformer_Attributes_Registered_Empty(t *testing.T) {
 	xmlStr := `<div class=""></div>`
 	vocab := map[string]int{
 		"<div>": 1, "</div>": 2,
-		"@class":   3,
+		"##class":  3,
 		TokenEmpty: 88,
 	}
 
@@ -147,13 +147,7 @@ func scanForVocab(r io.Reader) (map[string]int, error) {
 				if attr.Name.Local == ArborOrderedAttribute {
 					continue
 				}
-				if strings.HasPrefix(attr.Name.Local, "data-") {
-					continue
-				}
-				if attr.Name.Local == "lang" {
-					continue
-				}
-				attrName := "@" + attr.Name.Local
+				attrName := "##" + attr.Name.Local
 				if _, ok := vocab[attrName]; !ok {
 					vocab[attrName] = id
 					id++

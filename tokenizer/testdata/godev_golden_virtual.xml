@@ -1,12 +1,12 @@
 <html>
-  <__UnregisteredAttr>
+  <__RegisteredAttr>
     <__Key>data-theme</__Key>
     <__Value>auto</__Value>
-  </__UnregisteredAttr>
-  <__UnregisteredAttr>
+  </__RegisteredAttr>
+  <__RegisteredAttr>
     <__Key>lang</__Key>
     <__Value>en</__Value>
-  </__UnregisteredAttr>
+  </__RegisteredAttr>
   <head>
     <link>
       <__RegisteredAttr>
@@ -1653,10 +1653,12 @@
                   <__Key>class</__Key>
                   <__Value>js-latestGoVersion</__Value>
                 </__RegisteredAttr>
-                <__UnregisteredAttr>
+                <__RegisteredAttr>
                   <__Key>data-version</__Key>
-                  <__Value></__Value>
-                </__UnregisteredAttr>
+                  <__Value>
+                    <__Empty />
+                  </__Value>
+                </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
@@ -5458,10 +5460,10 @@
                       <__Key>class</__Key>
                       <__Value>go-Icon go-Icon--inverted</__Value>
                     </__RegisteredAttr>
-                    <__UnregisteredAttr>
+                    <__RegisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>auto</__Value>
-                    </__UnregisteredAttr>
+                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
                       <__Value>24</__Value>
@@ -5484,10 +5486,10 @@
                       <__Key>class</__Key>
                       <__Value>go-Icon go-Icon--inverted</__Value>
                     </__RegisteredAttr>
-                    <__UnregisteredAttr>
+                    <__RegisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>dark</__Value>
-                    </__UnregisteredAttr>
+                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
                       <__Value>24</__Value>
@@ -5510,10 +5512,10 @@
                       <__Key>class</__Key>
                       <__Value>go-Icon go-Icon--inverted</__Value>
                     </__RegisteredAttr>
-                    <__UnregisteredAttr>
+                    <__RegisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>light</__Value>
-                    </__UnregisteredAttr>
+                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
                       <__Value>24</__Value>

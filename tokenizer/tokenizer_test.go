@@ -312,8 +312,8 @@ func TestTokenizer_Attributes(t *testing.T) {
 		"</City>":    base + 101,
 		"<School>":   base + 102,
 		"</School>":  base + 103,
-		"@name":      base + 104,
-		"@zip":       base + 105,
+		"##name":     base + 104,
+		"##zip":      base + 105,
 		"</__Value>": base + 106,
 		"<__Empty/>": base + 107,
 	}
@@ -382,7 +382,7 @@ func TestTokenizer_Attributes_UnorderedParent(t *testing.T) {
 		"</City>":    base + 101,
 		"<Item>":     base + 102,
 		"</Item>":    base + 103,
-		"@attr":      base + 104,
+		"##attr":     base + 104,
 		"</__Value>": base + 105,
 		"<__Empty/>": base + 106,
 	}
@@ -449,7 +449,7 @@ func TestTokenizer_Attributes_UnknownAttribute(t *testing.T) {
 	_, err := tokenizer.Tokenize(strings.NewReader(xmlContent))
 	if err == nil {
 		t.Error("Expected error for unknown attribute")
-	} else if !strings.Contains(err.Error(), "attribute @unknown not found") {
+	} else if !strings.Contains(err.Error(), "attribute ##unknown not found") {
 		t.Errorf("Unexpected error message: %v", err)
 	}
 }

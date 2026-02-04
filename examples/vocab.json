@@ -22,7 +22,7 @@
     "<EndYear>": 200020,
     "</EndYear>": 200021,
 
-    "@name": 200022,
+    "##name": 200022,
 
     "<__UnregisteredAttr>": 200100,
     "</__UnregisteredAttr>": 200101,
