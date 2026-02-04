@@ -11,15 +11,15 @@ import (
 )
 
 const (
-	ArborOrderedAttribute = "arbor-ordered"
-	TokenRegisteredAttr   = "<__RegisteredAttr>"
-	TokenUnregisteredAttr = "<__UnregisteredAttr>"
+	ArborOrderedAttribute    = "arbor-ordered"
+	TokenRegisteredAttr      = "<__RegisteredAttr>"
+	TokenUnregisteredAttr    = "<__UnregisteredAttr>"
 	TokenUnregisteredAttrEnd = "</__UnregisteredAttr>"
-	TokenKey              = "<__Key>"
-	TokenKeyEnd           = "</__Key>"
-	TokenValue            = "<__Value>"
-	TokenValueEnd         = "</__Value>"
-	TokenEmpty            = "<__Empty/>"
+	TokenKey                 = "<__Key>"
+	TokenKeyEnd              = "</__Key>"
+	TokenValue               = "<__Value>"
+	TokenValueEnd            = "</__Value>"
+	TokenEmpty               = "<__Empty/>"
 	// Cl100kBaseMaxID is the rough upper bound of cl100k_base vocab.
 	// The exact size is around 100277. We use 100500 to be safe.
 	Cl100kBaseMaxID = 100500
@@ -77,8 +77,8 @@ func (t *Tokenizer) Tokenize(r io.Reader) (*TokenizationResult, error) {
 
 	encoder := NewEncoder(t.vocab, t.contentTokenizer)
 	// Serialize Element to string and pass to Encoder.
-    // Ideally Encoder could traverse Element directly, but sticking to XML stream interface for now.
-    // Element.String() produces valid XML.
+	// Ideally Encoder could traverse Element directly, but sticking to XML stream interface for now.
+	// Element.String() produces valid XML.
 	return encoder.Encode(strings.NewReader(rootElement.String()))
 }
 

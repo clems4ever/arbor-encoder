@@ -1,162 +1,141 @@
 package tokenizer
 
 import (
+	"bytes"
+	"encoding/xml"
+	"io"
+	"os"
+	"path/filepath"
 	"strings"
 	"testing"
 
 	"github.com/pkoukk/tiktoken-go"
 )
 
-func TestEncoder_Encode_Basic(t *testing.T) {
-	tke, err := tiktoken.GetEncoding("cl100k_base")
+func TestEncoder_RoundTrip(t *testing.T) {
+	matches, err := filepath.Glob("testdata/*.html")
 	if err != nil {
-		t.Logf("skipping test because tiktoken cannot be loaded: %v", err)
-		return
+		t.Fatalf("failed to glob html files: %v", err)
 	}
 
-	vocab := map[string]int{
-		"<div>": 1, "</div>": 2,
-	}
-
-	// Virtual stream: <div>content</div>
-	xmlStr := `<div>content</div>`
-
-	enc := NewEncoder(vocab, tke)
-	res, err := enc.Encode(strings.NewReader(xmlStr))
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Tokens: 1 (div), ... (content), 2 (div end)
-	if res.Tokens[0] != 1 {
-		t.Errorf("expected div token 1")
-	}
-	last := res.Tokens[len(res.Tokens)-1]
-	if last != 2 {
-		t.Errorf("expected div end token 2, got %d", last)
-	}
-
-	// Paths
-	// Root: [0]
-	// Text "content": [0, 1]  (Unordered parent -> child index 1)
-	// End: [0]
-
-	// Verify path 0 (div)
-	if len(res.PaddedPaths[0]) < 1 { // Could be depth 1
-		// Actually, previous implementation [0]
-	}
-
-	// Check text path
-	// Should be child of div (index 0).
-	// so path [0, 0] or [0, 1] depending on starting counter.
-	// Div is unordered. Counter starts at 1.
-	// So [0, 1].
-}
-
-func TestEncoder_Encode_Attributes(t *testing.T) {
-	tke, _ := tiktoken.GetEncoding("cl100k_base")
-	if tke == nil {
-		return
-	} // skip
-
-	vocab := map[string]int{
-		"<div>": 1, "</div>": 2,
-		"@class":      3,
-		TokenValueEnd: 99,
-	}
-
-	// <div class="val"></div>
-	// Transformed: <div><__RegisteredAttr><__Key>class</__Key><__Value>val</__Value></__RegisteredAttr></div>
-	// Start(div), Start(@class, Attr), Text(val), End(</__Value>), End(div)
-
-	xmlStr := `<div><__RegisteredAttr><__Key>class</__Key><__Value>val</__Value></__RegisteredAttr></div>`
-
-	enc := NewEncoder(vocab, tke)
-	res, err := enc.Encode(strings.NewReader(xmlStr))
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// Check Tokens
-	// 1 (div), 3 (@class), val tokens, 99 (</__Value>), 2 (</div>)
-
-	if len(res.Tokens) < 5 {
-		t.Fatalf("too few tokens: %v", res.Tokens)
-	}
-
-	if res.Tokens[0] != 1 {
-		t.Errorf("expected 1")
-	}
-	if res.Tokens[1] != 3 {
-		t.Errorf("expected 3 (@class)")
-	}
-	if res.Tokens[len(res.Tokens)-2] != 99 {
-		t.Errorf("expected 99")
-	}
-	if res.Tokens[len(res.Tokens)-1] != 2 {
-		t.Errorf("expected 2")
-	} // </div>
-
-	// Check Paths
-	// @class path: [0, 0] (Start 0 because IsAttr)
-	if res.PaddedPaths[1][1] != 0 {
-		t.Errorf("attr path should be 0, got %v", res.PaddedPaths[1])
-	}
-}
-
-func TestEncoder_Encode_OrderedChildren(t *testing.T) {
-	tke, _ := tiktoken.GetEncoding("cl100k_base")
-	if tke == nil {
-		return
-	} // skip
-
-	vocab := map[string]int{
-		"<div>": 1, "</div>": 2,
-		"<p>": 4, "</p>": 5, // Children
-	}
-
-	// <div ordered="true"> <p>1</p> <p>2</p> </div>
-	// XML: <div arbor-ordered="true"><p>1</p><p>2</p></div>
-	xmlStr := `<div arbor-ordered="true"><p>1</p><p>2</p></div>`
-
-	enc := NewEncoder(vocab, tke)
-	res, err := enc.Encode(strings.NewReader(xmlStr))
-	if err != nil {
-		t.Fatalf("unexpected error: %v", err)
-	}
-
-	// <p> #1: Path [0, 1]
-	// <p> #2: Path [0, 2]
-
-	// Map tokens to indices.
-	// 0: div [0]
-	// 1: p   [0, 1]
-	// 2: text 1
-	// 3: /p
-	// 4: p   [0, 2]
-	// 5: text 2
-	// 6: /p
-	// 7: /div
-
-	// Find first <p> token (id 4)
-	var p1Idx, p2Idx int
-	pIt := 0
-	for i, tok := range res.Tokens {
-		if tok == 4 {
-			if pIt == 0 {
-				p1Idx = i
-				pIt++
-			} else {
-				p2Idx = i
+	for _, htmlFile := range matches {
+		t.Run(filepath.Base(htmlFile), func(t *testing.T) {
+			f, err := os.Open(htmlFile)
+			if err != nil {
+				t.Fatalf("failed to open html file: %v", err)
 			}
-		}
-	}
+			defer f.Close()
 
-	if res.PaddedPaths[p1Idx][1] != 1 {
-		t.Errorf("first child path should be 1, got %v", res.PaddedPaths[p1Idx])
-	}
+			xmlContent, err := ConvertHTMLToXML(f)
+			if err != nil {
+				t.Fatalf("failed to convert html to xml: %v", err)
+			}
 
-	if res.PaddedPaths[p2Idx][1] != 2 {
-		t.Errorf("second child path should be 2, got %v", res.PaddedPaths[p2Idx])
+			vocab := make(map[string]int)
+			id := Cl100kBaseMaxID + 1
+
+			special := []string{
+				TokenRegisteredAttr,
+				TokenUnregisteredAttr, TokenUnregisteredAttrEnd,
+				TokenKey, TokenKeyEnd,
+				TokenValue, TokenValueEnd,
+				TokenEmpty,
+			}
+			for _, s := range special {
+				vocab[s] = id
+				id++
+			}
+
+			decoder := xml.NewDecoder(strings.NewReader(xmlContent))
+			for {
+				tok, err := decoder.Token()
+				if err == io.EOF {
+					break
+				}
+				if err != nil {
+					t.Fatalf("xml decode error: %v", err)
+				}
+				switch se := tok.(type) {
+				case xml.StartElement:
+					tagName := "<" + se.Name.Local + ">"
+					if _, ok := vocab[tagName]; !ok {
+						vocab[tagName] = id
+						id++
+					}
+					endTagName := "</" + se.Name.Local + ">"
+					if _, ok := vocab[endTagName]; !ok {
+						vocab[endTagName] = id
+						id++
+					}
+					for _, attr := range se.Attr {
+						attrName := "@" + attr.Name.Local
+						if attr.Name.Local == "class" || attr.Name.Local == "href" || attr.Name.Local == "id" {
+							if _, ok := vocab[attrName]; !ok {
+								vocab[attrName] = id
+								id++
+							}
+						}
+					}
+				}
+			}
+
+			tr := NewTransformer(vocab)
+			root, err := tr.Transform(strings.NewReader(xmlContent))
+			if err != nil {
+				t.Fatalf("transform error: %v", err)
+			}
+
+			tke, err := tiktoken.GetEncoding("cl100k_base")
+			if err != nil {
+				t.Fatalf("failed to get tiktoken: %v", err)
+			}
+			enc := NewEncoder(vocab, tke)
+
+			res, err := enc.Encode(strings.NewReader(root.String()))
+			if err != nil {
+				t.Fatalf("encode error: %v", err)
+			}
+
+			vocabInv := make(map[int]string)
+			for k, v := range vocab {
+				vocabInv[v] = k
+			}
+
+			tok := &Tokenizer{
+				vocab:            vocab,
+				vocabInv:         vocabInv,
+				contentTokenizer: tke,
+			}
+
+			decodedRoot, err := tok.DecodeXML(res.Tokens)
+			if err != nil {
+				t.Fatalf("decode error: %v", err)
+			}
+
+			var buf bytes.Buffer
+			decodedRoot.PrettyPrint(&buf, 0)
+			actualContent := buf.String()
+
+			goldenFuncName := strings.TrimSuffix(filepath.Base(htmlFile), ".html")
+			goldenFile := filepath.Join("testdata", goldenFuncName+"_decoded.xml")
+
+			if *update {
+				if err := os.WriteFile(goldenFile, []byte(actualContent), 0644); err != nil {
+					t.Fatalf("failed to update golden file: %v", err)
+				}
+			}
+
+			expectedContent, err := os.ReadFile(goldenFile)
+			if err != nil {
+				if os.IsNotExist(err) {
+					t.Fatalf("golden file %s missing, run with -update to generate", goldenFile)
+				}
+				t.Fatalf("failed to read golden file: %v", err)
+			}
+
+			if string(expectedContent) != actualContent {
+				t.Errorf("Round trip mismatch against golden file %s", goldenFile)
+			}
+		})
 	}
 }
