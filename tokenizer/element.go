@@ -27,28 +27,6 @@ func (e *Element) writeTo(sb *strings.Builder) {
 		xml.EscapeText(sb, []byte(attr.Value))
 		sb.WriteString(`"`)
 	}
-	// Check for self-closing if no children? 
-    // The previous implementation of String() in decoder.go was:
-    /*
-	sb.WriteString(">")
-	for _, child := range e.Children {
-		switch c := child.(type) {
-		case *Element:
-			sb.WriteString(c.String())
-		case string:
-			sb.WriteString(c)
-		}
-	}
-	sb.WriteString("</" + e.Name + ">")
-    */
-    // I should probably keep it compatible or improve it.
-    
-    if len(e.Children) == 0 {
-         // Maybe self closing? Standard XML supports it. 
-         // But let's stick to explicitly open/close to avoid issues unless empty.
-         // <__Empty/> handling might be special.
-    }
-
 	sb.WriteString(">")
 	for _, child := range e.Children {
 		switch c := child.(type) {

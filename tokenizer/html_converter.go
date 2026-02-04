@@ -2,7 +2,7 @@ package tokenizer
 
 import (
 	"bytes"
-	"fmt"
+	"encoding/xml"
 	"io"
 	"strings"
 
@@ -36,13 +36,10 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 
 			b.WriteString(indent + "<" + n.Data)
 			for _, a := range n.Attr {
-				// Simple escape for values
-				val := strings.ReplaceAll(a.Val, "&", "&amp;")
-				val = strings.ReplaceAll(val, "\"", "&quot;")
-				val = strings.ReplaceAll(val, "<", "&lt;")
-				val = strings.ReplaceAll(val, ">", "&gt;")
 				if a.Key != "xmlns" { // avoid namespace issues if any
-					b.WriteString(fmt.Sprintf(" %s=\"%s\"", a.Key, val))
+					b.WriteString(" " + a.Key + "=\"")
+					xml.EscapeText(&b, []byte(a.Val))
+					b.WriteString("\"")
 				}
 			}
 			b.WriteString(">")
@@ -67,17 +64,11 @@ func ConvertHTMLToXML(r io.Reader) (string, error) {
 		case html.TextNode:
 			data := strings.TrimSpace(n.Data)
 			if data != "" {
-				// Escape text
-				data = strings.ReplaceAll(data, "&", "&amp;")
-				data = strings.ReplaceAll(data, "<", "&lt;")
-				data = strings.ReplaceAll(data, ">", "&gt;")
-
 				if insideComplex {
 					indent := "\n" + strings.Repeat("  ", depth)
-					b.WriteString(indent + data)
-				} else {
-					b.WriteString(data)
+					b.WriteString(indent)
 				}
+				xml.EscapeText(&b, []byte(data))
 			}
 			return
 		}
