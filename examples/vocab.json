@@ -24,10 +24,12 @@
 
     "@name": 200022,
 
-    "<__AttrPair>": 200100,
-    "</__AttrPair>": 200101,
+    "<__UnregisteredAttr>": 200100,
+    "</__UnregisteredAttr>": 200101,
     "<__Key>": 200102,
     "</__Key>": 200103,
     "<__Value>": 200104,
-    "</__Value>": 200105
+    "</__Value>": 200105,
+    "<__RegisteredAttr>": 200106,
+    "</__RegisteredAttr>": 200107
 }

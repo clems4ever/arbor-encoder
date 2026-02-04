@@ -20,13 +20,15 @@ func createComprehensiveVocab(t *testing.T) string {
 		"@id":           base + 100,
 		"@type":         base + 101,
 		"@extra":        base + 102,
-		"<__AttrPair>":  base + 200,
-		"</__AttrPair>": base + 201,
+		"<__UnregisteredAttr>":  base + 200,
+		"</__UnregisteredAttr>": base + 201,
 		"<__Key>":       base + 202,
 		"</__Key>":      base + 203,
 		"<__Value>":     base + 204,
 		"</__Value>":    base + 205,
 		"<__Empty/>":    base + 206,
+		"<__RegisteredAttr>":  base + 207,
+		"</__RegisteredAttr>": base + 208,
 	}
 	return createTempVocab(t, vocab)
 }

@@ -2,6 +2,7 @@ package tokenizer
 
 import (
 	"bytes"
+	"encoding/json"
 	"encoding/xml"
 	"flag"
 	"io"
@@ -54,6 +55,10 @@ func scanForVocab(r io.Reader) (map[string]int, error) {
 				if strings.HasPrefix(attr.Name.Local, "data-") {
 					continue
 				}
+				// Do not register "lang" to test unregistered path for standard attributes
+				if attr.Name.Local == "lang" {
+					continue
+				}
 				attrName := "@" + attr.Name.Local
 				if _, ok := vocab[attrName]; !ok {
 					vocab[attrName] = id
@@ -85,13 +90,39 @@ func TestTransformer_Golden(t *testing.T) {
 			}
 			defer f.Close()
 
-			// 1. Build Vocab from file to ensure we cover all tags/attributes
-			// This simulates a "complete" vocab scenario.
-			vocab, err := scanForVocab(f)
-			if err != nil {
-				t.Fatal(err)
+			vocabFile := strings.TrimSuffix(inFile, ".xml") + "_vocab.json"
+			var vocab map[string]int
+
+			if *update {
+				// 1. Build Vocab from file to ensure we cover all tags/attributes
+				// This simulates a "complete" vocab scenario.
+				vocab, err = scanForVocab(f)
+				if err != nil {
+					t.Fatal(err)
+				}
+				// Save vocab
+				var buf bytes.Buffer
+				enc := json.NewEncoder(&buf)
+				enc.SetEscapeHTML(false)
+				enc.SetIndent("", "  ")
+				if err := enc.Encode(vocab); err != nil {
+					t.Fatal(err)
+				}
+				if err := os.WriteFile(vocabFile, buf.Bytes(), 0644); err != nil {
+					t.Fatal(err)
+				}
+				
+				f.Seek(0, 0) // Rewind
+			} else {
+				// Read vocab
+				data, err := os.ReadFile(vocabFile)
+				if err != nil {
+					t.Fatalf("Vocab file %s missing. Run with -update to generate.", vocabFile)
+				}
+				if err := json.Unmarshal(data, &vocab); err != nil {
+					t.Fatal(err)
+				}
 			}
-			f.Seek(0, 0) // Rewind
 
 			// 2. Transform
 			tr := NewTransformer(vocab)

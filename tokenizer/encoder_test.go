@@ -66,10 +66,10 @@ func TestEncoder_Encode_Attributes(t *testing.T) {
 	}
 
 	// <div class="val"></div>
-	// Transformed: <div><__Attr><__Key>class</__Key><__Value>val</__Value></__Attr></div>
+	// Transformed: <div><__RegisteredAttr><__Key>class</__Key><__Value>val</__Value></__RegisteredAttr></div>
 	// Start(div), Start(@class, Attr), Text(val), End(</__Value>), End(div)
 
-	xmlStr := `<div><__Attr><__Key>class</__Key><__Value>val</__Value></__Attr></div>`
+	xmlStr := `<div><__RegisteredAttr><__Key>class</__Key><__Value>val</__Value></__RegisteredAttr></div>`
 
 	enc := NewEncoder(vocab, tke)
 	res, err := enc.Encode(strings.NewReader(xmlStr))
