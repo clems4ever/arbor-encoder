@@ -10,6 +10,8 @@ import (
 	"testing"
 
 	"github.com/pkoukk/tiktoken-go"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestEncoder_RoundTrip(t *testing.T) {
@@ -68,7 +70,7 @@ func TestEncoder_RoundTrip(t *testing.T) {
 						id++
 					}
 					for _, attr := range se.Attr {
-						attrName :=  "##" + attr.Name.Local
+						attrName := "##" + attr.Name.Local
 						if attr.Name.Local == "class" || attr.Name.Local == "href" || attr.Name.Local == "id" {
 							if _, ok := vocab[attrName]; !ok {
 								vocab[attrName] = id
@@ -138,4 +140,92 @@ func TestEncoder_RoundTrip(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestEncoder_MalformedVirtualXML(t *testing.T) {
+	tk, err := tiktoken.GetEncoding("cl100k_base")
+	require.NoError(t, err)
+
+	vocab := map[string]int{
+		TokenKey:       100,
+		TokenKeyEnd:    101,
+		TokenValue:     102,
+		TokenValueEnd:  103,
+		"##BadTag":     999,
+		VirtualAttrTag: 200,
+	}
+
+	encoder := NewEncoder(vocab, tk)
+
+	tests := []struct {
+		name     string
+		xmlInput string
+		errPart  string
+	}{
+		{
+			name:     "Missing_Key_start",
+			xmlInput: "<" + VirtualAttrTag + "><BadTag></BadTag></" + VirtualAttrTag + ">",
+			errPart:  "expected <__Key> after __RegisteredAttr",
+		},
+		{
+			name:     "Missing_Key_CharData",
+			xmlInput: "<" + VirtualAttrTag + "><__Key></__Key></" + VirtualAttrTag + ">",
+			errPart:  "expected CharData in <__Key>",
+		},
+		{
+			name:     "Missing_Key_End",
+			xmlInput: "<" + VirtualAttrTag + "><__Key>name<BadTag>",
+			errPart:  "expected </__Key>",
+		},
+		{
+			name:     "Missing_Value_Start",
+			xmlInput: "<" + VirtualAttrTag + "><__Key>name</__Key><BadTag>",
+			errPart:  "expected <__Value> start",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			_, err := encoder.Encode(strings.NewReader(tc.xmlInput))
+			assert.Error(t, err)
+			if err != nil {
+				assert.Contains(t, err.Error(), tc.errPart)
+			}
+		})
+	}
+}
+
+func TestEncoder_Coverage_Logic(t *testing.T) {
+	tk, err := tiktoken.GetEncoding("cl100k_base")
+	require.NoError(t, err)
+
+	vocab := map[string]int{
+		"<root>":   1,
+		"</root>":  2,
+		"<child>":  3,
+		"</child>": 4,
+	}
+
+	encoder := NewEncoder(vocab, tk)
+
+	t.Run("Tag_Not_In_Vocab", func(t *testing.T) {
+		xmlInput := "<root><unknown></unknown></root>"
+		_, err := encoder.Encode(strings.NewReader(xmlInput))
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "token <unknown> not found in vocab")
+	})
+
+	t.Run("Unexpected_End_Token", func(t *testing.T) {
+		xmlInput := "<root></root></root>"
+		_, err := encoder.Encode(strings.NewReader(xmlInput))
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "unexpected")
+	})
+
+	t.Run("Arbor_Ordered", func(t *testing.T) {
+		xmlInput := "<root arbor-ordered=\"true\"><child/><child/></root>"
+		res, err := encoder.Encode(strings.NewReader(xmlInput))
+		assert.NoError(t, err)
+		assert.Len(t, res.PaddedPaths, 6)
+	})
 }

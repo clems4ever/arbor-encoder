@@ -6,6 +6,10 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/pkoukk/tiktoken-go"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 // Helper to check if two Element structures are effectively identical
@@ -221,4 +225,124 @@ func TestDecoder_RoundTrip_Extensive(t *testing.T) {
 			elementsMatch(t, expectedStruct, actualStruct)
 		})
 	}
+}
+
+func TestDecoder_Coverage_EdgeCases(t *testing.T) {
+	tk, err := tiktoken.GetEncoding("cl100k_base")
+	require.NoError(t, err)
+
+	vocab := map[string]int{
+		"<root>":                 100,
+		"</root>":                101,
+		"<child>":                102,
+		"</child>":               103,
+		TokenUnregisteredAttr:    104,
+		TokenUnregisteredAttrEnd: 105,
+		TokenKey:                 106,
+		TokenKeyEnd:              107,
+		TokenValue:               108,
+		TokenValueEnd:            109,
+		"##attr":                 110,
+		TokenEmpty:               111,
+		"##attr2":                112,
+	}
+
+	vocabInv := make(map[int]string)
+	for k, v := range vocab {
+		vocabInv[v] = k
+	}
+
+	tokenizer := &Tokenizer{
+		vocab:            vocab,
+		vocabInv:         vocabInv,
+		contentTokenizer: tk,
+	}
+
+	t.Run("Unexpected_End_Tag_At_Root", func(t *testing.T) {
+		// Tokens: </root>
+		tokens := []int{101}
+		_, err := tokenizer.DecodeXML(tokens)
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "unexpected end tag")
+	})
+
+	t.Run("UnregisteredAttr_End_Of_Stream", func(t *testing.T) {
+		// Tokens: <root> <__UnregisteredAttr> <__Key> key (no end)
+		// Assuming we can inject content tokens. Let's use words "key", "val".
+		// key -> e.g. 500
+		keyTok := tk.Encode("key", nil, nil)[0]
+
+		tokens := []int{100, 104, 106, keyTok}
+		// Code does: for i < len(tokens) ... if loop finishes, it breaks.
+		// It appends whatever it got.
+
+		el, err := tokenizer.DecodeXML(tokens)
+		assert.NoError(t, err)
+		require.NotNil(t, el)
+		// Should have attribute key="key" value="" (since we entered Key state, wrote key, loop ended)
+		// Wait, state starts at 0. <__Key> sets state=1. CharData writes to key.
+		// Loop ends. Attribute appended.
+		assert.Equal(t, "root", el.Name)
+		assert.Len(t, el.Attributes, 1)
+		assert.Equal(t, "key", el.Attributes[0].Name.Local)
+		assert.Equal(t, "", el.Attributes[0].Value)
+	})
+
+	t.Run("RegisteredAttr_ExplicitEmpty", func(t *testing.T) {
+		// Tokens: <root> ##attr <__Empty>
+		tokens := []int{100, 110, 111, 101}
+		el, err := tokenizer.DecodeXML(tokens)
+		assert.NoError(t, err)
+		require.NotNil(t, el)
+		assert.Len(t, el.Attributes, 1)
+		assert.Equal(t, "attr", el.Attributes[0].Name.Local)
+		assert.Equal(t, "", el.Attributes[0].Value)
+	})
+
+	t.Run("RegisteredAttr_ImplicitEnd_By_Tag", func(t *testing.T) {
+		// Tokens: <root> ##attr val <child> ...
+		valTok := tk.Encode("val", nil, nil)[0]
+		tokens := []int{100, 110, valTok, 102, 103, 101}
+		el, err := tokenizer.DecodeXML(tokens)
+		assert.NoError(t, err)
+		require.NotNil(t, el)
+		assert.Len(t, el.Attributes, 1)
+		assert.Equal(t, "attr", el.Attributes[0].Name.Local)
+		assert.Equal(t, "val", el.Attributes[0].Value)
+		assert.Len(t, el.Children, 1)
+		// <child>...
+	})
+
+	t.Run("RegisteredAttr_ImplicitEnd_By_NextAttr", func(t *testing.T) {
+		// Tokens: <root> ##attr val1 ##attr2 val2
+		// careful with tokenization of "val1" - might be split. Use "foo" and "bar"
+		valTok1 := tk.Encode("foo", nil, nil)[0]
+		valTok2 := tk.Encode("bar", nil, nil)[0]
+		tokens := []int{100, 110, valTok1, 112, valTok2, 101}
+		el, err := tokenizer.DecodeXML(tokens)
+		assert.NoError(t, err)
+		require.NotNil(t, el)
+		assert.Len(t, el.Attributes, 2)
+		assert.Equal(t, "attr", el.Attributes[0].Name.Local)
+		assert.Equal(t, "foo", el.Attributes[0].Value)
+		assert.Equal(t, "attr2", el.Attributes[1].Name.Local)
+		assert.Equal(t, "bar", el.Attributes[1].Value)
+	})
+
+	t.Run("Skip_Special_Tokens", func(t *testing.T) {
+		// Tokens: <root> <__ValueEnd> <__Key> content </root>
+		// Special tokens appearing out of context should be skipped.
+		tokens := []int{100, 109, 106, tk.Encode("content", nil, nil)[0], 101}
+		el, err := tokenizer.DecodeXML(tokens)
+		assert.NoError(t, err)
+		require.NotNil(t, el)
+		assert.Len(t, el.Children, 1)
+		assert.Equal(t, "content", el.Children[0].(string))
+	})
+
+	t.Run("Empty_Tokens", func(t *testing.T) {
+		el, err := tokenizer.DecodeXML([]int{})
+		assert.NoError(t, err)
+		assert.Nil(t, el)
+	})
 }
