@@ -14,4 +14,24 @@
     </__RegisteredAttr>
     Item 1
   </span>
+  <div>
+    <__RegisteredAttr>
+      <__Key>__internal</__Key>
+      <__Value>secret</__Value>
+    </__RegisteredAttr>
+    <__RegisteredAttr>
+      <__Key>a_attr</__Key>
+      <__Value>first</__Value>
+    </__RegisteredAttr>
+    <__RegisteredAttr>
+      <__Key>z_attr</__Key>
+      <__Value>last</__Value>
+    </__RegisteredAttr>
+    Sorted?
+  </div>
+  <FakeOrderedList arbor-ordered="true">
+    <Item>1</Item>
+    <Item>2</Item>
+    <Item>3</Item>
+  </FakeOrderedList>
 </div>

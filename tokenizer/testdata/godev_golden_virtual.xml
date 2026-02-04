@@ -1,21 +1,21 @@
 <html>
   <__UnregisteredAttr>
-    <__Key>lang</__Key>
-    <__Value>en</__Value>
-  </__UnregisteredAttr>
-  <__UnregisteredAttr>
     <__Key>data-theme</__Key>
     <__Value>auto</__Value>
+  </__UnregisteredAttr>
+  <__UnregisteredAttr>
+    <__Key>lang</__Key>
+    <__Value>en</__Value>
   </__UnregisteredAttr>
   <head>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>preconnect</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>https://www.googletagmanager.com</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>preconnect</__Value>
       </__RegisteredAttr>
     </link>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:&#xA;  new Date().getTime(),event:&#39;gtm.js&#39;});var f=d.getElementsByTagName(s)[0],&#xA;  j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.async=true;j.src=&#xA;  &#39;https://www.googletagmanager.com/gtm.js?id=&#39;+i+dl;f.parentNode.insertBefore(j,f);&#xA;  })(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-W8MVQXG&#39;);</script>
@@ -27,62 +27,62 @@
     </meta>
     <meta>
       <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>viewport</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>width=device-width, initial-scale=1</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>viewport</__Value>
       </__RegisteredAttr>
     </meta>
     <meta>
       <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>theme-color</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>#00add8</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>theme-color</__Value>
       </__RegisteredAttr>
     </meta>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>canonical</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>https://go.dev/</__Value>
       </__RegisteredAttr>
-    </link>
-    <link>
       <__RegisteredAttr>
         <__Key>rel</__Key>
-        <__Value>stylesheet</__Value>
+        <__Value>canonical</__Value>
       </__RegisteredAttr>
+    </link>
+    <link>
       <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>https://fonts.googleapis.com/css?family=Material+Icons</__Value>
       </__RegisteredAttr>
-    </link>
-    <link>
       <__RegisteredAttr>
         <__Key>rel</__Key>
         <__Value>stylesheet</__Value>
       </__RegisteredAttr>
+    </link>
+    <link>
       <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>/css/styles.css</__Value>
       </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>stylesheet</__Value>
+      </__RegisteredAttr>
     </link>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>icon</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>/images/favicon-gopher.png</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>icon</__Value>
       </__RegisteredAttr>
       <__RegisteredAttr>
         <__Key>sizes</__Key>
@@ -91,22 +91,22 @@
     </link>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>apple-touch-icon</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>/images/favicon-gopher-plain.png</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>apple-touch-icon</__Value>
       </__RegisteredAttr>
     </link>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>icon</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>/images/favicon-gopher.svg</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>icon</__Value>
       </__RegisteredAttr>
       <__RegisteredAttr>
         <__Key>type</__Key>
@@ -115,12 +115,12 @@
     </link>
     <link>
       <__RegisteredAttr>
-        <__Key>rel</__Key>
-        <__Value>me</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>href</__Key>
         <__Value>https://hachyderm.io/@golang</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>rel</__Key>
+        <__Value>me</__Value>
       </__RegisteredAttr>
     </link>
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({&#39;gtm.start&#39;:&#xA;  new Date().getTime(),event:&#39;gtm.js&#39;});var f=d.getElementsByTagName(s)[0],&#xA;  j=d.createElement(s),dl=l!=&#39;dataLayer&#39;?&#39;&amp;l=&#39;+l:&#39;&#39;;j.async=true;j.src=&#xA;  &#39;https://www.googletagmanager.com/gtm.js?id=&#39;+i+dl;f.parentNode.insertBefore(j,f);&#xA;  })(window,document,&#39;script&#39;,&#39;dataLayer&#39;,&#39;GTM-W8MVQXG&#39;);</script>
@@ -132,83 +132,83 @@
     </script>
     <meta>
       <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>og:url</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>https://go.dev/</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>og:url</__Value>
       </__RegisteredAttr>
     </meta>
     <meta>
       <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>og:title</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>The Go Programming Language</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>og:title</__Value>
       </__RegisteredAttr>
     </meta>
     <title>The Go Programming Language</title>
     <meta>
       <__RegisteredAttr>
+        <__Key>content</__Key>
+        <__Value>Go is an open source programming language that makes it simple to build secure, scalable systems.</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
         <__Key>name</__Key>
         <__Value>og:description</__Value>
       </__RegisteredAttr>
+    </meta>
+    <meta>
       <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>Go is an open source programming language that makes it simple to build secure, scalable systems.</__Value>
       </__RegisteredAttr>
-    </meta>
-    <meta>
       <__RegisteredAttr>
         <__Key>name</__Key>
         <__Value>description</__Value>
       </__RegisteredAttr>
-      <__RegisteredAttr>
-        <__Key>content</__Key>
-        <__Value>Go is an open source programming language that makes it simple to build secure, scalable systems.</__Value>
-      </__RegisteredAttr>
     </meta>
     <meta>
-      <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>og:image</__Value>
-      </__RegisteredAttr>
       <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>https://go.dev/doc/gopher/gopher5logo.jpg</__Value>
       </__RegisteredAttr>
-    </meta>
-    <meta>
       <__RegisteredAttr>
         <__Key>name</__Key>
-        <__Value>twitter:image</__Value>
+        <__Value>og:image</__Value>
       </__RegisteredAttr>
+    </meta>
+    <meta>
       <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>https://go.dev/doc/gopher/gopherbelly300.jpg</__Value>
       </__RegisteredAttr>
-    </meta>
-    <meta>
       <__RegisteredAttr>
         <__Key>name</__Key>
-        <__Value>twitter:card</__Value>
+        <__Value>twitter:image</__Value>
       </__RegisteredAttr>
+    </meta>
+    <meta>
       <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>summary</__Value>
       </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>twitter:card</__Value>
+      </__RegisteredAttr>
     </meta>
     <meta>
       <__RegisteredAttr>
-        <__Key>name</__Key>
-        <__Value>twitter:site</__Value>
-      </__RegisteredAttr>
-      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>@golang</__Value>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
+        <__Key>name</__Key>
+        <__Value>twitter:site</__Value>
       </__RegisteredAttr>
     </meta>
   </head>
@@ -240,16 +240,16 @@
             </__RegisteredAttr>
             <img>
               <__RegisteredAttr>
+                <__Key>alt</__Key>
+                <__Value>Go</__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
                 <__Key>class</__Key>
                 <__Value>js-headerLogo Header-logo</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
                 <__Key>src</__Key>
                 <__Value>/images/go-logo-white.svg</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
-                <__Key>alt</__Key>
-                <__Value>Go</__Value>
               </__RegisteredAttr>
             </img>
           </a>
@@ -260,12 +260,12 @@
             </__RegisteredAttr>
             <a>
               <__RegisteredAttr>
-                <__Key>class</__Key>
-                <__Value>skip-to-content-link</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
                 <__Key>aria-label</__Key>
                 <__Value>Skip to main content</__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
+                <__Key>class</__Key>
+                <__Value>skip-to-content-link</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
                 <__Key>href</__Key>
@@ -291,30 +291,30 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>#</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>js-desktop-menu-hover</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Why Go</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>dropdown-description</__Value>
+                    <__Key>class</__Key>
+                    <__Value>js-desktop-menu-hover</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>#</__Value>
                   </__RegisteredAttr>
                   Why Go
                   <i>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>material-icons</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-hidden</__Key>
                       <__Value>true</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>material-icons</__Value>
                     </__RegisteredAttr>
                     arrow_drop_down
                   </i>
@@ -325,25 +325,25 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>dropdown-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
                   </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>dropdown-description</__Value>
+                  </__RegisteredAttr>
                   Press Enter to activate/deactivate dropdown
                 </div>
                 <ul>
                   <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>submenu</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>class</__Key>
+                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
                   </__RegisteredAttr>
                   <li>
                     <__RegisteredAttr>
@@ -402,16 +402,16 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/learn/</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Learn</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>dropdown-description</__Value>
+                    <__Key>href</__Key>
+                    <__Value>/learn/</__Value>
                   </__RegisteredAttr>
                   Learn
                 </a>
@@ -421,14 +421,14 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>dropdown-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   Press Enter to activate/deactivate dropdown
                 </div>
@@ -440,30 +440,30 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>#</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>js-desktop-menu-hover</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Docs</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>dropdown-description</__Value>
+                    <__Key>class</__Key>
+                    <__Value>js-desktop-menu-hover</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>#</__Value>
                   </__RegisteredAttr>
                   Docs
                   <i>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>material-icons</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-hidden</__Key>
                       <__Value>true</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>material-icons</__Value>
                     </__RegisteredAttr>
                     arrow_drop_down
                   </i>
@@ -474,25 +474,25 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>dropdown-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
                   </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>dropdown-description</__Value>
+                  </__RegisteredAttr>
                   Press Enter to activate/deactivate dropdown
                 </div>
                 <ul>
                   <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>submenu</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>class</__Key>
+                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
                   </__RegisteredAttr>
                   <li>
                     <__RegisteredAttr>
@@ -583,16 +583,16 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>https://pkg.go.dev</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Packages</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>dropdown-description</__Value>
+                    <__Key>href</__Key>
+                    <__Value>https://pkg.go.dev</__Value>
                   </__RegisteredAttr>
                   Packages
                 </a>
@@ -602,14 +602,14 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>dropdown-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   Press Enter to activate/deactivate dropdown
                 </div>
@@ -621,30 +621,30 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>#</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>js-desktop-menu-hover</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>dropdown-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Community</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>dropdown-description</__Value>
+                    <__Key>class</__Key>
+                    <__Value>js-desktop-menu-hover</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>#</__Value>
                   </__RegisteredAttr>
                   Community
                   <i>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>material-icons</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-hidden</__Key>
                       <__Value>true</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>material-icons</__Value>
                     </__RegisteredAttr>
                     arrow_drop_down
                   </i>
@@ -655,25 +655,25 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>dropdown-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
                   </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>dropdown-description</__Value>
+                  </__RegisteredAttr>
                   Press Enter to activate/deactivate dropdown
                 </div>
                 <ul>
                   <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>submenu</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>class</__Key>
+                    <__Value>Header-submenu js-desktop-submenu-hover</__Value>
                   </__RegisteredAttr>
                   <li>
                     <__RegisteredAttr>
@@ -783,12 +783,12 @@
                       </__RegisteredAttr>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with google-groups (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -803,12 +803,12 @@
                       </a>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with github (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -823,12 +823,12 @@
                       </a>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with twitter (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -843,12 +843,12 @@
                       </a>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with reddit (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -863,12 +863,12 @@
                       </a>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with slack (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -883,12 +883,12 @@
                       </a>
                       <a>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>Header-socialIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-label</__Key>
                           <__Value>Get connected with stack-overflow (Opens in new window)</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>Header-socialIcon</__Value>
                         </__RegisteredAttr>
                         <__RegisteredAttr>
                           <__Key>href</__Key>
@@ -908,12 +908,12 @@
             </ul>
             <button>
               <__RegisteredAttr>
-                <__Key>class</__Key>
-                <__Value>Header-navOpen js-headerMenuButton Header-navOpen--white</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
                 <__Key>aria-label</__Key>
                 <__Value>Open navigation.</__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
+                <__Key>class</__Key>
+                <__Value>Header-navOpen js-headerMenuButton Header-navOpen--white</__Value>
               </__RegisteredAttr>
             </button>
           </div>
@@ -942,16 +942,16 @@
             </__RegisteredAttr>
             <img>
               <__RegisteredAttr>
+                <__Key>alt</__Key>
+                <__Value>Go.</__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
                 <__Key>class</__Key>
                 <__Value>NavigationDrawer-logo</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
                 <__Key>src</__Key>
                 <__Value>/images/go-logo-blue.svg</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
-                <__Key>alt</__Key>
-                <__Value>Go.</__Value>
               </__RegisteredAttr>
             </img>
           </a>
@@ -1504,8 +1504,8 @@
                 <li>
                   <svg>
                     <__RegisteredAttr>
-                      <__Key>width</__Key>
-                      <__Value>12</__Value>
+                      <__Key>fill</__Key>
+                      <__Value>none</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
@@ -1516,8 +1516,8 @@
                       <__Value>0 0 12 10</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>fill</__Key>
-                      <__Value>none</__Value>
+                      <__Key>width</__Key>
+                      <__Value>12</__Value>
                     </__RegisteredAttr>
                     <path>
                       <__RegisteredAttr>
@@ -1539,8 +1539,8 @@
                 <li>
                   <svg>
                     <__RegisteredAttr>
-                      <__Key>width</__Key>
-                      <__Value>12</__Value>
+                      <__Key>fill</__Key>
+                      <__Value>none</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
@@ -1551,8 +1551,8 @@
                       <__Value>0 0 12 10</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>fill</__Key>
-                      <__Value>none</__Value>
+                      <__Key>width</__Key>
+                      <__Value>12</__Value>
                     </__RegisteredAttr>
                     <path>
                       <__RegisteredAttr>
@@ -1574,8 +1574,8 @@
                 <li>
                   <svg>
                     <__RegisteredAttr>
-                      <__Key>width</__Key>
-                      <__Value>12</__Value>
+                      <__Key>fill</__Key>
+                      <__Value>none</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
@@ -1586,8 +1586,8 @@
                       <__Value>0 0 12 10</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>fill</__Key>
-                      <__Value>none</__Value>
+                      <__Key>width</__Key>
+                      <__Value>12</__Value>
                     </__RegisteredAttr>
                     <path>
                       <__RegisteredAttr>
@@ -1609,8 +1609,8 @@
                 <li>
                   <svg>
                     <__RegisteredAttr>
-                      <__Key>width</__Key>
-                      <__Value>12</__Value>
+                      <__Key>fill</__Key>
+                      <__Value>none</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>height</__Key>
@@ -1621,8 +1621,8 @@
                       <__Value>0 0 12 10</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>fill</__Key>
-                      <__Value>none</__Value>
+                      <__Key>width</__Key>
+                      <__Value>12</__Value>
                     </__RegisteredAttr>
                     <path>
                       <__RegisteredAttr>
@@ -1649,15 +1649,23 @@
                 <__Value>Hero-actions</__Value>
               </__RegisteredAttr>
               <div>
-                <__UnregisteredAttr>
-                  <__Key>data-version</__Key>
-                  <__Value></__Value>
-                </__UnregisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>js-latestGoVersion</__Value>
                 </__RegisteredAttr>
+                <__UnregisteredAttr>
+                  <__Key>data-version</__Key>
+                  <__Value></__Value>
+                </__UnregisteredAttr>
                 <a>
+                  <__RegisteredAttr>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>getStarted-description</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>aria-label</__Key>
+                    <__Value>Get Started</__Value>
+                  </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>class</__Key>
                     <__Value>Primary</__Value>
@@ -1667,14 +1675,6 @@
                     <__Value>/learn/</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-label</__Key>
-                    <__Value>Get Started</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>getStarted-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>role</__Key>
                     <__Value>button</__Value>
                   </__RegisteredAttr>
@@ -1682,20 +1682,20 @@
                 </a>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>Secondary js-downloadBtn</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/dl</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>download-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Download</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>download-description</__Value>
+                    <__Key>class</__Key>
+                    <__Value>Secondary js-downloadBtn</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>/dl</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>role</__Key>
@@ -1709,14 +1709,14 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>getStarted-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>getStarted-description</__Value>
                   </__RegisteredAttr>
                   Opens a new window with the Get Started guide.
                 </div>
@@ -1726,14 +1726,14 @@
                     <__Value>screen-reader-only</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>id</__Key>
-                    <__Value>download-description</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>hidden</__Key>
                     <__Value>
                       <__Empty />
                     </__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>id</__Key>
+                    <__Value>download-description</__Value>
                   </__RegisteredAttr>
                   Opens a new window to download Go.
                 </div>
@@ -1771,12 +1771,12 @@
                   , and
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/dl/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-describedby</__Key>
                       <__Value>newwindow-description</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/dl/</__Value>
                     </__RegisteredAttr>
                     more
                   </a>
@@ -1787,12 +1787,12 @@
                   command by default downloads and authenticates&#xA;          modules using the Go module mirror and Go checksum database run by&#xA;          Google.
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/dl</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-describedby</__Key>
                       <__Value>newwindow-description</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/dl</__Value>
                     </__RegisteredAttr>
                     Learn more.
                   </a>
@@ -1805,14 +1805,14 @@
                 <__Value>screen-reader-only</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
-                <__Key>id</__Key>
-                <__Value>newwindow-description</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
                 <__Key>hidden</__Key>
                 <__Value>
                   <__Empty />
                 </__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
+                <__Key>id</__Key>
+                <__Value>newwindow-description</__Value>
               </__RegisteredAttr>
               Opens in new window.
             </div>
@@ -1823,16 +1823,16 @@
               </__RegisteredAttr>
               <img>
                 <__RegisteredAttr>
+                  <__Key>alt</__Key>
+                  <__Value>Go Gopher climbing a ladder.</__Value>
+                </__RegisteredAttr>
+                <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Hero-gopherLadder</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>src</__Key>
                   <__Value>/images/gophers/ladder.svg</__Value>
-                </__RegisteredAttr>
-                <__RegisteredAttr>
-                  <__Key>alt</__Key>
-                  <__Value>Go Gopher climbing a ladder.</__Value>
                 </__RegisteredAttr>
               </img>
             </div>
@@ -1868,16 +1868,16 @@
                 Organizations in every industry use Go to power their software and services
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/solutions/</__Value>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>newwindow-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>class</__Key>
                     <__Value>WhoUsesCaseStudyList-seeAll</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>newwindow-description</__Value>
+                    <__Key>href</__Key>
+                    <__Value>/solutions/</__Value>
                   </__RegisteredAttr>
                   View all stories
                 </a>
@@ -1900,10 +1900,6 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/solutions/google/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Google, (opens in new window)</__Value>
                     </__RegisteredAttr>
@@ -1911,32 +1907,36 @@
                       <__Key>class</__Key>
                       <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
                     </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/solutions/google/</__Value>
+                    </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>height</__Key>
-                        <__Value>48</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>src</__Key>
-                        <__Value>/images/logos/google.svg</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>height</__Key>
+                        <__Value>48</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>src</__Key>
+                        <__Value>/images/logos/google.svg</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                     <p>View case study</p>
@@ -1948,10 +1948,6 @@
                     <__Value>WhoUsesCaseStudyList-caseStudy</__Value>
                   </__RegisteredAttr>
                   <a>
-                    <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/solutions/paypal</__Value>
-                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of PayPal, (opens in new window)</__Value>
@@ -1960,32 +1956,36 @@
                       <__Key>class</__Key>
                       <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
                     </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/solutions/paypal</__Value>
+                    </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>height</__Key>
-                        <__Value>48</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>src</__Key>
-                        <__Value>/images/logos/paypal.svg</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>height</__Key>
+                        <__Value>48</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>src</__Key>
+                        <__Value>/images/logos/paypal.svg</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                     <p>View case study</p>
@@ -1997,10 +1997,6 @@
                     <__Value>WhoUsesCaseStudyList-caseStudy</__Value>
                   </__RegisteredAttr>
                   <a>
-                    <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/solutions/americanexpress</__Value>
-                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of American Express, (opens in new window)</__Value>
@@ -2009,32 +2005,36 @@
                       <__Key>class</__Key>
                       <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
                     </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/solutions/americanexpress</__Value>
+                    </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>height</__Key>
-                        <__Value>48</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>src</__Key>
-                        <__Value>/images/logos/american-express.svg</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>height</__Key>
+                        <__Value>48</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>src</__Key>
+                        <__Value>/images/logos/american-express.svg</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                     <p>View case study</p>
@@ -2046,10 +2046,6 @@
                     <__Value>WhoUsesCaseStudyList-caseStudy</__Value>
                   </__RegisteredAttr>
                   <a>
-                    <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/solutions/mercadolibre</__Value>
-                    </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of MercadoLibre, (opens in new window)</__Value>
@@ -2058,32 +2054,36 @@
                       <__Key>class</__Key>
                       <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
                     </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>/solutions/mercadolibre</__Value>
+                    </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>height</__Key>
-                        <__Value>48</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>src</__Key>
-                        <__Value>/images/logos/mercadolibre_light.svg</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>height</__Key>
+                        <__Value>48</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>src</__Key>
+                        <__Value>/images/logos/mercadolibre_light.svg</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                     <p>View case study</p>
@@ -2096,51 +2096,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://bitly.com/blog/why-we-write-everything-in-go/?utm_source=go-dev&amp;utm_medium=referral&amp;utm_campaign=go-dev&amp;utm_content=case-study</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Bitly, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://bitly.com/blog/why-we-write-everything-in-go/?utm_source=go-dev&amp;utm_medium=referral&amp;utm_campaign=go-dev&amp;utm_content=case-study</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/bitly.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2152,51 +2152,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://medium.com/capital-one-tech/a-serverless-and-go-journey-credit-offers-api-74ef1f9fde7f</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Capital One, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://medium.com/capital-one-tech/a-serverless-and-go-journey-credit-offers-api-74ef1f9fde7f</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/capitalone_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2208,51 +2208,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://www.cockroachlabs.com/blog/why-go-was-the-right-choice-for-cockroachdb/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Cockroach Labs, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://www.cockroachlabs.com/blog/why-go-was-the-right-choice-for-cockroachdb/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/cockroach.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2264,51 +2264,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://dropbox.tech/infrastructure/open-sourcing-our-go-libraries</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Dropbox, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://dropbox.tech/infrastructure/open-sourcing-our-go-libraries</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/dropbox.png</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2320,51 +2320,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://blog.cloudflare.com/graceful-upgrades-in-go/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Cloudflare, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://blog.cloudflare.com/graceful-upgrades-in-go/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/cloudflare_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2376,51 +2376,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://entgo.io/blog/2019/10/03/introducing-ent/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Facebook, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://entgo.io/blog/2019/10/03/introducing-ent/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/meta_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2432,51 +2432,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://cloudblogs.microsoft.com/opensource/2018/02/21/go-lang-brian-ketelsen-explains-fast-growth/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Microsoft, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://cloudblogs.microsoft.com/opensource/2018/02/21/go-lang-brian-ketelsen-explains-fast-growth/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/microsoft_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2488,51 +2488,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://medium.com/tech-at-wildlife-studios/pitaya-wildlifes-golang-go-af57865f7a11</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Wildlife Studios, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://medium.com/tech-at-wildlife-studios/pitaya-wildlifes-golang-go-af57865f7a11</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/wildlife_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2544,51 +2544,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://www.cloudwego.io/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of ByteDance, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://www.cloudwego.io/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/bytedance_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2600,51 +2600,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://medium.com/netflix-techblog/application-data-caching-using-ssds-5bf25df851ef</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Netflix, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://medium.com/netflix-techblog/application-data-caching-using-ssds-5bf25df851ef</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/netflix.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2656,51 +2656,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://technology.riotgames.com/news/leveraging-golang-game-development-and-operations</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Riot Games, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://technology.riotgames.com/news/leveraging-golang-game-development-and-operations</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/riot_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2712,51 +2712,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://www.zdnet.com/article/salesforce-why-we-ditched-python-for-googles-go-language-in-einstein-analytics/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Salesforce, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://www.zdnet.com/article/salesforce-why-we-ditched-python-for-googles-go-language-in-einstein-analytics/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/salesforce.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2768,51 +2768,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://blog.twitch.tv/en/2016/07/05/gos-march-to-low-latency-gc-a6fa96f06eb7/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Twitch, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://blog.twitch.tv/en/2016/07/05/gos-march-to-low-latency-gc-a6fa96f06eb7/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/twitch.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2824,51 +2824,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://eng.uber.com/aresdb/</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of Uber, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://eng.uber.com/aresdb/</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>class</__Key>
+                        <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>48</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/logos/uber_light.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhoUsesCaseStudyList-logo</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -2880,51 +2880,51 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://blog.x.com/engineering/en_us/a/2015/handling-five-billion-sessions-a-day-in-real-time.html</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>aria-label</__Key>
                       <__Value>View CaseStudy of X, (opens in new window)</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>target</__Key>
-                      <__Value>_blank</__Value>
+                      <__Key>class</__Key>
+                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>href</__Key>
+                      <__Value>https://blog.x.com/engineering/en_us/a/2015/handling-five-billion-sessions-a-day-in-real-time.html</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>rel</__Key>
                       <__Value>noopener</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>WhoUsesCaseStudyList-caseStudyLink</__Value>
+                      <__Key>target</__Key>
+                      <__Value>_blank</__Value>
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>height</__Key>
-                        <__Value>48</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>30%</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>src</__Key>
-                        <__Value>/images/logos/x.png</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>
+                          <__Empty />
+                        </__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>WhoUsesCaseStudyList-logo</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>
-                          <__Empty />
-                        </__Value>
+                        <__Key>height</__Key>
+                        <__Value>48</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>src</__Key>
+                        <__Value>/images/logos/x.png</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>width</__Key>
+                        <__Value>30%</__Value>
                       </__RegisteredAttr>
                     </img>
                   </a>
@@ -3345,24 +3345,24 @@
               </div>
               <textarea>
                 <__RegisteredAttr>
-                  <__Key>class</__Key>
-                  <__Value>Playground-input js-playgroundCodeEl</__Value>
-                </__RegisteredAttr>
-                <__RegisteredAttr>
-                  <__Key>spellcheck</__Key>
-                  <__Value>false</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>editor-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>aria-label</__Key>
                   <__Value>Try Go</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>editor-description</__Value>
+                  <__Key>class</__Key>
+                  <__Value>Playground-input js-playgroundCodeEl</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>id</__Key>
                   <__Value>code</__Value>
+                </__RegisteredAttr>
+                <__RegisteredAttr>
+                  <__Key>spellcheck</__Key>
+                  <__Value>false</__Value>
                 </__RegisteredAttr>
                 // You can edit this code!&#xA;// Click here and start typing.&#xA;package main&#xA;import &#34;fmt&#34;&#xA;func main() {&#xA;  fmt.Println(&#34;Hello, 世界&#34;)&#xA;}
               </textarea>
@@ -3373,14 +3373,14 @@
                 <__Value>screen-reader-only</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
-                <__Key>id</__Key>
-                <__Value>editor-description</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
                 <__Key>hidden</__Key>
                 <__Value>
                   <__Empty />
                 </__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
+                <__Key>id</__Key>
+                <__Value>editor-description</__Value>
               </__RegisteredAttr>
               Press Esc to move out of the editor.
             </div>
@@ -3404,12 +3404,12 @@
               </__RegisteredAttr>
               <select>
                 <__RegisteredAttr>
-                  <__Key>class</__Key>
-                  <__Value>Playground-selectExample js-playgroundToysEl</__Value>
-                </__RegisteredAttr>
-                <__RegisteredAttr>
                   <__Key>aria-label</__Key>
                   <__Value>Code examples</__Value>
+                </__RegisteredAttr>
+                <__RegisteredAttr>
+                  <__Key>class</__Key>
+                  <__Value>Playground-selectExample js-playgroundToysEl</__Value>
                 </__RegisteredAttr>
                 <option>
                   <__RegisteredAttr>
@@ -3576,6 +3576,10 @@
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
+                        <__Key>alt</__Key>
+                        <__Value>Sphere</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>DarkMode-img</__Value>
                       </__RegisteredAttr>
@@ -3583,12 +3587,12 @@
                         <__Key>src</__Key>
                         <__Value>/images/icons/sphere-dark.svg</__Value>
                       </__RegisteredAttr>
+                    </img>
+                    <img>
                       <__RegisteredAttr>
                         <__Key>alt</__Key>
                         <__Value>Sphere</__Value>
                       </__RegisteredAttr>
-                    </img>
-                    <img>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>LightMode-img</__Value>
@@ -3596,10 +3600,6 @@
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/icons/sphere.svg</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>Sphere</__Value>
                       </__RegisteredAttr>
                     </img>
                   </div>
@@ -3635,12 +3635,12 @@
                       </__RegisteredAttr>
                       <img>
                         <__RegisteredAttr>
-                          <__Key>src</__Key>
-                          <__Value>/images/icons/package.svg</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>alt</__Key>
                           <__Value>Packages.</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>src</__Key>
+                          <__Value>/images/icons/package.svg</__Value>
                         </__RegisteredAttr>
                       </img>
                       Popular Packages:
@@ -3665,12 +3665,12 @@
                             <__Value>https://cloud.google.com/go/home</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           cloud.google.com/go
                         </a>
@@ -3690,12 +3690,12 @@
                             <__Value>https://aws.amazon.com/sdk-for-go/</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           aws/client
                         </a>
@@ -3715,12 +3715,12 @@
                             <__Value>https://github.com/Azure/azure-sdk-for-go</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           Azure/azure-sdk-for-go
                         </a>
@@ -3734,22 +3734,22 @@
                     </__RegisteredAttr>
                     <a>
                       <__RegisteredAttr>
-                        <__Key>href</__Key>
-                        <__Value>/solutions/cloud/</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
                         <__Key>aria-describedby</__Key>
                         <__Value>newwindow-description</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>href</__Key>
+                        <__Value>/solutions/cloud/</__Value>
                       </__RegisteredAttr>
                       Learn More
                       <i>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-hidden</__Key>
                           <__Value>true</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
                         </__RegisteredAttr>
                         arrow_forward
                       </i>
@@ -3778,6 +3778,10 @@
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
+                        <__Key>alt</__Key>
+                        <__Value>Command Line</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>DarkMode-img</__Value>
                       </__RegisteredAttr>
@@ -3785,12 +3789,12 @@
                         <__Key>src</__Key>
                         <__Value>/images/icons/command-folder-dark.svg</__Value>
                       </__RegisteredAttr>
+                    </img>
+                    <img>
                       <__RegisteredAttr>
                         <__Key>alt</__Key>
                         <__Value>Command Line</__Value>
                       </__RegisteredAttr>
-                    </img>
-                    <img>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>LightMode-img</__Value>
@@ -3798,10 +3802,6 @@
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/icons/command-folder.svg</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>Command Line</__Value>
                       </__RegisteredAttr>
                     </img>
                   </div>
@@ -3837,12 +3837,12 @@
                       </__RegisteredAttr>
                       <img>
                         <__RegisteredAttr>
-                          <__Key>src</__Key>
-                          <__Value>/images/icons/package.svg</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>alt</__Key>
                           <__Value>Packages.</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>src</__Key>
+                          <__Value>/images/icons/package.svg</__Value>
                         </__RegisteredAttr>
                       </img>
                       Popular Packages:
@@ -3867,12 +3867,12 @@
                             <__Value>https://github.com/spf13/cobra</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           spf13/cobra
                         </a>
@@ -3892,12 +3892,12 @@
                             <__Value>https://github.com/spf13/viper</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           spf13/viper
                         </a>
@@ -3917,12 +3917,12 @@
                             <__Value>https://github.com/urfave/cli</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           urfave/cli
                         </a>
@@ -3942,12 +3942,12 @@
                             <__Value>https://github.com/go-delve/delve</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           delve
                         </a>
@@ -3967,12 +3967,12 @@
                             <__Value>https://github.com/chzyer/readline</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           chzyer/readline
                         </a>
@@ -3986,22 +3986,22 @@
                     </__RegisteredAttr>
                     <a>
                       <__RegisteredAttr>
-                        <__Key>href</__Key>
-                        <__Value>/solutions/clis/</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
                         <__Key>aria-describedby</__Key>
                         <__Value>newwindow-description</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>href</__Key>
+                        <__Value>/solutions/clis/</__Value>
                       </__RegisteredAttr>
                       Learn More
                       <i>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-hidden</__Key>
                           <__Value>true</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
                         </__RegisteredAttr>
                         arrow_forward
                       </i>
@@ -4030,6 +4030,10 @@
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
+                        <__Key>alt</__Key>
+                        <__Value>Code</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>DarkMode-img</__Value>
                       </__RegisteredAttr>
@@ -4037,12 +4041,12 @@
                         <__Key>src</__Key>
                         <__Value>/images/icons/code-dark.svg</__Value>
                       </__RegisteredAttr>
+                    </img>
+                    <img>
                       <__RegisteredAttr>
                         <__Key>alt</__Key>
                         <__Value>Code</__Value>
                       </__RegisteredAttr>
-                    </img>
-                    <img>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>LightMode-img</__Value>
@@ -4050,10 +4054,6 @@
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/icons/code.svg</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>Code</__Value>
                       </__RegisteredAttr>
                     </img>
                   </div>
@@ -4089,12 +4089,12 @@
                       </__RegisteredAttr>
                       <img>
                         <__RegisteredAttr>
-                          <__Key>src</__Key>
-                          <__Value>/images/icons/package.svg</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>alt</__Key>
                           <__Value>Packages.</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>src</__Key>
+                          <__Value>/images/icons/package.svg</__Value>
                         </__RegisteredAttr>
                       </img>
                       Popular Packages:
@@ -4119,12 +4119,12 @@
                             <__Value>/pkg/net/http/</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           net/http
                         </a>
@@ -4144,12 +4144,12 @@
                             <__Value>/pkg/html/template/</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           html/template
                         </a>
@@ -4169,12 +4169,12 @@
                             <__Value>https://github.com/flosch/pongo2</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           flosch/pongo2
                         </a>
@@ -4194,12 +4194,12 @@
                             <__Value>/pkg/database/sql/</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           database/sql
                         </a>
@@ -4219,12 +4219,12 @@
                             <__Value>https://github.com/elastic/go-elasticsearch</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           elastic/go-elasticsearch
                         </a>
@@ -4238,22 +4238,22 @@
                     </__RegisteredAttr>
                     <a>
                       <__RegisteredAttr>
-                        <__Key>href</__Key>
-                        <__Value>/solutions/webdev/</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
                         <__Key>aria-describedby</__Key>
                         <__Value>newwindow-description</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>href</__Key>
+                        <__Value>/solutions/webdev/</__Value>
                       </__RegisteredAttr>
                       Learn More
                       <i>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-hidden</__Key>
                           <__Value>true</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
                         </__RegisteredAttr>
                         arrow_forward
                       </i>
@@ -4282,6 +4282,10 @@
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
+                        <__Key>alt</__Key>
+                        <__Value>Sphere</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>DarkMode-img</__Value>
                       </__RegisteredAttr>
@@ -4289,12 +4293,12 @@
                         <__Key>src</__Key>
                         <__Value>/images/icons/gear-dark.svg</__Value>
                       </__RegisteredAttr>
+                    </img>
+                    <img>
                       <__RegisteredAttr>
                         <__Key>alt</__Key>
                         <__Value>Sphere</__Value>
                       </__RegisteredAttr>
-                    </img>
-                    <img>
                       <__RegisteredAttr>
                         <__Key>class</__Key>
                         <__Value>LightMode-img</__Value>
@@ -4302,10 +4306,6 @@
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/icons/gear.svg</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>Sphere</__Value>
                       </__RegisteredAttr>
                     </img>
                   </div>
@@ -4341,12 +4341,12 @@
                       </__RegisteredAttr>
                       <img>
                         <__RegisteredAttr>
-                          <__Key>src</__Key>
-                          <__Value>/images/icons/package.svg</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>alt</__Key>
                           <__Value>Packages.</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>src</__Key>
+                          <__Value>/images/icons/package.svg</__Value>
                         </__RegisteredAttr>
                       </img>
                       Popular Packages:
@@ -4371,12 +4371,12 @@
                             <__Value>https://github.com/open-telemetry/opentelemetry-go</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           open-telemetry/opentelemetry-go
                         </a>
@@ -4396,12 +4396,12 @@
                             <__Value>https://github.com/istio/istio</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           istio/istio
                         </a>
@@ -4421,12 +4421,12 @@
                             <__Value>https://github.com/urfave/cli</__Value>
                           </__RegisteredAttr>
                           <__RegisteredAttr>
-                            <__Key>target</__Key>
-                            <__Value>_blank</__Value>
-                          </__RegisteredAttr>
-                          <__RegisteredAttr>
                             <__Key>rel</__Key>
                             <__Value>noopener</__Value>
+                          </__RegisteredAttr>
+                          <__RegisteredAttr>
+                            <__Key>target</__Key>
+                            <__Value>_blank</__Value>
                           </__RegisteredAttr>
                           urfave/cli
                         </a>
@@ -4440,22 +4440,22 @@
                     </__RegisteredAttr>
                     <a>
                       <__RegisteredAttr>
-                        <__Key>href</__Key>
-                        <__Value>/solutions/devops/</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
                         <__Key>aria-describedby</__Key>
                         <__Value>newwindow-description</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>href</__Key>
+                        <__Value>/solutions/devops/</__Value>
                       </__RegisteredAttr>
                       Learn More
                       <i>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-hidden</__Key>
                           <__Value>true</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>material-icons WhyGo-forwardArrowIcon</__Value>
                         </__RegisteredAttr>
                         arrow_forward
                       </i>
@@ -4480,28 +4480,28 @@
                     </__RegisteredAttr>
                     <img>
                       <__RegisteredAttr>
-                        <__Key>class</__Key>
-                        <__Value>WhyGo-reasonShowMoreImg</__Value>
+                        <__Key>alt</__Key>
+                        <__Value>Go Gopher is skateboarding.</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>loading</__Key>
-                        <__Value>lazy</__Value>
+                        <__Key>class</__Key>
+                        <__Value>WhyGo-reasonShowMoreImg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>height</__Key>
                         <__Value>148</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>width</__Key>
-                        <__Value>229</__Value>
+                        <__Key>loading</__Key>
+                        <__Value>lazy</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
                         <__Key>src</__Key>
                         <__Value>/images/gophers/biplane.svg</__Value>
                       </__RegisteredAttr>
                       <__RegisteredAttr>
-                        <__Key>alt</__Key>
-                        <__Value>Go Gopher is skateboarding.</__Value>
+                        <__Key>width</__Key>
+                        <__Value>229</__Value>
                       </__RegisteredAttr>
                     </img>
                   </div>
@@ -4512,22 +4512,22 @@
                     </__RegisteredAttr>
                     <a>
                       <__RegisteredAttr>
-                        <__Key>href</__Key>
-                        <__Value>/solutions/use-cases</__Value>
-                      </__RegisteredAttr>
-                      <__RegisteredAttr>
                         <__Key>aria-describedby</__Key>
                         <__Value>newwindow-description</__Value>
+                      </__RegisteredAttr>
+                      <__RegisteredAttr>
+                        <__Key>href</__Key>
+                        <__Value>/solutions/use-cases</__Value>
                       </__RegisteredAttr>
                       More use cases
                       <i>
                         <__RegisteredAttr>
-                          <__Key>class</__Key>
-                          <__Value>material-icons&#xA;              WhyGo-forwardArrowIcon</__Value>
-                        </__RegisteredAttr>
-                        <__RegisteredAttr>
                           <__Key>aria-hidden</__Key>
                           <__Value>true</__Value>
+                        </__RegisteredAttr>
+                        <__RegisteredAttr>
+                          <__Key>class</__Key>
+                          <__Value>material-icons&#xA;              WhyGo-forwardArrowIcon</__Value>
                         </__RegisteredAttr>
                         arrow_forward
                       </i>
@@ -4574,6 +4574,10 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
+                    <__Key>aria-describedby</__Key>
+                    <__Value>newwindow-description</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
                     <__Key>class</__Key>
                     <__Value>GettingStartedGo-primaryCta</__Value>
                   </__RegisteredAttr>
@@ -4581,20 +4585,16 @@
                     <__Key>href</__Key>
                     <__Value>/learn/</__Value>
                   </__RegisteredAttr>
-                  <__RegisteredAttr>
-                    <__Key>aria-describedby</__Key>
-                    <__Value>newwindow-description</__Value>
-                  </__RegisteredAttr>
                   Get Started
                 </a>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/doc/install/</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
                     <__Value>newwindow-description</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>/doc/install/</__Value>
                   </__RegisteredAttr>
                   Download Go
                 </a>
@@ -4624,16 +4624,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/learn#guided-learning-journeys</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>/learn#guided-learning-journeys</__Value>
                     </__RegisteredAttr>
                     Guided learning journeys
                   </a>
@@ -4652,16 +4652,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/learn#online-learning</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>/learn#online-learning</__Value>
                     </__RegisteredAttr>
                     Online learning
                   </a>
@@ -4680,16 +4680,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/learn#featured-books</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>/learn#featured-books</__Value>
                     </__RegisteredAttr>
                     Featured books
                   </a>
@@ -4708,16 +4708,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>/learn#self-paced-labs</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>/learn#self-paced-labs</__Value>
                     </__RegisteredAttr>
                     Cloud Self-paced labs
                   </a>
@@ -4749,16 +4749,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://www.ardanlabs.com/</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>https://www.ardanlabs.com/</__Value>
                     </__RegisteredAttr>
                     Ardan Labs
                   </a>
@@ -4777,16 +4777,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://www.gopherguides.com/</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>https://www.gopherguides.com/</__Value>
                     </__RegisteredAttr>
                     Gopher Guides
                   </a>
@@ -4805,16 +4805,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://bosssauce.it/services/training</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>https://bosssauce.it/services/training</__Value>
                     </__RegisteredAttr>
                     Boss Sauce Creative
                   </a>
@@ -4833,16 +4833,16 @@
                   </__RegisteredAttr>
                   <a>
                     <__RegisteredAttr>
-                      <__Key>href</__Key>
-                      <__Value>https://github.com/shijuvar/gokit/tree/master/training</__Value>
+                      <__Key>aria-describedby</__Key>
+                      <__Value>newwindow-description</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
                       <__Key>class</__Key>
                       <__Value>GettingStartedGo-resourceItemTitle</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>aria-describedby</__Key>
-                      <__Value>newwindow-description</__Value>
+                      <__Key>href</__Key>
+                      <__Value>https://github.com/shijuvar/gokit/tree/master/training</__Value>
                     </__RegisteredAttr>
                     Shiju Varghese
                   </a>
@@ -4860,14 +4860,14 @@
         </section>
         <script>
           <__RegisteredAttr>
-            <__Key>src</__Key>
-            <__Value>/js/index.js</__Value>
-          </__RegisteredAttr>
-          <__RegisteredAttr>
             <__Key>defer</__Key>
             <__Value>
               <__Empty />
             </__Value>
+          </__RegisteredAttr>
+          <__RegisteredAttr>
+            <__Key>src</__Key>
+            <__Value>/js/index.js</__Value>
           </__RegisteredAttr>
         </script>
       </div>
@@ -4899,46 +4899,46 @@
               </__RegisteredAttr>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/solutions/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link Footer-link--primary</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/solutions/</__Value>
                 </__RegisteredAttr>
                 Why Go
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/solutions/use-cases</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/solutions/use-cases</__Value>
                 </__RegisteredAttr>
                 Use Cases
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/solutions/case-studies</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/solutions/case-studies</__Value>
                 </__RegisteredAttr>
                 Case Studies
               </a>
@@ -4950,76 +4950,76 @@
               </__RegisteredAttr>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/learn/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link Footer-link--primary</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/learn/</__Value>
                 </__RegisteredAttr>
                 Get Started
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/play</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/play</__Value>
                 </__RegisteredAttr>
                 Playground
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/tour/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/tour/</__Value>
                 </__RegisteredAttr>
                 Tour
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://stackoverflow.com/questions/tagged/go?tab=Newest</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://stackoverflow.com/questions/tagged/go?tab=Newest</__Value>
                 </__RegisteredAttr>
                 Stack Overflow
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/help/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/help/</__Value>
                 </__RegisteredAttr>
                 Help
               </a>
@@ -5031,46 +5031,46 @@
               </__RegisteredAttr>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://pkg.go.dev</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link Footer-link--primary</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://pkg.go.dev</__Value>
                 </__RegisteredAttr>
                 Packages
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/pkg/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/pkg/</__Value>
                 </__RegisteredAttr>
                 Standard Library
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://pkg.go.dev/about</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://pkg.go.dev/about</__Value>
                 </__RegisteredAttr>
                 About Go Packages
               </a>
@@ -5082,106 +5082,106 @@
               </__RegisteredAttr>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/project</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link Footer-link--primary</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/project</__Value>
                 </__RegisteredAttr>
                 About
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/dl/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/dl/</__Value>
                 </__RegisteredAttr>
                 Download
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/blog/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/blog/</__Value>
                 </__RegisteredAttr>
                 Blog
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://github.com/golang/go/issues</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://github.com/golang/go/issues</__Value>
                 </__RegisteredAttr>
                 Issue Tracker
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/doc/devel/release</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/doc/devel/release</__Value>
                 </__RegisteredAttr>
                 Release Notes
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/brand</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/brand</__Value>
                 </__RegisteredAttr>
                 Brand Guidelines
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>/conduct</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>/conduct</__Value>
                 </__RegisteredAttr>
                 Code of Conduct
               </a>
@@ -5193,106 +5193,106 @@
               </__RegisteredAttr>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://www.twitter.com/golang</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link Footer-link--primary</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://www.twitter.com/golang</__Value>
                 </__RegisteredAttr>
                 Connect
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://www.twitter.com/golang</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://www.twitter.com/golang</__Value>
                 </__RegisteredAttr>
                 Twitter
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://github.com/golang</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://github.com/golang</__Value>
                 </__RegisteredAttr>
                 GitHub
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://invite.slack.golangbridge.org/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://invite.slack.golangbridge.org/</__Value>
                 </__RegisteredAttr>
                 Slack
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://reddit.com/r/golang</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://reddit.com/r/golang</__Value>
                 </__RegisteredAttr>
                 r/golang
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://www.meetup.com/pro/go</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://www.meetup.com/pro/go</__Value>
                 </__RegisteredAttr>
                 Meetup
               </a>
               <a>
                 <__RegisteredAttr>
-                  <__Key>href</__Key>
-                  <__Value>https://golangweekly.com/</__Value>
+                  <__Key>aria-describedby</__Key>
+                  <__Value>footer-description</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-link</__Value>
                 </__RegisteredAttr>
                 <__RegisteredAttr>
-                  <__Key>aria-describedby</__Key>
-                  <__Value>footer-description</__Value>
+                  <__Key>href</__Key>
+                  <__Value>https://golangweekly.com/</__Value>
                 </__RegisteredAttr>
                 Golang Weekly
               </a>
@@ -5306,14 +5306,14 @@
           <__Value>screen-reader-only</__Value>
         </__RegisteredAttr>
         <__RegisteredAttr>
-          <__Key>id</__Key>
-          <__Value>footer-description</__Value>
-        </__RegisteredAttr>
-        <__RegisteredAttr>
           <__Key>hidden</__Key>
           <__Value>
             <__Empty />
           </__Value>
+        </__RegisteredAttr>
+        <__RegisteredAttr>
+          <__Key>id</__Key>
+          <__Value>footer-description</__Value>
         </__RegisteredAttr>
         Opens in new window.
       </div>
@@ -5334,16 +5334,16 @@
             </__RegisteredAttr>
             <img>
               <__RegisteredAttr>
+                <__Key>alt</__Key>
+                <__Value>The Go Gopher</__Value>
+              </__RegisteredAttr>
+              <__RegisteredAttr>
                 <__Key>class</__Key>
                 <__Value>Footer-gopher</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
                 <__Key>src</__Key>
                 <__Value>/images/gophers/pilot-bust.svg</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
-                <__Key>alt</__Key>
-                <__Value>The Go Gopher</__Value>
               </__RegisteredAttr>
             </img>
             <ul>
@@ -5358,12 +5358,12 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/copyright</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
                     <__Value>footer-description</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>/copyright</__Value>
                   </__RegisteredAttr>
                   Copyright
                 </a>
@@ -5375,12 +5375,12 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/tos</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
                     <__Value>footer-description</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>href</__Key>
+                    <__Value>/tos</__Value>
                   </__RegisteredAttr>
                   Terms of Service
                 </a>
@@ -5392,20 +5392,20 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>http://www.google.com/intl/en/policies/privacy/</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
                     <__Value>footer-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>target</__Key>
-                    <__Value>_blank</__Value>
+                    <__Key>href</__Key>
+                    <__Value>http://www.google.com/intl/en/policies/privacy/</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>rel</__Key>
                     <__Value>noopener</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>target</__Key>
+                    <__Value>_blank</__Value>
                   </__RegisteredAttr>
                   Privacy Policy
                 </a>
@@ -5417,20 +5417,20 @@
                 </__RegisteredAttr>
                 <a>
                   <__RegisteredAttr>
-                    <__Key>href</__Key>
-                    <__Value>/s/website-issue</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-describedby</__Key>
                     <__Value>footer-description</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
-                    <__Key>target</__Key>
-                    <__Value>_blank</__Value>
+                    <__Key>href</__Key>
+                    <__Value>/s/website-issue</__Value>
                   </__RegisteredAttr>
                   <__RegisteredAttr>
                     <__Key>rel</__Key>
                     <__Value>noopener</__Value>
+                  </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>target</__Key>
+                    <__Value>_blank</__Value>
                   </__RegisteredAttr>
                   Report an Issue
                 </a>
@@ -5442,28 +5442,28 @@
                 </__RegisteredAttr>
                 <button>
                   <__RegisteredAttr>
-                    <__Key>class</__Key>
-                    <__Value>go-Button go-Button--text go-Footer-toggleTheme js-toggleTheme</__Value>
-                  </__RegisteredAttr>
-                  <__RegisteredAttr>
                     <__Key>aria-label</__Key>
                     <__Value>Toggle theme</__Value>
                   </__RegisteredAttr>
+                  <__RegisteredAttr>
+                    <__Key>class</__Key>
+                    <__Value>go-Button go-Button--text go-Footer-toggleTheme js-toggleTheme</__Value>
+                  </__RegisteredAttr>
                   <img>
+                    <__RegisteredAttr>
+                      <__Key>alt</__Key>
+                      <__Value>System theme</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>go-Icon go-Icon--inverted</__Value>
+                    </__RegisteredAttr>
                     <__UnregisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>auto</__Value>
                     </__UnregisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>go-Icon go-Icon--inverted</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>height</__Key>
-                      <__Value>24</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
-                      <__Key>width</__Key>
                       <__Value>24</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
@@ -5471,25 +5471,25 @@
                       <__Value>/images/icons/brightness_6_gm_grey_24dp.svg</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>alt</__Key>
-                      <__Value>System theme</__Value>
+                      <__Key>width</__Key>
+                      <__Value>24</__Value>
                     </__RegisteredAttr>
                   </img>
                   <img>
+                    <__RegisteredAttr>
+                      <__Key>alt</__Key>
+                      <__Value>Dark theme</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>go-Icon go-Icon--inverted</__Value>
+                    </__RegisteredAttr>
                     <__UnregisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>dark</__Value>
                     </__UnregisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>go-Icon go-Icon--inverted</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>height</__Key>
-                      <__Value>24</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
-                      <__Key>width</__Key>
                       <__Value>24</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
@@ -5497,25 +5497,25 @@
                       <__Value>/images/icons/brightness_2_gm_grey_24dp.svg</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>alt</__Key>
-                      <__Value>Dark theme</__Value>
+                      <__Key>width</__Key>
+                      <__Value>24</__Value>
                     </__RegisteredAttr>
                   </img>
                   <img>
+                    <__RegisteredAttr>
+                      <__Key>alt</__Key>
+                      <__Value>Light theme</__Value>
+                    </__RegisteredAttr>
+                    <__RegisteredAttr>
+                      <__Key>class</__Key>
+                      <__Value>go-Icon go-Icon--inverted</__Value>
+                    </__RegisteredAttr>
                     <__UnregisteredAttr>
                       <__Key>data-value</__Key>
                       <__Value>light</__Value>
                     </__UnregisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>class</__Key>
-                      <__Value>go-Icon go-Icon--inverted</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
                       <__Key>height</__Key>
-                      <__Value>24</__Value>
-                    </__RegisteredAttr>
-                    <__RegisteredAttr>
-                      <__Key>width</__Key>
                       <__Value>24</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
@@ -5523,8 +5523,8 @@
                       <__Value>/images/icons/light_mode_gm_grey_24dp.svg</__Value>
                     </__RegisteredAttr>
                     <__RegisteredAttr>
-                      <__Key>alt</__Key>
-                      <__Value>Light theme</__Value>
+                      <__Key>width</__Key>
+                      <__Value>24</__Value>
                     </__RegisteredAttr>
                   </img>
                 </button>
@@ -5536,10 +5536,6 @@
                 <__Value>Footer-googleLogo</__Value>
               </__RegisteredAttr>
               <__RegisteredAttr>
-                <__Key>target</__Key>
-                <__Value>_blank</__Value>
-              </__RegisteredAttr>
-              <__RegisteredAttr>
                 <__Key>href</__Key>
                 <__Value>https://google.com</__Value>
               </__RegisteredAttr>
@@ -5547,7 +5543,15 @@
                 <__Key>rel</__Key>
                 <__Value>noopener</__Value>
               </__RegisteredAttr>
+              <__RegisteredAttr>
+                <__Key>target</__Key>
+                <__Value>_blank</__Value>
+              </__RegisteredAttr>
               <img>
+                <__RegisteredAttr>
+                  <__Key>alt</__Key>
+                  <__Value>Google logo</__Value>
+                </__RegisteredAttr>
                 <__RegisteredAttr>
                   <__Key>class</__Key>
                   <__Value>Footer-googleLogoImg</__Value>
@@ -5555,10 +5559,6 @@
                 <__RegisteredAttr>
                   <__Key>src</__Key>
                   <__Value>/images/google-white.png</__Value>
-                </__RegisteredAttr>
-                <__RegisteredAttr>
-                  <__Key>alt</__Key>
-                  <__Value>Google logo</__Value>
                 </__RegisteredAttr>
               </img>
             </a>
@@ -5629,12 +5629,12 @@
         go.dev uses cookies from Google to deliver and enhance the quality of its services and to&#xA;  analyze traffic.
         <a>
           <__RegisteredAttr>
-            <__Key>target</__Key>
-            <__Value>_blank</__Value>
-          </__RegisteredAttr>
-          <__RegisteredAttr>
             <__Key>href</__Key>
             <__Value>https://policies.google.com/technologies/cookies</__Value>
+          </__RegisteredAttr>
+          <__RegisteredAttr>
+            <__Key>target</__Key>
+            <__Value>_blank</__Value>
           </__RegisteredAttr>
           Learn more.
         </a>

@@ -1,3 +1,9 @@
 <div class="container" data-test="unregistered">
     <span id="item1">Item 1</span>
+    <div z_attr="last" __internal="secret" a_attr="first">Sorted?</div>
+    <FakeOrderedList arbor-ordered="true">
+        <Item>1</Item>
+        <Item>2</Item>
+        <Item>3</Item>
+    </FakeOrderedList>
 </div>

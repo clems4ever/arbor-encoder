@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"sort"
 	"strings"
 )
 
@@ -46,12 +47,14 @@ func (t *Transformer) Transform(r io.Reader) (*Element, error) {
 
 			el := &Element{Name: se.Name.Local}
 
+			sort.Slice(se.Attr, func(i, j int) bool {
+				return se.Attr[i].Name.Local < se.Attr[j].Name.Local
+			})
+
 			// Check for arbor-ordered attribute
 			for _, attr := range se.Attr {
 				if attr.Name.Local == ArborOrderedAttribute {
-					if attr.Value == "true" {
-						el.Attributes = append(el.Attributes, attr)
-					}
+					el.Attributes = append(el.Attributes, attr)
 					break
 				}
 			}
