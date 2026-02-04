@@ -20,7 +20,8 @@ func scanForVocab(r io.Reader) (map[string]int, error) {
 
 	// Add special tags required by Transformer for fallback or delimiters
 	special := []string{
-		TokenAttrPair, TokenAttrPairEnd,
+		TokenRegisteredAttr,
+		TokenUnregisteredAttr, TokenUnregisteredAttrEnd,
 		TokenKey, TokenKeyEnd,
 		TokenValue, TokenValueEnd,
 		TokenEmpty,
@@ -47,6 +48,10 @@ func scanForVocab(r io.Reader) (map[string]int, error) {
 			}
 			for _, attr := range se.Attr {
 				if attr.Name.Local == ArborOrderedAttribute {
+					continue
+				}
+				// Do not register "data-*" attributes to allow testing unregistered attribute path
+				if strings.HasPrefix(attr.Name.Local, "data-") {
 					continue
 				}
 				attrName := "@" + attr.Name.Local

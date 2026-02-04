@@ -12,8 +12,9 @@ import (
 
 const (
 	ArborOrderedAttribute = "arbor-ordered"
-	TokenAttrPair         = "<__AttrPair>"
-	TokenAttrPairEnd      = "</__AttrPair>"
+	TokenRegisteredAttr   = "<__RegisteredAttr>"
+	TokenUnregisteredAttr = "<__UnregisteredAttr>"
+	TokenUnregisteredAttrEnd = "</__UnregisteredAttr>"
 	TokenKey              = "<__Key>"
 	TokenKeyEnd           = "</__Key>"
 	TokenValue            = "<__Value>"

@@ -31,8 +31,8 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 
 		// Start Element (Must be in Vocab)
 		if isVocab && strings.HasPrefix(s, "<") && !strings.HasPrefix(s, "</") &&
-			s != TokenAttrPair && s != TokenKey && s != TokenValue &&
-			s != TokenKeyEnd && s != TokenValueEnd && s != TokenAttrPairEnd && s != TokenEmpty {
+			s != TokenUnregisteredAttr && s != TokenKey && s != TokenValue &&
+			s != TokenKeyEnd && s != TokenValueEnd && s != TokenUnregisteredAttrEnd && s != TokenEmpty {
 
 			// Clean tag name
 			tagName := strings.TrimSuffix(strings.TrimPrefix(s, "<"), ">")
@@ -49,7 +49,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		}
 
 		// End Element (Must be in Vocab)
-		if isVocab && strings.HasPrefix(s, "</") && s != TokenAttrPairEnd && s != TokenKeyEnd && s != TokenValueEnd {
+		if isVocab && strings.HasPrefix(s, "</") && s != TokenUnregisteredAttrEnd && s != TokenKeyEnd && s != TokenValueEnd {
 			if len(stack) == 0 {
 				return nil, fmt.Errorf("unexpected end tag: %s", s)
 			}
@@ -65,7 +65,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		current := stack[len(stack)-1]
 
 		// Unregistered Attribute Sequence (checking token string constant)
-		if isVocab && s == TokenAttrPair {
+		if isVocab && s == TokenUnregisteredAttr {
 			var key, val strings.Builder
 			state := 0 // 0: init, 1: key, 2: value
 
@@ -76,7 +76,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 				i++
 
 				if subIsVocab {
-					if subS == TokenAttrPairEnd {
+					if subS == TokenUnregisteredAttrEnd {
 						break
 					}
 					if subS == TokenKey {
@@ -144,8 +144,8 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 				// Must be Vocab to be a structural stop
 				if subIsVocab &&
 					(strings.HasPrefix(subS, "<") || strings.HasPrefix(subS, "</")) &&
-					subS != TokenAttrPair && subS != TokenKey && subS != TokenValue &&
-					subS != TokenKeyEnd && subS != TokenValueEnd && subS != TokenAttrPairEnd {
+					subS != TokenUnregisteredAttr && subS != TokenKey && subS != TokenValue &&
+					subS != TokenKeyEnd && subS != TokenValueEnd && subS != TokenUnregisteredAttrEnd {
 					// We pushed back by NOT incrementing i
 					break
 				}
@@ -163,7 +163,7 @@ func (t *Tokenizer) DecodeXML(tokens []int) (*Element, error) {
 		}
 
 		// Skip special tokens if they appear out of place
-		if isVocab && (s == TokenValueEnd || s == TokenAttrPairEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue || s == TokenEmpty) {
+		if isVocab && (s == TokenValueEnd || s == TokenUnregisteredAttrEnd || s == TokenKey || s == TokenKeyEnd || s == TokenValue || s == TokenEmpty) {
 			continue
 		}
 

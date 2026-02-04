@@ -9,7 +9,7 @@ import (
 
 const (
 	// VirtualAttrTag is the XML tag used to wrap registered attributes in the virtual XML.
-	VirtualAttrTag = "__Attr"
+	VirtualAttrTag = "__RegisteredAttr"
 	// VirtualAttrName is the attribute name used to store the original attribute name in VirtualAttrTag.
 	VirtualAttrName = "name"
 )
@@ -137,7 +137,7 @@ func (t *Transformer) processAttributeToElement(parent *Element, attr xml.Attr) 
 	} else {
 		// Unregistered Attribute
 		var missing []string
-		for _, tok := range []string{TokenAttrPair, TokenAttrPairEnd, TokenKey, TokenKeyEnd, TokenValue, TokenValueEnd} {
+		for _, tok := range []string{TokenUnregisteredAttr, TokenUnregisteredAttrEnd, TokenKey, TokenKeyEnd, TokenValue, TokenValueEnd} {
 			if _, ok := t.vocab[tok]; !ok {
 				missing = append(missing, tok)
 			}
@@ -146,8 +146,8 @@ func (t *Transformer) processAttributeToElement(parent *Element, attr xml.Attr) 
 			return fmt.Errorf("attribute %s not found in vocab, and special tokens (%s) are missing for fallback", attrName, strings.Join(missing, ", "))
 		}
 
-		// <__AttrPair>
-		pairName := strings.Trim(TokenAttrPair, "<>")
+		// <__UnregisteredAttr>
+		pairName := strings.Trim(TokenUnregisteredAttr, "<>")
 		pair := &Element{Name: pairName}
 
 		// <__Key>name</__Key>

@@ -12,12 +12,13 @@ import (
 func collectVocabFromXML(t *testing.T, xmlData string) map[string]int {
 	decoder := xml.NewDecoder(strings.NewReader(xmlData))
 	vocab := map[string]int{
-		TokenAttrPair:    Cl100kBaseMaxID + 1,
-		TokenAttrPairEnd: Cl100kBaseMaxID + 2,
-		TokenKey:         Cl100kBaseMaxID + 3,
-		TokenKeyEnd:      Cl100kBaseMaxID + 4,
-		TokenValue:       Cl100kBaseMaxID + 5,
-		TokenValueEnd:    Cl100kBaseMaxID + 6,
+		TokenRegisteredAttr:      Cl100kBaseMaxID + 1,
+		TokenUnregisteredAttr:    Cl100kBaseMaxID + 2,
+		TokenUnregisteredAttrEnd: Cl100kBaseMaxID + 3,
+		TokenKey:                 Cl100kBaseMaxID + 4,
+		TokenKeyEnd:              Cl100kBaseMaxID + 5,
+		TokenValue:               Cl100kBaseMaxID + 6,
+		TokenValueEnd:            Cl100kBaseMaxID + 7,
 		TokenEmpty:       Cl100kBaseMaxID + 7,
 	}
 

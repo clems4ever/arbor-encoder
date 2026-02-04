@@ -1,0 +1,17 @@
+<div>
+  <__RegisteredAttr>
+    <__Key>class</__Key>
+    <__Value>container</__Value>
+  </__RegisteredAttr>
+  <__UnregisteredAttr>
+    <__Key>data-test</__Key>
+    <__Value>unregistered</__Value>
+  </__UnregisteredAttr>
+  <span>
+    <__RegisteredAttr>
+      <__Key>id</__Key>
+      <__Value>item1</__Value>
+    </__RegisteredAttr>
+    Item 1
+  </span>
+</div>

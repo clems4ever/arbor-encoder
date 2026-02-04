@@ -40,7 +40,8 @@ func TestWebsiteRoundTrip(t *testing.T) {
 
 			// Add special tokens mandatory for the system
 			special := []string{
-				TokenAttrPair, TokenAttrPairEnd,
+				TokenRegisteredAttr,
+				TokenUnregisteredAttr, TokenUnregisteredAttrEnd,
 				TokenKey, TokenKeyEnd,
 				TokenValue, TokenValueEnd,
 				TokenEmpty,

@@ -1,19 +1,19 @@
 <html>
-  <__Attr>
+  <__RegisteredAttr>
     <__Key>lang</__Key>
     <__Value>en</__Value>
-  </__Attr>
+  </__RegisteredAttr>
   <head>
     <title>Example Domain</title>
     <meta>
-      <__Attr>
+      <__RegisteredAttr>
         <__Key>name</__Key>
         <__Value>viewport</__Value>
-      </__Attr>
-      <__Attr>
+      </__RegisteredAttr>
+      <__RegisteredAttr>
         <__Key>content</__Key>
         <__Value>width=device-width, initial-scale=1</__Value>
-      </__Attr>
+      </__RegisteredAttr>
     </meta>
     <style>body{background:#eee;width:60vw;margin:15vh auto;font-family:system-ui,sans-serif}h1{font-size:1.5em}div{opacity:0.8}a:link,a:visited{color:#348}</style>
   </head>
@@ -23,10 +23,10 @@
       <p>This domain is for use in documentation examples without needing permission. Avoid use in operations.</p>
       <p>
         <a>
-          <__Attr>
+          <__RegisteredAttr>
             <__Key>href</__Key>
             <__Value>https://iana.org/domains/example</__Value>
-          </__Attr>
+          </__RegisteredAttr>
           Learn more
         </a>
       </p>

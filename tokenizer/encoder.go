@@ -132,9 +132,9 @@ func (e *Encoder) Encode(r io.Reader) (*TokenizationResult, error) {
 				tagName = "<" + se.Name.Local + ">"
 
 				// Identify if it's a special tag that acts as attribute (index 0)
-				// Note: <__Key> is consumed inside extractRegisteredAttrName ONLY if inside __Attr.
-				// If we see it here, it must be inside __AttrPair (Unregistered).
-				if tagName == TokenAttrPair {
+				// Note: <__Key> is consumed inside extractRegisteredAttrName ONLY if inside __RegisteredAttr.
+				// If we see it here, it must be inside __UnregisteredAttr (Unregistered).
+				if tagName == TokenUnregisteredAttr {
 					isAttr = true
 					isOrdered = true
 				}
