@@ -114,7 +114,7 @@ func TestTransformer_Ordered(t *testing.T) {
 func scanForVocab(r io.Reader) (map[string]int, error) {
 	decoder := xml.NewDecoder(r)
 	vocab := make(map[string]int)
-	id := 1
+	id := Cl100kBaseMaxID + 1
 
 	special := []string{
 		TokenRegisteredAttr,
