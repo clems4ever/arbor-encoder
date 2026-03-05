@@ -1,4 +1,4 @@
-module github.com/clems4ever/structured-encoder
+module github.com/clems4ever/arbor-encoder
 
 go 1.25.6
 

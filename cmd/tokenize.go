@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/clems4ever/structured-encoder/tokenizer"
+	"github.com/clems4ever/arbor-encoder/tokenizer"
 	"github.com/spf13/cobra"
 )
 

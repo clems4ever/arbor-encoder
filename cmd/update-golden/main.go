@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/clems4ever/structured-encoder/tokenizer"
+	"github.com/clems4ever/arbor-encoder/tokenizer"
 )
 
 func main() {
